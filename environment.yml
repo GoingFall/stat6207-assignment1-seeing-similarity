@@ -1,0 +1,4 @@
+name: stat6207-a1
+dependencies:
+  - python=3.11
+  - pip

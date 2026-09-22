@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "status": "preregistered-before-v2-benchmarks",
+  "seed": 6207,
+  "paths": {
+    "data": "data_v2",
+    "results": "results_v2"
+  },
+  "gpu_gate": {
+    "model": "facebook/dinov2-small",
+    "images": 100,
+    "batch_size": 16,
+    "minimum_measurement_seconds": 10,
+    "utilization_sample_seconds": 0.5,
+    "target_active_utilization_percent": 80
+  },
+  "exact": {
+    "query_batch": 256,
+    "database_shard": 100000,
+    "k": 100,
+    "feasibility_queries": 256
+  },
+  "ann": {
+    "scales": [10000, 50000, 120000, 1000000],
+    "query_counts": {
+      "development": 1000,
+      "test": 9000
+    },
+    "selection": {
+      "minimum_development_recall_at_10": 0.95,
+      "rule": "lowest development batch-256 p95 latency meeting recall threshold; otherwise highest recall then lowest latency"
+    },
+    "warmup_queries": 100,
+    "timed_repetitions": 3,
+    "batch_sizes": [1, 256],
+    "hnsw": {
+      "M": 32,
+      "efConstruction": 200,
+      "efSearch": [32, 64, 128, 256]
+    },
+    "ivf_flat": {
+      "nlist": [256, 1024, 4096],
+      "nprobe": [1, 4, 16, 64]
+    },
+    "ivf_pq": {
+      "nlist": [256, 1024, 4096],
+      "nprobe": [1, 4, 16, 64],
+      "m": 16,
+      "nbits": 8
+    }
+  },
+  "sift1m": {
+    "source": "ftp://ftp.irisa.fr/local/texmex/corpus/sift.tar.gz",
+    "official_page": "http://corpus-texmex.irisa.fr/",
+    "license": "CC0",
+    "archive_md5": "b23d1b3b2ee8469d819b61ca900ef0ed",
+    "expected": {
+      "base": [1000000, 128],
+      "query": [10000, 128],
+      "learn": [100000, 128],
+      "groundtruth": [10000, 100]
+    }
+  },
+  "sop": {
+    "source": "ryanholbrook/stanford-online-products/versions/1",
+    "protocol": "official-product-disjoint-train-test; leave-one-out retrieval within test",
+    "self_exclusion": "exact_image_id_only",
+    "encoder": "facebook/dinov2-small",
+    "batch_size": 64,
+    "embedding": "CLS token, float32, L2-normalized",
+    "distance": "cosine via inner product on unit vectors",
+    "standard_gallery": "all 60502 official test images with exact query-image self exclusion",
+    "all_image_index": "systems-capacity-only; never reported as standard SOP semantic retrieval",
+    "metrics": ["recall@1", "recall@10", "recall@100", "map@1000"]
+  },
+  "long_tail": {
+    "ratios": [10, 50],
+    "seeds": [6207, 6208, 6209, 6210, 6211],
+    "methods": ["cross_entropy", "class_weighted", "balanced_sampler"]
+  },
+  "inat_training": {
+    "frozen_knn_k": 10,
+    "linear_probe": {
+      "learning_rates": [0.0001, 0.0003, 0.001],
+      "weight_decay": 0.0001,
+      "batch_size": 512,
+      "maximum_epochs": 30,
+      "early_stopping_patience": 5,
+      "selection_metric": "validation_macro_f1"
+    },
+    "calibration": {
+      "ece_bins": 15,
+      "temperature_bounds": [0.05, 10.0]
+    },
+    "open_set": {
+      "target_known_tpr": 0.95,
+      "scores": ["nearest_neighbor", "neighbour_agreement_margin", "temperature_max_probability", "negative_energy"],
+      "threshold_selection": "maximize development balanced known-accept/unknown-reject subject to target known TPR",
+      "final_sets": ["known_test", "unknown_test"],
+      "unknown_scope": "near-OOD class-novel bird species from the same iNaturalist Birds subset",
+      "far_ood_status": "blocked: no verified bird-excluded dataset with adequate publication rights"
+    }
+  },
+  "monitoring": {
+    "seed": 6231,
+    "reference_split": "validation",
+    "bootstrap_partitions": 10,
+    "random_projections": 16,
+    "psi_bins": 10,
+    "alert_quantile": 0.99,
+    "rbf_mmd_samples": 2000,
+    "evaluation_splits": ["test", "unknown_test"]
+  },
+  "inat_birds": {
+    "source": "sharansmenon/inat2021birds/versions/1",
+    "official_terms": "non-commercial research/education; do not redistribute images",
+    "publish_images": false,
+    "class_split_seed": 6221,
+    "class_split": {
+      "known": 1000,
+      "unknown_development": 243,
+      "unknown_test": 243
+    },
+    "balanced_image_split_per_known_class": {
+      "train": 30,
+      "validation": 10,
+      "test": 10
+    }
+  }
+}

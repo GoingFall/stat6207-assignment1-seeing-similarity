@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "source_manifest": "data_v2/manifests/inat_birds_train.jsonl",
+  "source_manifest_sha256": "8dc197d622e191069174d8064a1ea55e0270b9f345a9ea62724dc0d6c216e861",
+  "methods": [
+    "cross_entropy",
+    "class_weighted",
+    "balanced_sampler"
+  ],
+  "runs": [
+    {
+      "ratio": 10,
+      "seed": 6207,
+      "path": "data_v2/manifests/long_tail/ratio-10-seed-6207.json",
+      "sha256": "259a6fb4a2ce2b58ba7479a6c139c9c0b74fb3dee6257ab9975e27dca5e091af",
+      "selected_images": 11725
+    },
+    {
+      "ratio": 10,
+      "seed": 6208,
+      "path": "data_v2/manifests/long_tail/ratio-10-seed-6208.json",
+      "sha256": "714bef87eb30834e02ff7951759b3af75435f444a5a3d624983fc08fa5ebf6a8",
+      "selected_images": 11725
+    },
+    {
+      "ratio": 10,
+      "seed": 6209,
+      "path": "data_v2/manifests/long_tail/ratio-10-seed-6209.json",
+      "sha256": "c255fce8aca4574e804093685139afe50d976c229244790e6b3951243ace9d2d",
+      "selected_images": 11725
+    },
+    {
+      "ratio": 10,
+      "seed": 6210,
+      "path": "data_v2/manifests/long_tail/ratio-10-seed-6210.json",
+      "sha256": "beac39fa3d386000bd603246377522ec516035798deba746f65b7d2f1b0e36c1",
+      "selected_images": 11725
+    },
+    {
+      "ratio": 10,
+      "seed": 6211,
+      "path": "data_v2/manifests/long_tail/ratio-10-seed-6211.json",
+      "sha256": "a78c3c9495af918a1366dd96eaecebdbae984ef34a5baf2ce8cb76171427e4bc",
+      "selected_images": 11725
+    }
+  ],
+  "blocked": [
+    {
+      "ratio": 50,
+      "seed": 6207,
+      "reason": "Exact 50:1 integer ratio is infeasible with maximum count 30; do not round, replace samples, or borrow validation/test images"
+    },
+    {
+      "ratio": 50,
+      "seed": 6208,
+      "reason": "Exact 50:1 integer ratio is infeasible with maximum count 30; do not round, replace samples, or borrow validation/test images"
+    },
+    {
+      "ratio": 50,
+      "seed": 6209,
+      "reason": "Exact 50:1 integer ratio is infeasible with maximum count 30; do not round, replace samples, or borrow validation/test images"
+    },
+    {
+      "ratio": 50,
+      "seed": 6210,
+      "reason": "Exact 50:1 integer ratio is infeasible with maximum count 30; do not round, replace samples, or borrow validation/test images"
+    },
+    {
+      "ratio": 50,
+      "seed": 6211,
+      "reason": "Exact 50:1 integer ratio is infeasible with maximum count 30; do not round, replace samples, or borrow validation/test images"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+•Basic Tasks (50%)
+
+1.Download a set of images and encode them using pre-trained ResNetmodel
+
+•At least 100 cat images and 100 dog images
+
+2.Find and visualize the top 5 most similar and dissimilar images, for a given query image
+
+3.Build a KNN classifier using the dataset
+
+4.Visualize the performance using 10 unseen images, visualize failed cases
+
+5.Build a website to show the results
+
+•Advance (50%)
+
+1.Implement and compare 3 different encoding models
+
+2.Implement and compare 3 different distance calculations in L1
+
+3.Analyze their strength and weakness using the results, and explain using the knowledge from STAT6207
+
+•Expected outcomes and notes:
+
+•Submit your works to blackboard by Wednesday (23 Sep 26)
+
+•Make a report in pdf to explain your results and the decision while using OpenCode
+
+•Submit your session transcript, .py, pdf, the website and etc.
