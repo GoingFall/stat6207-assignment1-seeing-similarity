@@ -2,7 +2,7 @@
 import json
 import pymupdf
 from PIL import Image,ImageOps,ImageDraw
-from pipelines.prepare_data import ROOT,OUT
+from pipelines.prepare_data import R1,ROOT,OUT
 
 def main():
     folder=R1/'report_review';folder.mkdir(exist_ok=True)

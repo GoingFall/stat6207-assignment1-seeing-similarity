@@ -1,0 +1,49 @@
+{
+  "status": "applied",
+  "migration_commit": "d6a3968",
+  "scope": "Source corrections applied after the layout migration. Each entry starts from the exact post-migration bytes recorded in results/v2.1/provenance.json#layout_migration and records the corrected bytes, the defect and the fix. The migration annex is not modified; checks.v21_verify re-checks the chain and results/v2.1/verification.json reports it as post_migration_corrections.",
+  "files": {
+    "checks/browser_check.py": {
+      "migration_post_sha256": "29ae7cf40735096e9187daeae073cc94fa2967a87e63776bd0586874d438b302",
+      "corrected_sha256": "0a99584652418ec73f0b5747d3218812aae20773e50eb3f8b02338801130db72",
+      "defect": "undefined name R1",
+      "fix": "import R1 from pipelines.prepare_data alongside the existing imports"
+    },
+    "checks/delivery_check.py": {
+      "migration_post_sha256": "026417283fa5303d22bca96fd0e372d104c76be460acc372eb2b7aaaa80bdecd",
+      "corrected_sha256": "b71ea241bf5cc5e2636b47902f893fbe5fccc6707f6e7a4d8c01bbf70be75e05",
+      "defect": "undefined name R1",
+      "fix": "import R1 from pipelines.prepare_data alongside the existing imports"
+    },
+    "checks/review_report.py": {
+      "migration_post_sha256": "08ae4384488f71f523f01343d16bc868282b76874115026d9552898c877b436c",
+      "corrected_sha256": "462919eb86bbd75d9e8a228984d7d2b8150f5e86a13ed4b043a4ac00480da330",
+      "defect": "undefined name R1, so the 1.0 report review raised NameError when run",
+      "fix": "import R1 from pipelines.prepare_data alongside the existing imports"
+    },
+    "checks/verify.py": {
+      "migration_post_sha256": "419387c47f12d0291796779b787ab8a303fbf4991a206866db500af1a59f72c1",
+      "corrected_sha256": "8007dff733638bdbbdb161e1a5b7bc0a3d16dedeb9c9cc8e1fce9c3ad3a91c77",
+      "defect": "undefined name R1",
+      "fix": "import R1 from pipelines.prepare_data alongside the existing imports"
+    },
+    "pipelines/label_audit.py": {
+      "migration_post_sha256": "99cbb18260cae4eced0511927463307e086e0ae926943e44824eefc96d8cb00e",
+      "corrected_sha256": "91ee7099644be14fbe5427dedf5ad7c6ef639f886e7960470886a0c53f7fed61",
+      "defect": "undefined name R1",
+      "fix": "import R1 from pipelines.prepare_data alongside the existing imports"
+    },
+    "pipelines/supplement.py": {
+      "migration_post_sha256": "da0bdc389c09aa9c5e400d03100d9395747ac1d6970e8233e11e4dc8336c7c9b",
+      "corrected_sha256": "b5688d0e49daa5745fed6632ee8442e037186703479a565f5978ef02e9bde85f",
+      "defect": "undefined name R1",
+      "fix": "import R1 from pipelines.prepare_data alongside the existing imports"
+    },
+    "pipelines/v21_prepare.py": {
+      "migration_post_sha256": "7ad35c600a832aac269a062bdf22e90a823e8328d5cf22e3638bd1b7c4708ddd",
+      "corrected_sha256": "8a5a578fb013996bcd4fcc800aff657fbf02249fd04d6e846f244d4e24ab7a7d",
+      "defect": "undefined name R1, a mis-indented migration-annex block that made the module fail to compile, and two imports (Counter, Path) left unused once the module parsed again",
+      "fix": "import R1 from pipelines.prepare_data, re-indent the annex-preservation block under its if guard, and drop the unused Counter and Path imports"
+    }
+  }
+}

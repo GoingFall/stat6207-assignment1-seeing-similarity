@@ -1,7 +1,63 @@
 {
   "status": "passed",
   "baseline_commit": "2fa9424a2b1ccda356028f2d3caa6d99d5814a89",
-  "tracked_historical_paths_changed": [],
+  "method": "every artifact tracked at the baseline commit under releases/1.0, releases/2.0, data_v2, results_v2 and configs/v2 was mapped to its current path and its recorded baseline bytes compared with the bytes on disk; a difference that survives CRLF-to-LF normalisation is a content change and fails the check",
+  "historical_paths_compared": 45,
+  "historical_paths_missing": [],
+  "content_changed_paths": [],
+  "representation_only_paths": [
+    "data/v2.0/manifests/long_tail/index.json",
+    "data/v2.0/manifests/long_tail/index.sha256",
+    "data/v2.0/manifests/long_tail/ratio-10-seed-6207.json",
+    "data/v2.0/manifests/long_tail/ratio-10-seed-6208.json",
+    "data/v2.0/manifests/long_tail/ratio-10-seed-6209.json",
+    "data/v2.0/manifests/long_tail/ratio-10-seed-6210.json",
+    "data/v2.0/manifests/long_tail/ratio-10-seed-6211.json",
+    "data/v2.0/manifests/sift1m_lock.json",
+    "data/v2.0/manifests/sift1m_lock.sha256",
+    "data/v2.0/manifests/sop_lock.json",
+    "data/v2.0/manifests/sop_lock.sha256",
+    "releases/1.0/Assignment1-submission.zip.sha256",
+    "releases/1.0/MANIFEST-1.0.json",
+    "releases/2.0/Assignment1-2.0.zip.sha256",
+    "releases/2.0/MANIFEST-2.0.json",
+    "results/v2.0/ann/sift1m.json",
+    "results/v2.0/ann/sift1m_scales.json",
+    "results/v2.0/checks/sift1m_exact_audit.json",
+    "results/v2.0/checks/verification.json",
+    "results/v2.0/gates/faiss_smoke.json",
+    "results/v2.0/gates/gpu_gate.json",
+    "results/v2.0/inat/encoding.json",
+    "results/v2.0/inat/monitoring.json",
+    "results/v2.0/inat/open_set.json",
+    "results/v2.0/inat/summary.json",
+    "results/v2.0/inat/training.json",
+    "results/v2.0/sop/encoding.json",
+    "results/v2.0/sop/retrieval.json",
+    "results/v2.0/summary.json"
+  ],
+  "paths_identical_at_byte_level": [
+    "configs/v2.0/experiment.json",
+    "data/v2.0/manifests/sop_test.jsonl",
+    "data/v2.0/manifests/sop_train.jsonl",
+    "releases/1.0/RELEASE-1.0.md",
+    "releases/1.0/VERSION",
+    "releases/2.0/Assignment1-2.0.zip",
+    "releases/2.0/RELEASE-2.0.md",
+    "results/v2.0/figures/inat-calibration.png",
+    "results/v2.0/figures/inat-long-tail.png",
+    "results/v2.0/figures/inat-monitoring.png",
+    "results/v2.0/figures/inat-near-ood.png",
+    "results/v2.0/figures/inat-reliability.png",
+    "results/v2.0/figures/sift1m-ann-tradeoffs.png",
+    "results/v2.0/figures/sift1m-scale-curves.png",
+    "results/v2.0/figures/sop-ann-tradeoffs.png",
+    "results/v2.0/figures/sop-semantic-quality.png"
+  ],
+  "paths_added_after_baseline": [
+    "releases/2.0/VERSION",
+    "results/v2.0/checks/review-2026-09-23.json"
+  ],
   "archives": {
     "1.0": {
       "sha256": "cec084b56af1111e1b7a78f7f0d9581900cba985d86d40a01958437db856bb55",
@@ -12,5 +68,5 @@
       "bytes": 12860952
     }
   },
-  "note": "New audit evidence under results_v2/checks is supplemental; original tracked V2 artifacts are unchanged"
+  "note": "New audit evidence under results/v2.1/checks is supplemental; original tracked V2 artifacts are unchanged in content; historical paths were renamed to the versioned layout without content changes"
 }

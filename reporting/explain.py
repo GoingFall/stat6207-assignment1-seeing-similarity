@@ -8,7 +8,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from PIL import Image
 from src.retrieval.encoders import load_encoder
-from pipelines.prepare_data import ROOT,OUT
+from pipelines.prepare_data import R1,ROOT,OUT
 
 def main():
     torch.set_num_threads(4);data=json.loads((ROOT/'site/v1.0/assets/data.json').read_text());qi=next(i for i,r in enumerate(data['queries']) if r['id']==data['protocol']['display_ids'][0]);query=data['queries'][qi]

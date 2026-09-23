@@ -4,7 +4,7 @@ import numpy as np
 from scipy.spatial.distance import cdist
 from sklearn.metrics import f1_score
 from pipelines.evaluate import load_locked
-from pipelines.prepare_data import OUT,ROOT
+from pipelines.prepare_data import OUT,R1,ROOT
 
 def main():
     p,rows=load_locked();test=np.array([i for i,r in enumerate(rows) if r['split']=='test']);truth=np.array([rows[i]['source_label']=='dog' for i in test])

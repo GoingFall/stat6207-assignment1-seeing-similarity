@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image,ImageFilter,ImageDraw
 import pymupdf
-from pipelines.prepare_data import OUT,ROOT,digest
+from pipelines.prepare_data import OUT,R1,ROOT,digest
 
 def main():
     p=json.loads((OUT/'protocol.json').read_text());test=json.loads((OUT/'test_manifest.json').read_text());checked=0

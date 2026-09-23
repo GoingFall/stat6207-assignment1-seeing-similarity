@@ -5,7 +5,7 @@ import torch
 from PIL import Image
 from sklearn.metrics import f1_score
 from pipelines.evaluate import load_locked
-from pipelines.prepare_data import ROOT,OUT
+from pipelines.prepare_data import R1,ROOT,OUT
 
 def main():
     p,rows=load_locked();torch.set_num_threads(4)

@@ -172,16 +172,30 @@ def main():
     assert exact['status']=='passed' and exact['distance_matrix_matches_flat']
     check_artifact(exact['source_lock']);check_artifact(exact['implementation'])
     for a in prov['frozen_releases'].values():check_artifact(a)
-    # Every path listed in the audited layout-migration annex must hash to its recorded value.
+    # Every path listed in the audited layout-migration annex must hash to its recorded value,
+    # unless a reviewed post-migration correction starts from exactly those bytes and records the
+    # corrected bytes. The annex itself is never rewritten; the correction chain is checked here.
     migration=prov.get('layout_migration',{}).get('files',{})
-    for p,record in migration.items():assert sha256(ROOT/p)==record['post_migration_sha256'],p
+    corrections=load('results/v2.1/checks/post_migration_corrections.json')['files']
+    assert set(corrections)<=set(migration),set(corrections)-set(migration)
+    for p,record in corrections.items():
+        assert record['migration_post_sha256']==migration[p]['post_migration_sha256'],p
+        assert record['corrected_sha256']!=record['migration_post_sha256'],p
+    for p,record in migration.items():
+        allowed={record['post_migration_sha256']}
+        if p in corrections:
+            allowed.add(corrections[p]['corrected_sha256'])
+        assert sha256(ROOT/p) in allowed,p
     # Training-critical code must match the pre-training source snapshot, or the audited
     # post-layout-migration hash that provenance.json records for that same file.
     for p in ('src/training/metrics.py','pipelines/v2_train_inat.py','pipelines/v21_prepare.py','pipelines/v21_train.py','pipelines/v2_open_set_inat.py'):
         expected={prov['code'][p]}
-        if p in migration:expected.add(migration[p]['post_migration_sha256'])
+        if p in migration:
+            expected.add(migration[p]['post_migration_sha256'])
+        if p in corrections:
+            expected.add(corrections[p]['corrected_sha256'])
         assert sha256(ROOT/p) in expected,p
-    result={'status':'passed','image_content_unique':len(all_rows),'models_recomputed_from_logits':16,'long_tail_runs':15,'seeds':cfg['long_tail']['seeds'],'checks':['content_and_class_disjointness','source_embedding_identity','locked_config_and_training_code','layout_migration_annex','development_selection','model_prediction_hashes','group_and_overall_metrics','long_tail_aggregate','temperature_refit','ood_thresholds_and_metrics','matched_monitoring_windows','historical_release_hashes']}
+    result={'status':'passed','image_content_unique':len(all_rows),'models_recomputed_from_logits':16,'long_tail_runs':15,'seeds':cfg['long_tail']['seeds'],'checks':['content_and_class_disjointness','source_embedding_identity','locked_config_and_training_code','layout_migration_annex','development_selection','model_prediction_hashes','group_and_overall_metrics','long_tail_aggregate','temperature_refit','ood_thresholds_and_metrics','matched_monitoring_windows','historical_release_hashes','post_migration_corrections']}
     write_json(ROOT/'results/v2.1/verification.json',result)
     print(json.dumps(result,indent=2))
 

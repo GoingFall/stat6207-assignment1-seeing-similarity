@@ -1,7 +1,6 @@
 """Freeze content-cleaned V2.1 manifests and subset hash-locked V2 features."""
 import json
-from collections import defaultdict, Counter
-from pathlib import Path
+from collections import defaultdict
 import platform
 import subprocess
 import numpy as np
@@ -95,13 +94,13 @@ def main():
     write_json(ROOT/'results/v2.1/inat/encoding.json', result)
     provenance = {'python': platform.python_version(), 'platform': platform.platform(), 'pip_freeze': subprocess.check_output([__import__('sys').executable, '-m', 'pip', 'freeze'], text=True).splitlines(), 'code': {p.relative_to(ROOT).as_posix(): sha256(p) for folder in ('src','pipelines','checks','tools') for p in (ROOT/folder).rglob('*.py')}, 'frozen_releases': {v: artifact(ROOT/p, ROOT) for v,p in [('1.0','releases/1.0/Assignment1-submission.zip'),('2.0','releases/2.0/Assignment1-2.0.zip')]}}
     # Keep the audited layout-migration annex: it records the pre/post hash of every file the directory
-# normalisation touched. If the sources changed again the annex hashes no longer match and
-# checks.v21_verify fails loudly instead of silently accepting a stale audit.
-provenance_path=ROOT/'results/v2.1/provenance.json'
-if provenance_path.is_file():
-    annex=json.loads(provenance_path.read_text(encoding='utf-8')).get('layout_migration')
-    if annex:provenance['layout_migration']=annex
-write_json(provenance_path, provenance)
+    # normalisation touched. If the sources changed again the annex hashes no longer match and
+    # checks.v21_verify fails loudly instead of silently accepting a stale audit.
+    provenance_path=ROOT/'results/v2.1/provenance.json'
+    if provenance_path.is_file():
+        previous=json.loads(provenance_path.read_text(encoding='utf-8'))
+        if previous.get('layout_migration'):provenance['layout_migration']=previous['layout_migration']
+    write_json(provenance_path, provenance)
     print(json.dumps({'splits': manifests, 'quarantined_or_deduplicated': len(removed), 'blocked_50': len(blocked)}, indent=2))
 
 

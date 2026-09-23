@@ -22,6 +22,7 @@
     "temperature_refit",
     "ood_thresholds_and_metrics",
     "matched_monitoring_windows",
-    "historical_release_hashes"
+    "historical_release_hashes",
+    "post_migration_corrections"
   ]
 }

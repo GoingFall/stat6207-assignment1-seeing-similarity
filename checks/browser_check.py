@@ -3,7 +3,7 @@ import json,threading
 from functools import partial
 from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
 from playwright.sync_api import sync_playwright
-from pipelines.prepare_data import ROOT,OUT
+from pipelines.prepare_data import R1,ROOT,OUT
 
 def main():
     server=ThreadingHTTPServer(('127.0.0.1',0),partial(SimpleHTTPRequestHandler,directory=str(ROOT/'site/v1.0')))

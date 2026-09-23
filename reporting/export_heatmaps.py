@@ -10,7 +10,7 @@ import torch
 from PIL import Image
 from matplotlib import colormaps
 from src.retrieval.encoders import load_encoder
-from pipelines.prepare_data import ROOT,OUT,digest
+from pipelines.prepare_data import ROOT,OUT,R1,digest
 
 def main():
     torch.set_num_threads(4);site=ROOT/'site/v1.0';d=json.loads((site/'assets/data.json').read_text());conditions=list(d['protocol']['conditions']);refs=d['reference'];queries=d['queries'];folder=site/'heatmaps';folder.mkdir(exist_ok=True)

@@ -5,7 +5,7 @@ import torch
 from PIL import Image
 from torchvision.models import efficientnet_b0, EfficientNet_B0_Weights
 from pipelines.evaluate import load_locked
-from pipelines.prepare_data import OUT
+from pipelines.prepare_data import OUT,R1
 
 def main():
     p,rows=load_locked();test=[r for r in rows if r['split']=='test'];torch.set_num_threads(4)
