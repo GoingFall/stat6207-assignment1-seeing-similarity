@@ -20,7 +20,7 @@ from src.service.api import Handler, status_payload
 from src.training.long_tail import sample_ids
 from src.training.metrics import classification_metrics, coverage_risk, open_set_metrics, reliability_bins
 from src.monitoring.drift import centroid_cosine_shift, estimate_rbf_gamma, projection_psi, rbf_mmd
-from pipelines.prepare_data import ROOT
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def main() -> None:
