@@ -1,7 +1,9 @@
 {
-  "archive": "Assignment1-submission.zip",
-  "size_mib": 721.82,
-  "members": 12109,
-  "sha256": "2173fa59bf667ee55809b9cad3eabcebb55c9d18c9cafe81a39d6060bc9db9b9",
-  "integrity": "passed"
+  "archive": "releases/1.0/Assignment1-submission.zip",
+  "size_mib": 721.81,
+  "members": 12102,
+  "payloads": 12101,
+  "sha256": "cec084b56af1111e1b7a78f7f0d9581900cba985d86d40a01958437db856bb55",
+  "integrity": "passed",
+  "verified_by": "checks/v1_release.py"
 }

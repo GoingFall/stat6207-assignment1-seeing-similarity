@@ -20,6 +20,29 @@
 - Source: `checks/delivery_check.py:9`
 - Signature: `main()`
 
+## `checks/local_replay_preflight.py`
+
+### `checks.local_replay_preflight._artifact_status`
+
+- Kind: `function`
+- Visibility: `private`
+- Source: `checks/local_replay_preflight.py:18`
+- Signature: `_artifact_status(path: Path, expected: str | None = None) -> dict`
+
+Report a local artifact's presence and compare its digest when requested.
+
+### `checks.local_replay_preflight.main`
+
+- Kind: `function`
+- Visibility: `public`
+- Source: `checks/local_replay_preflight.py:34`
+- Signature: `main() -> None`
+
+Report local replay prerequisites and fail when required evidence is absent.
+
+Returns:
+    None. Emits the evidence summary as JSON on stdout.
+
 ## `checks/review_report.py`
 
 ### `checks.review_report.main`
@@ -28,6 +51,39 @@
 - Visibility: `public`
 - Source: `checks/review_report.py:7`
 - Signature: `main()`
+
+## `checks/v1_release.py`
+
+### `checks.v1_release.verify`
+
+- Kind: `function`
+- Visibility: `public`
+- Source: `checks/v1_release.py:24`
+- Signature: `verify(archive = ARCHIVE, manifest = MANIFEST)`
+
+Verify the archive against its manifest and sidecar, returning the packaging record.
+
+Args:
+    archive: Frozen ZIP under audit, opened read-only.
+    manifest: Manifest whose ``files`` map records one payload per archive member.
+
+Returns:
+    The packaging record derived from the archive's own bytes.
+
+Raises:
+    AssertionError: If the sidecar hash, member set or any payload fails to match.
+
+### `checks.v1_release.main`
+
+- Kind: `function`
+- Visibility: `public`
+- Source: `checks/v1_release.py:70`
+- Signature: `main()`
+
+Write a checked record for the frozen archive without rebuilding it.
+
+Returns:
+    None. Emits a JSON summary to stdout after the record is written.
 
 ## `checks/v21_contracts.py`
 

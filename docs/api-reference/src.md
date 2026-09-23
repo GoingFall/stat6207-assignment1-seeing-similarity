@@ -158,25 +158,17 @@ Freeze an RBF bandwidth from the reference distribution only.
 
 ## `src/paths.py`
 
-### `src.paths._uses_current_layout`
-
-- Kind: `function`
-- Visibility: `private`
-- Source: `src/paths.py:81`
-- Signature: `_uses_current_layout(text) -> bool`
-
-True when a recorded path already names a current-layout root.
-
 ### `src.paths.resolve`
 
 - Kind: `function`
 - Visibility: `public`
-- Source: `src/paths.py:86`
+- Source: `src/paths.py:81`
 - Signature: `resolve(relative) -> Path`
 
 Return the absolute path for a ROOT-relative path recorded in an artifact.
 
-Idempotent: resolving an already-migrated path returns it unchanged.
+A recorded path that already names a current-layout root is joined to ``ROOT`` as written,
+so resolving the same recorded path twice lands on the same file.
 
 ## `src/retrieval/distances.py`
 
