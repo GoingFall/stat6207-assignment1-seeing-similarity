@@ -69,12 +69,18 @@ def knn_scores(index, train_labels: np.ndarray, vectors: np.ndarray, k: int) -> 
     }, np.asarray(predictions, dtype=np.int64)
 
 
-def main() -> None:
+def main(revision: bool = False) -> None:
+    global EMBEDDINGS, OUTPUT
+    if revision:
+        EMBEDDINGS = ROOT / 'data_v21/embeddings/inat_birds'
+        OUTPUT = ROOT / 'results_v21/inat'
+        if (OUTPUT/'open_set.json').exists(): raise RuntimeError('Revision open-set result exists')
     training_path = OUTPUT / "training.json"
     training_result = json.loads(training_path.read_text(encoding="utf-8"))
     if training_result["status"] != "passed":
         raise RuntimeError("Passed balanced-probe training is required")
-    config = json.loads((ROOT / "configs/v2/experiment.json").read_text(encoding="utf-8"))["inat_training"]
+    config_path = ROOT / ('configs/v21/experiment.json' if revision else 'configs/v2/experiment.json')
+    config = json.loads(config_path.read_text(encoding='utf-8'))['inat_training']
     batch_size = config["linear_probe"]["batch_size"]
     train_x, train_labels = load("train")
     validation_x, validation_labels = load("validation")
@@ -156,6 +162,10 @@ def main() -> None:
         "unknown_scope": config["open_set"]["unknown_scope"], "far_ood_status": config["open_set"]["far_ood_status"], "methods": {},
     }
     score_artifacts = {}
+    if revision:
+        result['config_sha256'] = hash_file(config_path)
+        result['encoding_sha256'] = hash_file(OUTPUT/'encoding.json')
+        score_artifacts.update(validation_logits=validation_logits, validation_labels=validation_y, test_logits=test_logits, test_labels=test_y, test_knn_predictions=test_knn_predictions)
     for name, (known_development, unknown_development, known_test, unknown_test, predictions) in score_sets.items():
         threshold = select_threshold(known_development, unknown_development, config["open_set"]["target_known_tpr"])
         development_metrics = open_set_metrics(known_development, unknown_development, threshold)
@@ -174,6 +184,7 @@ def main() -> None:
         score_artifacts[f"{name}_unknown_development"] = unknown_development
         score_artifacts[f"{name}_known_test"] = known_test
         score_artifacts[f"{name}_unknown_test"] = unknown_test
+        if revision: score_artifacts[f'{name}_test_predictions'] = predictions
     scores_path = OUTPUT / "open_set_scores.npz"
     np.savez_compressed(scores_path, **score_artifacts)
     result["scores_path"] = scores_path.relative_to(ROOT).as_posix()

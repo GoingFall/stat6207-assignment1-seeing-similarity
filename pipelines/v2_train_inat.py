@@ -141,12 +141,18 @@ def aggregate_long_tail(records: list[dict], methods: list[str]) -> dict:
     return output
 
 
-def main() -> None:
+def main(revision: bool = False) -> None:
+    global EMBEDDINGS, OUTPUT
+    if revision:
+        EMBEDDINGS = ROOT / 'data_v21/embeddings/inat_birds'
+        OUTPUT = ROOT / 'results_v21/inat'
+        if (OUTPUT / 'training.json').exists():
+            raise RuntimeError('Completed revision training exists')
     pipeline_start = time.perf_counter()
     encoding = json.loads((OUTPUT / "encoding.json").read_text(encoding="utf-8"))
     if encoding["status"] != "passed":
         raise RuntimeError("Locked iNaturalist embeddings are required")
-    config_path = ROOT / "configs/v2/experiment.json"
+    config_path = ROOT / ('configs/v21/experiment.json' if revision else 'configs/v2/experiment.json')
     full_config = json.loads(config_path.read_text(encoding="utf-8"))
     training = full_config["inat_training"]
     probe_config = training["linear_probe"]
@@ -174,11 +180,29 @@ def main() -> None:
         for label, count in Counter(train_y[neighbour_ids]).items():
             knn_probabilities[row, label] = count / training["frozen_knn_k"]
     result["knn"] = classification_metrics(test_y, knn_probabilities, dict(Counter(map(int, train_y))), training["calibration"]["ece_bins"])
+    if revision:
+        np.savez_compressed(OUTPUT / 'knn_predictions.npz', labels=test_y, predictions=knn_probabilities.argmax(1), probabilities=knn_probabilities)
 
-    balanced_candidates = []
-    for learning_rate in probe_config["learning_rates"]:
-        model, record = train_probe(train_x, train_y, validation_x, validation_y, len(class_ids), "cross_entropy", learning_rate, probe_config, full_config["seed"])
-        balanced_candidates.append((record["best_validation_macro_f1"], learning_rate, model, record))
+    def candidates_for(features, labels, method, seed):
+        candidates = []
+        for decay in (probe_config.get('weight_decays', [probe_config['weight_decay']]) if revision else [probe_config['weight_decay']]):
+            for rate in probe_config['learning_rates']:
+                model, record = train_probe(features, labels, validation_x, validation_y, len(class_ids), method, rate, probe_config | {'weight_decay': decay}, seed)
+                record['weight_decay'] = decay
+                candidates.append((record['best_validation_macro_f1'], rate, model, record))
+        return candidates
+
+    def save_predictions(name, model, features, labels, counts):
+        from src.training.provenance import artifact
+        artifacts = {}
+        for split, xx, yy in [('train', features, labels), ('validation', validation_x, validation_y), ('test', test_x, test_y)]:
+            ll, pp = probabilities(model, xx, probe_config['batch_size'])
+            path = OUTPUT / f'{name}_{split}_predictions.npz'
+            np.savez_compressed(path, logits=ll, labels=yy, predictions=pp.argmax(1))
+            artifacts[split] = artifact(path, ROOT) | {'metrics': classification_metrics(yy, pp, counts)}
+        return artifacts
+
+    balanced_candidates = candidates_for(train_x, train_y, 'cross_entropy', full_config['seed'])
     _, learning_rate, balanced_model, training_record = max(balanced_candidates, key=lambda item: (item[0], -item[1]))
     _, test_probabilities = probabilities(balanced_model, test_x, probe_config["batch_size"])
     balanced_path = OUTPUT / "balanced_probe.pt"
@@ -194,7 +218,14 @@ def main() -> None:
         "model_path": balanced_path.relative_to(ROOT).as_posix(), "model_sha256": hash_file(balanced_path),
     }
 
-    long_tail_index = json.loads((ROOT / "data_v2/manifests/long_tail/index.json").read_text(encoding="utf-8"))
+    if revision:
+        result['balanced_probe']['predictions'] = save_predictions('balanced', balanced_model, train_x, train_y, dict(Counter(map(int, train_y))))
+        from src.training.provenance import artifact
+        result['knn_predictions'] = artifact(OUTPUT/'knn_predictions.npz', ROOT)
+        result['provenance_sha256'] = hash_file(ROOT/'results_v21/provenance.json')
+        result['split_lock_sha256'] = hash_file(ROOT/'data_v21/manifests/lock.json')
+    long_tail_index = json.loads((ROOT / ('data_v21/manifests/lock.json' if revision else 'data_v2/manifests/long_tail/index.json')).read_text(encoding='utf-8'))
+    if revision: long_tail_index = long_tail_index['long_tail']
     position = {int(image_id): index for index, image_id in enumerate(train_ids)}
     with ResourceMonitor(0.5) as monitor:
         for run_record in long_tail_index["runs"]:
@@ -204,10 +235,7 @@ def main() -> None:
             run_x, run_y = train_x[selected], train_y[selected]
             counts = dict(Counter(map(int, run_y)))
             for method in full_config["long_tail"]["methods"]:
-                candidates = []
-                for learning_rate in probe_config["learning_rates"]:
-                    model, record = train_probe(run_x, run_y, validation_x, validation_y, len(class_ids), method, learning_rate, probe_config, run_record["seed"])
-                    candidates.append((record["best_validation_macro_f1"], learning_rate, model, record))
+                candidates = candidates_for(run_x, run_y, method, run_record['seed'])
                 _, learning_rate, model, training_record = max(candidates, key=lambda item: (item[0], -item[1]))
                 _, test_probabilities = probabilities(model, test_x, probe_config["batch_size"])
                 result["long_tail"].append({
@@ -217,6 +245,12 @@ def main() -> None:
                     "selected_learning_rate": learning_rate, "training": training_record,
                     "test": classification_metrics(test_y, test_probabilities, counts, training["calibration"]["ece_bins"]),
                 })
+                if revision:
+                    name = f'{method}-{run_record["seed"]}'
+                    path = OUTPUT / f'{name}.pt'
+                    torch.save({'state_dict': model.state_dict(), 'class_ids': class_ids, 'learning_rate': learning_rate, 'weight_decay': training_record['weight_decay']}, path)
+                    result['long_tail'][-1]['model'] = artifact(path, ROOT)
+                    result['long_tail'][-1]['predictions'] = save_predictions(name, model, run_x, run_y, counts)
                 (OUTPUT / "training_partial.json").write_text(json.dumps(result, indent=2), encoding="utf-8")
     result["resources"] = monitor.summary()
     result["total_seconds"] = time.perf_counter() - pipeline_start

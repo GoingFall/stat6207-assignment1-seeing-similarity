@@ -34,12 +34,17 @@ def sharded_exact_l2(
             )
             np.maximum(distances, 0.0, out=distances)
             shard_k = min(k, len(shard))
-            positions = np.argpartition(distances, shard_k - 1, axis=1)[:, :shard_k]
+            positions = np.empty((len(query), shard_k), dtype=np.int64)
+            for row, values in enumerate(distances):
+                boundary = np.partition(values, shard_k - 1)[shard_k - 1]
+                lower = np.flatnonzero(values < boundary)
+                ties = np.flatnonzero(values == boundary)
+                positions[row] = np.concatenate((lower, ties[:shard_k - len(lower)]))
             shard_distances = np.take_along_axis(distances, positions, axis=1)
             shard_ids = positions.astype(np.int64) + database_begin
             merged_distances = np.concatenate((best_distances, shard_distances), axis=1)
             merged_ids = np.concatenate((best_ids, shard_ids), axis=1)
-            keep = np.argpartition(merged_distances, k - 1, axis=1)[:, :k]
+            keep = np.lexsort((merged_ids, merged_distances), axis=1)[:, :k]
             best_distances = np.take_along_axis(merged_distances, keep, axis=1)
             best_ids = np.take_along_axis(merged_ids, keep, axis=1)
         # Lexicographic sorting makes distance ties deterministic by vector ID.

@@ -43,7 +43,7 @@ def main() -> None:
         files.append(release_notes)
     for directory in ("src", "pipelines", "checks", "reporting", "tools", "configs/v2", ".github/workflows"):
         files.extend(path for path in (ROOT / directory).rglob("*") if path.is_file() and path.suffix != ".pyc" and "__pycache__" not in path.parts)
-    files.extend(path for path in (ROOT / "docs").rglob("*.md") if path.is_file())
+    files.extend(path for path in (ROOT / "docs").rglob("*.md") if path.is_file() and 'session' not in path.relative_to(ROOT).parts)
     private_inat_files = {
         "inat_birds_lock.json",
         "inat_birds_lock.sha256",

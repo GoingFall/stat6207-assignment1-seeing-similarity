@@ -1,0 +1,26 @@
+{
+  "version": "2.1",
+  "seed": 6207,
+  "status": "revision-protocol-frozen-before-retraining",
+  "evaluation_scope": "Audit-driven revision using previously evaluated species/images; not a fresh unseen benchmark",
+  "split": {
+    "rule": "Preserve V2 class and image split membership; quarantine all content with conflicting class labels; deduplicate same-label content by train, validation, test, unknown_development, unknown_test priority then image ID; take lowest image IDs per existing known split",
+    "known_per_class": {"train": 20, "validation": 8, "test": 8},
+    "unknown": "all remaining content-unique images in original unknown class splits",
+    "selection_uses_predictions": false
+  },
+  "features": {
+    "source": "V2 frozen DINOv2 artifacts, individually hash-verified and subset by exact image ID",
+    "reencoded": false,
+    "historical_encoder_revision": "not recorded in V2; do not infer an original revision from a mutable model name",
+    "reproduction_boundary": "hash-locked source embeddings; original raw-to-feature bitwise regeneration is not certified"
+  },
+  "long_tail": {"ratios": [10, 50], "seeds": [6207, 6208, 6209, 6210, 6211], "methods": ["cross_entropy", "class_weighted", "balanced_sampler"]},
+  "inat_training": {
+    "frozen_knn_k": 10,
+    "linear_probe": {"learning_rates": [0.0001, 0.0003, 0.001], "weight_decays": [0.0001, 0.01], "weight_decay": 0.0001, "batch_size": 512, "maximum_epochs": 30, "early_stopping_patience": 5, "selection_metric": "validation_macro_f1"},
+    "calibration": {"ece_bins": 15, "temperature_bounds": [0.05, 10.0]},
+    "open_set": {"target_known_tpr": 0.95, "scores": ["nearest_neighbor", "neighbour_agreement_margin", "temperature_max_probability", "negative_energy"], "unknown_scope": "content-cleaned near-OOD bird species; audit-driven revision", "far_ood_status": "blocked: no verified bird-excluded licensed source"}
+  },
+  "monitoring": {"seed": 6231, "reference_split": "validation", "window_size": 1000, "calibration_partitions": 200, "reference_images": 2000, "random_projections": 16, "psi_bins": 10, "alert_quantile": 0.99, "rbf_mmd_samples": 500, "evaluation_splits": ["test", "unknown_test"], "interpretation": "empirical exploratory window thresholds; no certified deployment false-alarm rate"}
+}

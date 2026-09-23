@@ -71,8 +71,11 @@ def classification_metrics(
         result["groups"][name] = {
             "classes": len(classes),
             "images": int(np.sum(include)),
-            "macro_f1": float(f1_score(labels[include], predictions[include], labels=group_labels, average="macro", zero_division=0)),
-            "recall": float(np.mean(predictions[include] == labels[include])),
+            "macro_f1": float(f1_score(labels, predictions, labels=group_labels, average="macro", zero_division=0)),
+            "recall": float(np.mean([
+                np.mean(predictions[labels == class_id] == class_id)
+                for class_id in group_labels if np.any(labels == class_id)
+            ])),
         }
     return result
 

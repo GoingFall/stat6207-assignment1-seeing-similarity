@@ -30,6 +30,16 @@ def status_payload(root: Path = ROOT) -> dict:
         "status": "healthy",
         "version": (root / "VERSION").read_text(encoding="utf-8").strip(),
         "artifacts": {name: path.exists() for name, path in artifacts.items()},
+        "revision_2_1": {
+            name: (root / path).exists()
+            for name, path in {
+                "split_lock": "data_v21/manifests/lock.json",
+                "training": "results_v21/inat/training.json",
+                "open_set": "results_v21/inat/open_set.json",
+                "monitoring": "results_v21/inat/monitoring.json",
+                "verification": "results_v21/verification.json",
+            }.items()
+        },
     }
 
 

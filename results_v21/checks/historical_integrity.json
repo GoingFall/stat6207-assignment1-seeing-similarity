@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "baseline_commit": "2fa9424a2b1ccda356028f2d3caa6d99d5814a89",
+  "tracked_historical_paths_changed": [],
+  "archives": {
+    "1.0": {
+      "sha256": "cec084b56af1111e1b7a78f7f0d9581900cba985d86d40a01958437db856bb55",
+      "bytes": 756877025
+    },
+    "2.0": {
+      "sha256": "9b9d1d9fc7f11a02804c561b5c5fa3b42b48ced9d573a02b656bbf2ef93c4440",
+      "bytes": 12860952
+    }
+  },
+  "note": "New audit evidence under results_v2/checks is supplemental; original tracked V2 artifacts are unchanged"
+}

@@ -1,0 +1,3 @@
+# Preserve exact artifact/source bytes across Windows/Linux checkouts.
+# Experiment provenance and manifest hashes are byte-based.
+* -text

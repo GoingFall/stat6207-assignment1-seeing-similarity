@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "queries": 256,
+  "distance_matrix_matches_flat": true,
+  "flat_id_overlap": {
+    "recall_at_1": 1.0,
+    "recall_at_10": 1.0,
+    "recall_at_100": 1.0
+  },
+  "official_id_overlap": {
+    "recall_at_1": 0.99609375,
+    "recall_at_10": 0.999609375,
+    "recall_at_100": 0.9999609375
+  },
+  "source_lock": {
+    "path": "data_v2/manifests/sift1m_lock.json",
+    "sha256": "3ce04e78ad0dc258aedd958850a04a1426e85bbd9e95bfa30502e83d9ebc40b5",
+    "bytes": 1401
+  },
+  "implementation": {
+    "path": "src/benchmarking/ann.py",
+    "sha256": "21ab6f11363f72e7f9763a0eb7b98fb1a6b17d7312c178a59f2103d980881d45",
+    "bytes": 5461
+  },
+  "scope": "Correctness audit only; no revised ANN throughput measurements"
+}

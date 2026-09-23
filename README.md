@@ -1,6 +1,25 @@
 # Seeing Similarity — STAT6207 Assignment 1
 
-**Active workspace: Version 2.0 release.** The frozen Version 1.0 submission and its checksums remain unchanged in `releases/1.0/`. Root-level `report.pdf`, `site/` and `data/` remain the Version 1.0 assignment result; the Version 2.0 extension is documented in `docs/report/V2-RESULTS.md` with machine-readable artifacts under `results_v2/`.
+**Active workspace: Version 2.1 revision.** Frozen Version 1.0 and Version 2.0 archives remain unchanged under `releases/1.0/` and `releases/2.0/`. The 2.0 audit is in `docs/report/V2-REVIEW-2026-09-23.md`; corrected content-cleaned iNaturalist experiments are documented in `docs/report/V21-RESULTS.md`, with locks under `data_v21/manifests/` and results under `results_v21/`. Root-level `report.pdf`, `site/` and `data/` remain the historical Version 1.0 assignment.
+
+## Version 2.1 revision
+
+This audit-driven revision removes conflicting/duplicate image content, fixes group macro-F1 and exact-search tie handling, saves selected models and predictions, and uses allowlisted public packaging. Known-class train/validation/test budgets are now 20/8/8; 10:1 uses 20:2 over five seeds. Results are not a fresh unseen benchmark or a directly controlled comparison with 2.0. SOP/SIFT performance measurements remain historical 2.0 evidence.
+
+```powershell
+python -m pipelines.v21_prepare
+python -m pipelines.v21_train
+python -m pipelines.v21_open_set
+python -m pipelines.v21_monitor
+python -m checks.v21_contracts
+python -m checks.v21_exact_audit
+python -m checks.v21_verify
+python -m reporting.v21_results
+python -m tools.package_v21
+python -m checks.v21_release
+```
+
+Private source data and hash-locked V2 embeddings are required for the experiment/full verification. Original encoder revision was not recorded in V2; 2.1 certifies feature-conditional reproducibility only. The public package contains code, redacted manifests, aggregate metrics and figures; checkpoints, logits, source images and transcripts stay local. `checks.v21_release` audits the package without those private artifacts. Do not rerun the historical commands below against frozen results; restore the original implementation from the historical archive in a separate workspace if needed.
 
 Start with `report.pdf`; serve `site/` to explore the Version 1.0 result. Active documentation is indexed in `docs/README.md`. Earlier reports, scripts and submission archives remain under `backup/`.
 

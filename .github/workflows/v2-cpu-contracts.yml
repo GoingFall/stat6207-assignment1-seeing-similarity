@@ -7,6 +7,9 @@ on:
       - "pipelines/v2_*.py"
       - "checks/v2_*.py"
       - "configs/v2/**"
+      - "configs/v21/**"
+      - "pipelines/v21_*.py"
+      - "checks/v21_*.py"
       - "requirements.txt"
       - ".github/workflows/v2-cpu-contracts.yml"
   pull_request:
@@ -31,3 +34,6 @@ jobs:
       - name: Run CPU contracts
         shell: pwsh
         run: python -B -m checks.v2_ci
+      - name: Run revision regression contracts
+        shell: pwsh
+        run: python -B -m checks.v21_contracts
