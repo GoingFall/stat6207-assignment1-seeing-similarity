@@ -45,7 +45,7 @@ def index_size(index) -> int:
 
 
 def main() -> None:
-    config = json.loads((ROOT / "configs/v2/experiment.json").read_text())
+    config = json.loads((ROOT / "configs/v2.0/experiment.json").read_text())
     rng = np.random.default_rng(config["seed"])
     database = rng.standard_normal((10000, 128), dtype=np.float32)
     queries = rng.standard_normal((200, 128), dtype=np.float32)
@@ -99,7 +99,7 @@ def main() -> None:
         "exact_first_distance": float(exact_distances[0, 0]),
         "indexes": records,
     }
-    folder = ROOT / "results_v2/gates"
+    folder = ROOT / "results/v2.0/gates"
     folder.mkdir(parents=True, exist_ok=True)
     (folder / "faiss_smoke.json").write_text(json.dumps(result, indent=2), encoding="utf-8")
     print(json.dumps(result, indent=2))

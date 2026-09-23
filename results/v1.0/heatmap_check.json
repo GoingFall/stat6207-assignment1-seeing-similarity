@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "maps": 210000,
+  "autograd_pairs": 21,
+  "max_normalized_error": 6.616115570068359e-06,
+  "device": "NVIDIA GeForce RTX 5070 Laptop GPU",
+  "protocol_hash": "fd36526774dadb9d2ba0778193de0213901e4ba32683f5b2e72b1cb6e987a175"
+}

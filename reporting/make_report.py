@@ -6,13 +6,13 @@ from reportlab.platypus import SimpleDocTemplate,Paragraph,Spacer,Image,Table,Ta
 from reportlab.lib.styles import getSampleStyleSheet,ParagraphStyle
 from reportlab.lib import colors
 from reportlab.lib.utils import ImageReader
-from pipelines.prepare_data import ROOT,OUT
+from pipelines.prepare_data import ROOT,OUT,R1
 
 def main():
-    data=json.loads((OUT/'results/evaluation.json').read_text());p=json.loads((OUT/'protocol.json').read_text());audit=json.loads((OUT/'results/label_audit.json').read_text());candidates=json.loads((OUT/'audit.json').read_text())
-    site=json.loads((ROOT/'site/assets/data.json').read_text());models=p['models'];figures=OUT/'figures'
-    geometry=json.loads((OUT/'results/normalization_check.json').read_text());assert geometry['status']=='passed' and geometry['protocol_hash']==data['protocol_hash']
-    supplement=json.loads((OUT/'results/supplement.json').read_text());assert supplement['status']=='passed' and supplement['protocol_hash']==data['protocol_hash']
+    data=json.loads((R1/'evaluation.json').read_text());p=json.loads((OUT/'protocol.json').read_text());audit=json.loads((R1/'label_audit.json').read_text());candidates=json.loads((OUT/'audit.json').read_text())
+    site=json.loads((ROOT/'site/v1.0/assets/data.json').read_text());models=p['models'];figures=R1/'figures'
+    geometry=json.loads((R1/'normalization_check.json').read_text());assert geometry['status']=='passed' and geometry['protocol_hash']==data['protocol_hash']
+    supplement=json.loads((R1/'supplement.json').read_text());assert supplement['status']=='passed' and supplement['protocol_hash']==data['protocol_hash']
     styles=getSampleStyleSheet();styles['BodyText'].fontSize=9.5;styles['BodyText'].leading=13;styles['BodyText'].spaceAfter=7
     styles['Heading1'].fontSize=16;styles['Heading1'].leading=20;styles['Heading1'].textColor=colors.HexColor('#176b62')
     styles['Heading2'].fontSize=11;styles['Heading2'].leading=14
@@ -126,7 +126,7 @@ def main():
     para('Failure montages and maps support inspection but are not causal tests. The first-four-error display overrepresents cats because IDs are sorted by class; all-source-class errors and every seed remain in predictions.npz. The ten demonstration images illustrate the assignment requirement, while the full 500 tests support quantitative conclusions. Future work could use independently verified external data, calibrated unknown-class rejection and a controlled architecture/pretraining comparison.')
 
     page();heading('C. OpenCode decisions and reproducibility')
-    table([['Decision stage','Action and rationale'],['Pilot and user review','The 270-image pilot reached a fixed-k classification ceiling. User feedback rejected arbitrary tie-break champions and confounded cost claims.'],['Prospective revision','Lock 1,000 references / 500 tests, ten draws and independent perturbations after seeing the pilot, before new inference. This is not pre-pilot preregistration.'],['No human label review','Replace human review with reproducible decoding/hash/group audits plus independent label flags; evaluate against unchanged source labels.'],['Environment and scope','Dedicated stat6207-a1 environment; CUDA on RTX 5070; frozen ResNet-18/DINOv2/CLIP; no ResNet-50 download.'],['Delivery revision','Current report/code/site at root and standard paths; historical versions in backup/. Restore retrieval, maps, normalization, attribution and case discussion using current data.']],[125,370])
+    table([['Decision stage','Action and rationale'],['Pilot and user review','The 270-image pilot reached a fixed-k classification ceiling. User feedback rejected arbitrary tie-break champions and confounded cost claims.'],['Prospective revision','Lock 1,000 references / 500 tests, ten draws and independent perturbations after seeing the pilot, before new inference. This is not pre-pilot preregistration.'],['No human label review','Replace human review with reproducible decoding/hash/group audits plus independent label flags; evaluate against unchanged source labels.'],['Environment and scope','Dedicated stat6207-a1 environment; CUDA on RTX 5070; frozen ResNet-18/DINOv2/CLIP; no ResNet-50 download.'],['Delivery revision','Current report/code/site at root and standard paths; historical versions in archive/. Restore retrieval, maps, normalization, attribution and case discussion using current data.']],[125,370])
     para('Follow README.md for reproduction order, including python -m reporting.export_site, python -m reporting.export_heatmaps and python -m checks.verify before python -m reporting.make_report. Data preparation is only for a fresh data directory retaining data/provenance/ and refuses to overwrite an existing lock. Provided locked images and embeddings allow result regeneration without new encoding. Image hashes are checked before evaluation; moving the source code does not change protocol or test-manifest bytes.','SmallText')
     para('Verification: checks.verify independently checks 111 metric records, 63 exported distance configurations against SciPy, votes, balanced nested draws, group separation and Holm families. checks.delivery_check regenerates all 3,000 perturbations exactly. checks.browser_check exercises the real site. checks.review_report renders every PDF page, checks text bounds and retains comparison sheets for both previous reports.','SmallText')
     para('Test manifest SHA-256: '+p['test_manifest_sha256'],'SmallText');para('Protocol SHA-256: '+data['protocol_hash'],'SmallText')
@@ -144,9 +144,9 @@ def main():
                 self.canv.bookmarkPage(flowable.bookmark);self.canv.addOutlineEntry(flowable.getPlainText(),flowable.bookmark,level=0)
     def footer(c,d):
         c.setFont('Helvetica',8);c.setFillColor(colors.HexColor('#526762'));c.drawString(44,23,'STAT6207 | Assignment 1 | Source labels unverified');c.drawRightString(551,23,str(d.page))
-    Report(str(ROOT/'report.pdf'),pagesize=(595,842),leftMargin=44,rightMargin=44,topMargin=32,bottomMargin=39,title='Seeing Similarity - STAT6207 Assignment 1',author='STAT6207 Assignment 1').build(story,onFirstPage=footer,onLaterPages=footer)
+    Report(str(ROOT/'report/v1.0/report.pdf'),pagesize=(595,842),leftMargin=44,rightMargin=44,topMargin=32,bottomMargin=39,title='Seeing Similarity - STAT6207 Assignment 1',author='STAT6207 Assignment 1').build(story,onFirstPage=footer,onLaterPages=footer)
     folder=ROOT/'docs/report';folder.mkdir(parents=True,exist_ok=True)
-    (folder/'report_text.md').write_text('# Seeing Similarity\n\n'+'\n\n'.join(text),encoding='utf-8');shutil.copy2(ROOT/'report.pdf',ROOT/'site/report.pdf')
+    (folder/'report_text.md').write_text('# Seeing Similarity\n\n'+'\n\n'.join(text),encoding='utf-8');shutil.copy2(ROOT/'report/v1.0/report.pdf',ROOT/'site/v1.0/report.pdf')
     print('Generated root report.pdf with rubric-aligned sections and current-data evidence')
 
 if __name__=='__main__':main()

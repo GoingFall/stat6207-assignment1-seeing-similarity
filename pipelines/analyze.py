@@ -1,11 +1,11 @@
 """Paired query bootstrap and prespecified Holm families, no winner selection."""
 import itertools,json
 import numpy as np
-from pipelines.prepare_data import OUT
+from pipelines.prepare_data import OUT,R1
 
 
 def main():
-    p=json.loads((OUT/'protocol.json').read_text()); out=OUT/'results'
+    p=json.loads((OUT/'protocol.json').read_text()); out=R1
     data=json.loads((out/'evaluation.json').read_text());truth=np.array(data['truth'])
     pred=np.load(out/'predictions.npz');precision=np.load(out/'p5.npz')
     rng=np.random.default_rng(42005);cats=np.flatnonzero(truth==0);dogs=np.flatnonzero(truth==1)

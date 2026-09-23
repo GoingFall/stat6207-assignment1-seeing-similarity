@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "metric_records": 111,
+  "independent_distance_configurations": 63,
+  "checks": [
+    "all locked image hashes",
+    "balanced 1000/500 split",
+    "unique duplicate groups and pilot exclusion",
+    "nested balanced reference draws",
+    "all accuracy, macro-F1 and P@5 aggregates",
+    "SciPy distances for all 63 exported configurations",
+    "website rankings and votes match evaluation",
+    "both Holm families"
+  ]
+}

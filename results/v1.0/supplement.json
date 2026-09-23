@@ -1,0 +1,90 @@
+{
+  "status": "passed",
+  "protocol_hash": "fd36526774dadb9d2ba0778193de0213901e4ba32683f5b2e72b1cb6e987a175",
+  "scope": "Post-hoc descriptive baseline; clean only, shared ten 100/class draws, uniform k=5, stable image-ID ties; no tuning or inferential claim",
+  "representation": "224x224 RGB locked canvas flattened to 150528 components in [0,1]; raw Euclidean distance; no encoder processor",
+  "device": "NVIDIA GeForce RTX 5070 Laptop GPU",
+  "precision": "float64",
+  "accuracy": 0.5212,
+  "seed_sd": 0.02855326406715857,
+  "macro_f1": 0.4974347309745218,
+  "p5": 0.51524,
+  "seeds": [
+    {
+      "seed": 1001,
+      "accuracy": 0.498,
+      "macro_f1": 0.4748404644837326,
+      "p5": 0.5044
+    },
+    {
+      "seed": 1002,
+      "accuracy": 0.534,
+      "macro_f1": 0.5238503950202517,
+      "p5": 0.5228
+    },
+    {
+      "seed": 1003,
+      "accuracy": 0.49,
+      "macro_f1": 0.4645534375669308,
+      "p5": 0.5024
+    },
+    {
+      "seed": 1004,
+      "accuracy": 0.534,
+      "macro_f1": 0.5060189366474587,
+      "p5": 0.5248
+    },
+    {
+      "seed": 1005,
+      "accuracy": 0.588,
+      "macro_f1": 0.5877625512295082,
+      "p5": 0.5368
+    },
+    {
+      "seed": 1006,
+      "accuracy": 0.518,
+      "macro_f1": 0.46527860981313596,
+      "p5": 0.5104
+    },
+    {
+      "seed": 1007,
+      "accuracy": 0.492,
+      "macro_f1": 0.48507111694967486,
+      "p5": 0.504
+    },
+    {
+      "seed": 1008,
+      "accuracy": 0.51,
+      "macro_f1": 0.4987212276214834,
+      "p5": 0.508
+    },
+    {
+      "seed": 1009,
+      "accuracy": 0.52,
+      "macro_f1": 0.44668843025507665,
+      "p5": 0.5212
+    },
+    {
+      "seed": 1010,
+      "accuracy": 0.528,
+      "macro_f1": 0.5215621401579655,
+      "p5": 0.5176
+    }
+  ],
+  "resnet_class_errors": {
+    "cat": {
+      "total": 250,
+      "seed1001_errors": 7,
+      "seed1001_rate": 0.028,
+      "ten_seed_mean_errors": 8.5,
+      "ten_seed_mean_rate": 0.034
+    },
+    "dog": {
+      "total": 250,
+      "seed1001_errors": 2,
+      "seed1001_rate": 0.008,
+      "ten_seed_mean_errors": 3.3,
+      "ten_seed_mean_rate": 0.0132
+    }
+  }
+}

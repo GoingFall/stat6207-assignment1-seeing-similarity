@@ -7,11 +7,11 @@ from src.training.provenance import artifact, write_json
 
 
 def main():
-    target = ROOT/'results_v21/inat/monitoring.json'
+    target = ROOT/'results/v2.1/inat/monitoring.json'
     if target.exists(): raise RuntimeError('Completed monitoring exists')
-    config_path = ROOT/'configs/v21/experiment.json'
+    config_path = ROOT/'configs/v2.1/experiment.json'
     config = json.loads(config_path.read_text())['monitoring']
-    folder = ROOT/'data_v21/embeddings/inat_birds'
+    folder = ROOT/'data/v2.1/embeddings/inat_birds'
     validation = np.load(folder/'validation_embeddings.npy')
     rng = np.random.default_rng(config['seed'])
     order = rng.permutation(len(validation))
@@ -40,7 +40,7 @@ def main():
             metrics = measure(x[ids])
             records.append({'row_ids':ids.tolist(),'metrics':metrics,'alerts':{k:metrics[k]>thresholds[k] for k in keys}})
         evaluations[split] = {'windows':records,'unused_images':len(x)%config['window_size'],'alert_rates':{k:float(np.mean([r['alerts'][k] for r in records])) for k in keys}}
-    write_json(target, {'status':'passed','config':config,'config_artifact':artifact(config_path,ROOT),'encoding_artifact':artifact(ROOT/'results_v21/inat/encoding.json',ROOT),'reference_rows':reference_ids.tolist(),'null_window_rows':windows,'null_records':null,'rbf_gamma':gamma,'thresholds':thresholds,'evaluations':evaluations,'interpretation':'Repeated validation windows overlap; empirical thresholds and held-out batch demonstration, not a certified independent 1% false-alarm guarantee'})
+    write_json(target, {'status':'passed','config':config,'config_artifact':artifact(config_path,ROOT),'encoding_artifact':artifact(ROOT/'results/v2.1/inat/encoding.json',ROOT),'reference_rows':reference_ids.tolist(),'null_window_rows':windows,'null_records':null,'rbf_gamma':gamma,'thresholds':thresholds,'evaluations':evaluations,'interpretation':'Repeated validation windows overlap; empirical thresholds and held-out batch demonstration, not a certified independent 1% false-alarm guarantee'})
     print(json.dumps({'thresholds':thresholds,'alert_rates':{k:v['alert_rates'] for k,v in evaluations.items()}},indent=2))
 
 

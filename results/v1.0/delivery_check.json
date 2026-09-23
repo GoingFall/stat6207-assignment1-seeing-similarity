@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "independently_regenerated_variants": 3000,
+  "pdf_pages": 11,
+  "pdf_text_bounds": "passed",
+  "ood_queries": 20,
+  "ood_models": 3,
+  "heatmap_files": 21,
+  "heatmaps": 210000,
+  "query_crop_images": 3500
+}

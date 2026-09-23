@@ -19,7 +19,7 @@ def main():
             ids=p['subsets'][str(seed)][str(size)];assert len(set(ids))==2*size and prev<=set(ids)
             assert all(rows[i]['split']=='reference' for i in ids)
             assert sum(rows[i]['source_label']=='cat' for i in ids)==size;prev=set(ids)
-    e=json.loads((OUT/'results/evaluation.json').read_text());pred=np.load(OUT/'results/predictions.npz');ps=np.load(OUT/'results/p5.npz')
+    e=json.loads((R1/'evaluation.json').read_text());pred=np.load(R1/'predictions.npz');ps=np.load(R1/'p5.npz')
     assert e['protocol_hash']==(OUT/'protocol.sha256').read_text().strip()
     for m in e['metrics']:
         a=pred[m['key']];assert a.shape==(10,500)
@@ -27,7 +27,7 @@ def main():
         assert np.isclose(m['p5'],ps[m['key']].mean())
         assert np.isclose(m['macro_f1'],np.mean([f1_score(truth,v,average='macro') for v in a]))
         for si,s in enumerate(m['seeds']):assert np.isclose(s['accuracy'],(a[si]==truth).mean())
-    site=json.loads((ROOT/'site/assets/data.json').read_text());refs=np.array(sorted(p['subsets']['1001']['100']))
+    site=json.loads((ROOT/'site/v1.0/assets/data.json').read_text());refs=np.array(sorted(p['subsets']['1001']['100']))
     reference_labels=np.array([rows[i]['source_label']=='dog' for i in refs]);nonclean=[c for c in p['conditions'] if c!='clean']
     checked=0;normalization=[]
     for model in p['models']:
@@ -56,13 +56,13 @@ def main():
     assert len(e['comparisons'])==12
     geometry=dict(status='passed',protocol_hash=e['protocol_hash'],precision='float64',scope='seed 1001, 100 references/class; all 500 queries, three encoders and seven conditions',note='Ordered ranks, including all 200 references; raw top-five mismatches need not imply different sets or KNN predictions. Diagnostic only; frozen experiment uses float32.',configurations=normalization)
     serialized=json.dumps(geometry,indent=2)
-    (OUT/'results/normalization_check.json').write_text(serialized)
-    (ROOT/'site/assets/normalization_check.json').write_text(serialized)
+    (R1/'normalization_check.json').write_text(serialized)
+    (ROOT/'site/v1.0/assets/normalization_check.json').write_text(serialized)
     for family,n in [('models',3),('distances',9)]:
         group=sorted([r for r in e['comparisons'] if r['family']==family],key=lambda r:r['p']);assert len(group)==n
         expected=np.minimum(1,np.maximum.accumulate([r['p']*(n-i) for i,r in enumerate(group)]))
         assert np.allclose(expected,[r['holm_p'] for r in group])
     result=dict(status='passed',metric_records=len(e['metrics']),independent_distance_configurations=checked,checks=['all locked image hashes','balanced 1000/500 split','unique duplicate groups and pilot exclusion','nested balanced reference draws','all accuracy, macro-F1 and P@5 aggregates','SciPy distances for all 63 exported configurations','website rankings and votes match evaluation','both Holm families'])
-    (OUT/'results/verification.json').write_text(json.dumps(result,indent=2));print(json.dumps(result,indent=2))
+    (R1/'verification.json').write_text(json.dumps(result,indent=2));print(json.dumps(result,indent=2))
 
 if __name__=='__main__':main()

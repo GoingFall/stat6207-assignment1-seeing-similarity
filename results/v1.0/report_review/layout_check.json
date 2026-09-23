@@ -1,0 +1,52 @@
+{
+  "pilot": {
+    "pages": 7,
+    "characters": 17158,
+    "page_characters": [
+      3414,
+      2269,
+      2017,
+      1736,
+      1617,
+      3656,
+      2449
+    ],
+    "out_of_bounds": []
+  },
+  "previous": {
+    "pages": 6,
+    "characters": 11124,
+    "page_characters": [
+      4236,
+      2090,
+      889,
+      1055,
+      2408,
+      446
+    ],
+    "out_of_bounds": []
+  },
+  "current": {
+    "pages": 11,
+    "characters": 23931,
+    "page_characters": [
+      2757,
+      885,
+      1039,
+      1478,
+      2290,
+      1894,
+      2279,
+      3293,
+      2602,
+      2293,
+      3121
+    ],
+    "out_of_bounds": []
+  },
+  "checks": [
+    "all current text bounds",
+    "all eight rubric tasks",
+    "11 section bookmarks"
+  ]
+}

@@ -8,12 +8,13 @@ from pathlib import Path
 import kagglehub
 
 from pipelines.prepare_data import ROOT
+from src.paths import resolve
 
 
 DATASET = "sharansmenon/inat2021birds/versions/1"
-RAW = ROOT / "data_v2/raw/inat_birds"
-METADATA_LOCK = ROOT / "data_v2/manifests/inat_birds_lock.json"
-IMAGE_LOCK = ROOT / "data_v2/manifests/inat_birds_images_lock.json"
+RAW = ROOT / "data/v2.0/raw/inat_birds"
+METADATA_LOCK = ROOT / "data/v2.0/manifests/inat_birds_lock.json"
+IMAGE_LOCK = ROOT / "data/v2.0/manifests/inat_birds_images_lock.json"
 
 
 def hash_file(path: Path) -> str:
@@ -50,7 +51,7 @@ def main() -> None:
     rows = []
     seen_ids = set()
     for split, record in metadata_lock["manifests"].items():
-        for row in read_manifest(ROOT / record["path"]):
+        for row in read_manifest(resolve(record["path"])):
             image_id = int(row["image_id"])
             if image_id in seen_ids:
                 raise AssertionError(f"Image ID appears in multiple frozen splits: {image_id}")
@@ -79,7 +80,7 @@ def main() -> None:
     if len(rows) != 74300 or len(seen_ids) != 74300:
         raise AssertionError(f"Expected 74,300 unique frozen images, found {len(rows)}/{len(seen_ids)}")
     rows.sort(key=lambda row: row["image_id"])
-    image_manifest = ROOT / "data_v2/manifests/inat_birds_images.jsonl"
+    image_manifest = ROOT / "data/v2.0/manifests/inat_birds_images.jsonl"
     payload = b"".join(json.dumps(row, sort_keys=True, separators=(",", ":")).encode() + b"\n" for row in rows)
     image_manifest.write_bytes(payload)
     lock = {

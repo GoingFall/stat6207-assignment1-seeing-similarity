@@ -1,0 +1,1254 @@
+{
+  "protocol_hash": "fd36526774dadb9d2ba0778193de0213901e4ba32683f5b2e72b1cb6e987a175",
+  "note": "Non-cat/dog probes. Forced binary predictions are not OOD detection. No accuracy, threshold or inference claim.",
+  "images": [
+    {
+      "id": "animals_horse_000",
+      "label": "horse",
+      "sha256": "7f1f25a13c95f9ba573be8f5101c4a74e7d573f76fa0a24d4e57f7b31166cdb7"
+    },
+    {
+      "id": "animals_horse_001",
+      "label": "horse",
+      "sha256": "1880b15f645720b70b21d47a2894fffc42fffa19885a137e20efe0a7d2de241c"
+    },
+    {
+      "id": "animals_horse_002",
+      "label": "horse",
+      "sha256": "7e641b2b562523e22c9b0864329f21ea7536a9dd3b7f4f6d4706944a8ecf8c0b"
+    },
+    {
+      "id": "animals_horse_003",
+      "label": "horse",
+      "sha256": "4f53d0c3718e57c5a422437836fa29de65f287fb956789996680223755d367ba"
+    },
+    {
+      "id": "animals_horse_004",
+      "label": "horse",
+      "sha256": "8d6f0179777ee67b06f274a9f507e88cbdd43a3867841ee1e9a688564077364b"
+    },
+    {
+      "id": "animals_sheep_000",
+      "label": "sheep",
+      "sha256": "ebf372900425dec1f65f2a37ee8bda7f2a839b57f38710f7ffe2eb878c9cc0eb"
+    },
+    {
+      "id": "animals_sheep_001",
+      "label": "sheep",
+      "sha256": "282bf8a77a93b39b186cf950d35668ed02f3ce6a5f57f1440aa300f11ea1cdb4"
+    },
+    {
+      "id": "animals_sheep_002",
+      "label": "sheep",
+      "sha256": "9faaa5c60872cd98aabb8fed6d5e3652052aa752375133bdf145edcf0b371704"
+    },
+    {
+      "id": "animals_sheep_003",
+      "label": "sheep",
+      "sha256": "c270e7effe38dcc8f5b0e0b84a67694415eb48f9b246afcce98e44393ac84578"
+    },
+    {
+      "id": "animals_sheep_004",
+      "label": "sheep",
+      "sha256": "c1de76b43f54d65aae65cdf60e8fc223cf267154f6d8366f4fc68cb8ce5c6ce5"
+    },
+    {
+      "id": "animals_cow_000",
+      "label": "cow",
+      "sha256": "01d872b8aca9db0777bd28109ebb289288a0c96a210fe1e15dbdb3c2b77e872f"
+    },
+    {
+      "id": "animals_cow_001",
+      "label": "cow",
+      "sha256": "a3b611d92711ac3ee8935ec5ce26462cbc4f4d33130c537bf791bf80eacddecf"
+    },
+    {
+      "id": "animals_cow_002",
+      "label": "cow",
+      "sha256": "648470ae74ddf78c4850e95831b7b6b33298252f453ab12fa79cc75ea0045b90"
+    },
+    {
+      "id": "animals_cow_003",
+      "label": "cow",
+      "sha256": "cbc55a81c74872f43a6b03e5f02888fa1a02a1dafa0c427c92e0a0880e32be15"
+    },
+    {
+      "id": "animals_cow_004",
+      "label": "cow",
+      "sha256": "0966fe6f1263d56e9bebb8803834365d4081bc75660405e440f266b188503153"
+    },
+    {
+      "id": "animals_elephant_000",
+      "label": "elephant",
+      "sha256": "f50297cc6f292b7fe7c20056de9bf16aea000166fa25bb8d6d21fb543cd7a0eb"
+    },
+    {
+      "id": "animals_elephant_001",
+      "label": "elephant",
+      "sha256": "4773eee19e46bf5a749c876c6d106b6330b2344f179c7d6bca7162ea5c3dc3fd"
+    },
+    {
+      "id": "animals_elephant_002",
+      "label": "elephant",
+      "sha256": "18184b7c328861e4cf33eea46e0ceb639a4982f1c6f89664772a36d2c19eb6f9"
+    },
+    {
+      "id": "animals_elephant_003",
+      "label": "elephant",
+      "sha256": "dc01f4c27624ca8d7699ce39a6aabc22b81153340af1a0dbcb51c66af56467bd"
+    },
+    {
+      "id": "animals_elephant_004",
+      "label": "elephant",
+      "sha256": "d82cac82c576ccee43b36f232daab3d2c4f9543a1e4f0e1b1b6393a2aac1c22c"
+    }
+  ],
+  "models": {
+    "resnet18": [
+      {
+        "id": "animals_horse_000",
+        "source_label": "horse",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0331",
+          "dog_0201",
+          "dog_0209",
+          "dog_0483",
+          "dog_0342"
+        ],
+        "distances": [
+          0.3405725955963135,
+          0.3417850732803345,
+          0.3480379581451416,
+          0.3572924733161926,
+          0.36365240812301636
+        ]
+      },
+      {
+        "id": "animals_horse_001",
+        "source_label": "horse",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0108",
+          "dog_0440",
+          "dog_0430",
+          "dog_0342",
+          "dog_0074"
+        ],
+        "distances": [
+          0.26160943508148193,
+          0.2840111255645752,
+          0.2949864864349365,
+          0.2958052158355713,
+          0.30090397596359253
+        ]
+      },
+      {
+        "id": "animals_horse_002",
+        "source_label": "horse",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0040",
+          "dog_0362",
+          "dog_0233",
+          "dog_0303",
+          "dog_0238"
+        ],
+        "distances": [
+          0.30402886867523193,
+          0.3151330351829529,
+          0.31710731983184814,
+          0.31900471448898315,
+          0.31937533617019653
+        ]
+      },
+      {
+        "id": "animals_horse_003",
+        "source_label": "horse",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0020",
+          "dog_0443",
+          "dog_0430",
+          "dog_0019",
+          "dog_0484"
+        ],
+        "distances": [
+          0.27096623182296753,
+          0.30815792083740234,
+          0.3106197714805603,
+          0.31291162967681885,
+          0.32043540477752686
+        ]
+      },
+      {
+        "id": "animals_horse_004",
+        "source_label": "horse",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0405",
+          "dog_0186",
+          "dog_0238",
+          "dog_0209",
+          "dog_0095"
+        ],
+        "distances": [
+          0.2516348958015442,
+          0.2537407875061035,
+          0.2599179148674011,
+          0.2609713077545166,
+          0.2615835666656494
+        ]
+      },
+      {
+        "id": "animals_sheep_000",
+        "source_label": "sheep",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0001",
+          "cat_0291",
+          "dog_0238",
+          "dog_0405",
+          "dog_0028"
+        ],
+        "distances": [
+          0.28040367364883423,
+          0.2820022702217102,
+          0.29118162393569946,
+          0.29193782806396484,
+          0.29684245586395264
+        ]
+      },
+      {
+        "id": "animals_sheep_001",
+        "source_label": "sheep",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0233",
+          "dog_0001",
+          "cat_0329",
+          "dog_0342",
+          "dog_0307"
+        ],
+        "distances": [
+          0.3181501626968384,
+          0.32324421405792236,
+          0.3245357275009155,
+          0.33763277530670166,
+          0.34015071392059326
+        ]
+      },
+      {
+        "id": "animals_sheep_002",
+        "source_label": "sheep",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0233",
+          "cat_0054",
+          "dog_0040",
+          "dog_0307",
+          "dog_0028"
+        ],
+        "distances": [
+          0.3733006715774536,
+          0.39034807682037354,
+          0.39177262783050537,
+          0.40644097328186035,
+          0.4073982834815979
+        ]
+      },
+      {
+        "id": "animals_sheep_003",
+        "source_label": "sheep",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0233",
+          "dog_0238",
+          "dog_0463",
+          "dog_0342",
+          "dog_0307"
+        ],
+        "distances": [
+          0.3172837495803833,
+          0.31984424591064453,
+          0.3226114511489868,
+          0.3376726508140564,
+          0.33999156951904297
+        ]
+      },
+      {
+        "id": "animals_sheep_004",
+        "source_label": "sheep",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0186",
+          "dog_0353",
+          "dog_0233",
+          "dog_0297",
+          "dog_0366"
+        ],
+        "distances": [
+          0.33384108543395996,
+          0.34408771991729736,
+          0.35536766052246094,
+          0.3570958375930786,
+          0.362943172454834
+        ]
+      },
+      {
+        "id": "animals_cow_000",
+        "source_label": "cow",
+        "prediction": "dog",
+        "nearest": [
+          "cat_0306",
+          "dog_0312",
+          "dog_0075",
+          "dog_0421",
+          "cat_0110"
+        ],
+        "distances": [
+          0.2712441086769104,
+          0.2774730324745178,
+          0.2814469337463379,
+          0.2825198173522949,
+          0.2906409502029419
+        ]
+      },
+      {
+        "id": "animals_cow_001",
+        "source_label": "cow",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0040",
+          "dog_0350",
+          "dog_0362",
+          "dog_0238",
+          "dog_0307"
+        ],
+        "distances": [
+          0.2999146580696106,
+          0.3281868100166321,
+          0.33697569370269775,
+          0.34423017501831055,
+          0.3458988666534424
+        ]
+      },
+      {
+        "id": "animals_cow_002",
+        "source_label": "cow",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0233",
+          "dog_0062",
+          "dog_0040",
+          "dog_0004",
+          "dog_0256"
+        ],
+        "distances": [
+          0.3000141382217407,
+          0.3065648078918457,
+          0.3177299499511719,
+          0.3292062282562256,
+          0.3318547010421753
+        ]
+      },
+      {
+        "id": "animals_cow_003",
+        "source_label": "cow",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0463",
+          "dog_0074",
+          "dog_0015",
+          "dog_0028",
+          "dog_0489"
+        ],
+        "distances": [
+          0.31373411417007446,
+          0.3224445581436157,
+          0.32606780529022217,
+          0.3283424377441406,
+          0.32900673151016235
+        ]
+      },
+      {
+        "id": "animals_cow_004",
+        "source_label": "cow",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0238",
+          "dog_0040",
+          "dog_0362",
+          "dog_0253",
+          "dog_0209"
+        ],
+        "distances": [
+          0.2665914297103882,
+          0.28296685218811035,
+          0.3113839626312256,
+          0.31527388095855713,
+          0.31981271505355835
+        ]
+      },
+      {
+        "id": "animals_elephant_000",
+        "source_label": "elephant",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0040",
+          "dog_0304",
+          "dog_0209",
+          "dog_0238",
+          "dog_0425"
+        ],
+        "distances": [
+          0.33155345916748047,
+          0.33194708824157715,
+          0.3453097343444824,
+          0.348280668258667,
+          0.3533385396003723
+        ]
+      },
+      {
+        "id": "animals_elephant_001",
+        "source_label": "elephant",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0040",
+          "dog_0238",
+          "dog_0372",
+          "dog_0398",
+          "dog_0350"
+        ],
+        "distances": [
+          0.26004862785339355,
+          0.2881554365158081,
+          0.3114057779312134,
+          0.3120248317718506,
+          0.32333236932754517
+        ]
+      },
+      {
+        "id": "animals_elephant_002",
+        "source_label": "elephant",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0238",
+          "cat_0306",
+          "cat_0054",
+          "dog_0040",
+          "dog_0004"
+        ],
+        "distances": [
+          0.27781355381011963,
+          0.30819106101989746,
+          0.311456561088562,
+          0.3122807741165161,
+          0.3126356601715088
+        ]
+      },
+      {
+        "id": "animals_elephant_003",
+        "source_label": "elephant",
+        "prediction": "dog",
+        "nearest": [
+          "cat_0054",
+          "dog_0040",
+          "dog_0184",
+          "dog_0379",
+          "dog_0449"
+        ],
+        "distances": [
+          0.3526132106781006,
+          0.4017143249511719,
+          0.41058892011642456,
+          0.4131477475166321,
+          0.418276309967041
+        ]
+      },
+      {
+        "id": "animals_elephant_004",
+        "source_label": "elephant",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0233",
+          "dog_0256",
+          "dog_0304",
+          "dog_0040",
+          "dog_0062"
+        ],
+        "distances": [
+          0.37722909450531006,
+          0.3820362687110901,
+          0.38799571990966797,
+          0.3893144130706787,
+          0.40194475650787354
+        ]
+      }
+    ],
+    "dinov2": [
+      {
+        "id": "animals_horse_000",
+        "source_label": "horse",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0028",
+          "dog_0233",
+          "dog_0355",
+          "dog_0396",
+          "dog_0256"
+        ],
+        "distances": [
+          0.6823654770851135,
+          0.7674983739852905,
+          0.8074342012405396,
+          0.8075616359710693,
+          0.8075729012489319
+        ]
+      },
+      {
+        "id": "animals_horse_001",
+        "source_label": "horse",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0020",
+          "cat_0350",
+          "dog_0004",
+          "dog_0019",
+          "dog_0443"
+        ],
+        "distances": [
+          0.8235458135604858,
+          0.824798583984375,
+          0.8445245623588562,
+          0.844677209854126,
+          0.8468952775001526
+        ]
+      },
+      {
+        "id": "animals_horse_002",
+        "source_label": "horse",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0405",
+          "dog_0071",
+          "dog_0233",
+          "cat_0455",
+          "cat_0451"
+        ],
+        "distances": [
+          0.8760496973991394,
+          0.8876000046730042,
+          0.890078067779541,
+          0.8943341970443726,
+          0.8977274894714355
+        ]
+      },
+      {
+        "id": "animals_horse_003",
+        "source_label": "horse",
+        "prediction": "cat",
+        "nearest": [
+          "dog_0075",
+          "cat_0078",
+          "cat_0350",
+          "cat_0451",
+          "dog_0028"
+        ],
+        "distances": [
+          0.8425464630126953,
+          0.8649714589118958,
+          0.8729183673858643,
+          0.8864016532897949,
+          0.8866615891456604
+        ]
+      },
+      {
+        "id": "animals_horse_004",
+        "source_label": "horse",
+        "prediction": "cat",
+        "nearest": [
+          "dog_0350",
+          "cat_0350",
+          "cat_0079",
+          "cat_0488",
+          "dog_0405"
+        ],
+        "distances": [
+          0.8183382749557495,
+          0.8423002362251282,
+          0.86469566822052,
+          0.8660942316055298,
+          0.8696434497833252
+        ]
+      },
+      {
+        "id": "animals_sheep_000",
+        "source_label": "sheep",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0233",
+          "dog_0405",
+          "cat_0218",
+          "dog_0353",
+          "dog_0071"
+        ],
+        "distances": [
+          0.7595972418785095,
+          0.7733665704727173,
+          0.8037068843841553,
+          0.807623028755188,
+          0.8153066039085388
+        ]
+      },
+      {
+        "id": "animals_sheep_001",
+        "source_label": "sheep",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0233",
+          "dog_0489",
+          "dog_0256",
+          "dog_0421",
+          "dog_0028"
+        ],
+        "distances": [
+          0.651836633682251,
+          0.7570662498474121,
+          0.766426682472229,
+          0.782371997833252,
+          0.8016346096992493
+        ]
+      },
+      {
+        "id": "animals_sheep_002",
+        "source_label": "sheep",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0421",
+          "dog_0389",
+          "cat_0053",
+          "dog_0233",
+          "dog_0201"
+        ],
+        "distances": [
+          0.7322618961334229,
+          0.7797189950942993,
+          0.7866537570953369,
+          0.7989271879196167,
+          0.8195725679397583
+        ]
+      },
+      {
+        "id": "animals_sheep_003",
+        "source_label": "sheep",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0483",
+          "dog_0363",
+          "dog_0247",
+          "dog_0430",
+          "dog_0257"
+        ],
+        "distances": [
+          0.7620091438293457,
+          0.8330346941947937,
+          0.8359642624855042,
+          0.8472363948822021,
+          0.8535202145576477
+        ]
+      },
+      {
+        "id": "animals_sheep_004",
+        "source_label": "sheep",
+        "prediction": "cat",
+        "nearest": [
+          "dog_0233",
+          "cat_0053",
+          "cat_0078",
+          "dog_0483",
+          "cat_0451"
+        ],
+        "distances": [
+          0.7407712936401367,
+          0.7842210531234741,
+          0.7949438095092773,
+          0.8044425845146179,
+          0.8056420683860779
+        ]
+      },
+      {
+        "id": "animals_cow_000",
+        "source_label": "cow",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0074",
+          "dog_0256",
+          "dog_0141",
+          "dog_0044",
+          "cat_0139"
+        ],
+        "distances": [
+          0.8059667944908142,
+          0.8083016276359558,
+          0.8161716461181641,
+          0.8187807202339172,
+          0.8207453489303589
+        ]
+      },
+      {
+        "id": "animals_cow_001",
+        "source_label": "cow",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0233",
+          "dog_0028",
+          "dog_0463",
+          "dog_0350",
+          "dog_0389"
+        ],
+        "distances": [
+          0.7764232158660889,
+          0.8204319477081299,
+          0.832728385925293,
+          0.8555536270141602,
+          0.8599418997764587
+        ]
+      },
+      {
+        "id": "animals_cow_002",
+        "source_label": "cow",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0233",
+          "dog_0028",
+          "dog_0256",
+          "dog_0355",
+          "dog_0486"
+        ],
+        "distances": [
+          0.6889184713363647,
+          0.7340073585510254,
+          0.780219554901123,
+          0.8027216196060181,
+          0.8396674990653992
+        ]
+      },
+      {
+        "id": "animals_cow_003",
+        "source_label": "cow",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0028",
+          "cat_0244",
+          "dog_0331",
+          "dog_0074",
+          "dog_0044"
+        ],
+        "distances": [
+          0.8103189468383789,
+          0.8230851888656616,
+          0.8264117240905762,
+          0.8266053199768066,
+          0.8285271525382996
+        ]
+      },
+      {
+        "id": "animals_cow_004",
+        "source_label": "cow",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0075",
+          "dog_0028",
+          "dog_0486",
+          "dog_0020",
+          "dog_0256"
+        ],
+        "distances": [
+          0.724036455154419,
+          0.7750697731971741,
+          0.8002536296844482,
+          0.8049717545509338,
+          0.8112784624099731
+        ]
+      },
+      {
+        "id": "animals_elephant_000",
+        "source_label": "elephant",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0293",
+          "dog_0206",
+          "cat_0079",
+          "cat_0290",
+          "dog_0486"
+        ],
+        "distances": [
+          0.8380274176597595,
+          0.870233416557312,
+          0.8876208066940308,
+          0.8926578760147095,
+          0.8950260281562805
+        ]
+      },
+      {
+        "id": "animals_elephant_001",
+        "source_label": "elephant",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0040",
+          "dog_0206",
+          "cat_0367",
+          "cat_0211",
+          "dog_0209"
+        ],
+        "distances": [
+          0.8145976066589355,
+          0.826435923576355,
+          0.8367741107940674,
+          0.8419909477233887,
+          0.8480212688446045
+        ]
+      },
+      {
+        "id": "animals_elephant_002",
+        "source_label": "elephant",
+        "prediction": "dog",
+        "nearest": [
+          "cat_0211",
+          "dog_0040",
+          "dog_0021",
+          "dog_0320",
+          "cat_0163"
+        ],
+        "distances": [
+          0.8656532764434814,
+          0.8955737352371216,
+          0.9055706262588501,
+          0.908021092414856,
+          0.9086295366287231
+        ]
+      },
+      {
+        "id": "animals_elephant_003",
+        "source_label": "elephant",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0342",
+          "dog_0206",
+          "dog_0021",
+          "dog_0304",
+          "dog_0430"
+        ],
+        "distances": [
+          0.8749117255210876,
+          0.8760780096054077,
+          0.8787791728973389,
+          0.8845338821411133,
+          0.8919987678527832
+        ]
+      },
+      {
+        "id": "animals_elephant_004",
+        "source_label": "elephant",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0293",
+          "dog_0247",
+          "dog_0486",
+          "cat_0290",
+          "dog_0022"
+        ],
+        "distances": [
+          0.8100131750106812,
+          0.8719480633735657,
+          0.8747370839118958,
+          0.8764733076095581,
+          0.8811029195785522
+        ]
+      }
+    ],
+    "clip": [
+      {
+        "id": "animals_horse_000",
+        "source_label": "horse",
+        "prediction": "dog",
+        "nearest": [
+          "cat_0177",
+          "dog_0081",
+          "dog_0089",
+          "cat_0214",
+          "dog_0022"
+        ],
+        "distances": [
+          0.25352829694747925,
+          0.26518523693084717,
+          0.27466338872909546,
+          0.28755486011505127,
+          0.287794828414917
+        ]
+      },
+      {
+        "id": "animals_horse_001",
+        "source_label": "horse",
+        "prediction": "dog",
+        "nearest": [
+          "cat_0401",
+          "cat_0106",
+          "dog_0206",
+          "dog_0022",
+          "dog_0449"
+        ],
+        "distances": [
+          0.3144606947898865,
+          0.32698631286621094,
+          0.3308921456336975,
+          0.3349185585975647,
+          0.33678650856018066
+        ]
+      },
+      {
+        "id": "animals_horse_002",
+        "source_label": "horse",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0233",
+          "dog_0238",
+          "dog_0108",
+          "dog_0493",
+          "dog_0071"
+        ],
+        "distances": [
+          0.3407551050186157,
+          0.3410370349884033,
+          0.34246766567230225,
+          0.3464463949203491,
+          0.34831368923187256
+        ]
+      },
+      {
+        "id": "animals_horse_003",
+        "source_label": "horse",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0089",
+          "dog_0081",
+          "cat_0177",
+          "cat_0214",
+          "dog_0206"
+        ],
+        "distances": [
+          0.29987406730651855,
+          0.32932883501052856,
+          0.3374287486076355,
+          0.3556767702102661,
+          0.37252509593963623
+        ]
+      },
+      {
+        "id": "animals_horse_004",
+        "source_label": "horse",
+        "prediction": "dog",
+        "nearest": [
+          "cat_0401",
+          "dog_0089",
+          "cat_0177",
+          "dog_0022",
+          "dog_0081"
+        ],
+        "distances": [
+          0.3126513957977295,
+          0.32237493991851807,
+          0.33418935537338257,
+          0.3371778130531311,
+          0.34085381031036377
+        ]
+      },
+      {
+        "id": "animals_sheep_000",
+        "source_label": "sheep",
+        "prediction": "cat",
+        "nearest": [
+          "cat_0326",
+          "cat_0246",
+          "dog_0206",
+          "cat_0214",
+          "dog_0449"
+        ],
+        "distances": [
+          0.2895411252975464,
+          0.29128915071487427,
+          0.3013359308242798,
+          0.3059768080711365,
+          0.3230351209640503
+        ]
+      },
+      {
+        "id": "animals_sheep_001",
+        "source_label": "sheep",
+        "prediction": "cat",
+        "nearest": [
+          "cat_0326",
+          "dog_0233",
+          "cat_0486",
+          "cat_0106",
+          "dog_0264"
+        ],
+        "distances": [
+          0.33271145820617676,
+          0.3579885959625244,
+          0.3582584857940674,
+          0.37213510274887085,
+          0.3819602131843567
+        ]
+      },
+      {
+        "id": "animals_sheep_002",
+        "source_label": "sheep",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0421",
+          "cat_0401",
+          "dog_0233",
+          "dog_0022",
+          "dog_0307"
+        ],
+        "distances": [
+          0.31302952766418457,
+          0.353773832321167,
+          0.3670145273208618,
+          0.3767319917678833,
+          0.3777763247489929
+        ]
+      },
+      {
+        "id": "animals_sheep_003",
+        "source_label": "sheep",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0022",
+          "cat_0177",
+          "dog_0233",
+          "dog_0366",
+          "dog_0021"
+        ],
+        "distances": [
+          0.31161659955978394,
+          0.32807666063308716,
+          0.33656883239746094,
+          0.33752816915512085,
+          0.3393362760543823
+        ]
+      },
+      {
+        "id": "animals_sheep_004",
+        "source_label": "sheep",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0366",
+          "dog_0022",
+          "dog_0307",
+          "cat_0177",
+          "cat_0401"
+        ],
+        "distances": [
+          0.381295382976532,
+          0.3864954710006714,
+          0.39279770851135254,
+          0.3930736184120178,
+          0.3954775929450989
+        ]
+      },
+      {
+        "id": "animals_cow_000",
+        "source_label": "cow",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0081",
+          "dog_0052",
+          "dog_0021",
+          "dog_0440",
+          "dog_0366"
+        ],
+        "distances": [
+          0.3295365571975708,
+          0.3297935128211975,
+          0.356445848941803,
+          0.36066317558288574,
+          0.3619999885559082
+        ]
+      },
+      {
+        "id": "animals_cow_001",
+        "source_label": "cow",
+        "prediction": "cat",
+        "nearest": [
+          "dog_0022",
+          "cat_0476",
+          "cat_0219",
+          "cat_0291",
+          "dog_0233"
+        ],
+        "distances": [
+          0.3366292119026184,
+          0.3369954228401184,
+          0.34867674112319946,
+          0.3756634593009949,
+          0.3762304186820984
+        ]
+      },
+      {
+        "id": "animals_cow_002",
+        "source_label": "cow",
+        "prediction": "cat",
+        "nearest": [
+          "dog_0022",
+          "dog_0233",
+          "cat_0219",
+          "cat_0476",
+          "cat_0367"
+        ],
+        "distances": [
+          0.33508604764938354,
+          0.3442436456680298,
+          0.3569942116737366,
+          0.3573797941207886,
+          0.3660781979560852
+        ]
+      },
+      {
+        "id": "animals_cow_003",
+        "source_label": "cow",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0081",
+          "dog_0052",
+          "dog_0022",
+          "dog_0440",
+          "dog_0366"
+        ],
+        "distances": [
+          0.3774648904800415,
+          0.39808398485183716,
+          0.39843201637268066,
+          0.40244048833847046,
+          0.4027300477027893
+        ]
+      },
+      {
+        "id": "animals_cow_004",
+        "source_label": "cow",
+        "prediction": "cat",
+        "nearest": [
+          "cat_0367",
+          "cat_0219",
+          "cat_0401",
+          "dog_0440",
+          "cat_0397"
+        ],
+        "distances": [
+          0.31114673614501953,
+          0.3166213631629944,
+          0.31998586654663086,
+          0.3254677653312683,
+          0.32820844650268555
+        ]
+      },
+      {
+        "id": "animals_elephant_000",
+        "source_label": "elephant",
+        "prediction": "dog",
+        "nearest": [
+          "cat_0326",
+          "dog_0421",
+          "dog_0089",
+          "cat_0329",
+          "dog_0201"
+        ],
+        "distances": [
+          0.39692234992980957,
+          0.39720427989959717,
+          0.4313286542892456,
+          0.4356426000595093,
+          0.43732959032058716
+        ]
+      },
+      {
+        "id": "animals_elephant_001",
+        "source_label": "elephant",
+        "prediction": "dog",
+        "nearest": [
+          "cat_0401",
+          "cat_0329",
+          "dog_0089",
+          "dog_0307",
+          "dog_0440"
+        ],
+        "distances": [
+          0.3814656138420105,
+          0.3926572799682617,
+          0.39399999380111694,
+          0.4023185968399048,
+          0.4072068929672241
+        ]
+      },
+      {
+        "id": "animals_elephant_002",
+        "source_label": "elephant",
+        "prediction": "cat",
+        "nearest": [
+          "dog_0089",
+          "cat_0177",
+          "dog_0081",
+          "cat_0401",
+          "cat_0329"
+        ],
+        "distances": [
+          0.3253646492958069,
+          0.3383339047431946,
+          0.3470813035964966,
+          0.3565647602081299,
+          0.3584018349647522
+        ]
+      },
+      {
+        "id": "animals_elephant_003",
+        "source_label": "elephant",
+        "prediction": "cat",
+        "nearest": [
+          "cat_0401",
+          "cat_0329",
+          "cat_0054",
+          "dog_0021",
+          "dog_0293"
+        ],
+        "distances": [
+          0.29679936170578003,
+          0.3066564202308655,
+          0.3119164705276489,
+          0.3205023407936096,
+          0.33059161901474
+        ]
+      },
+      {
+        "id": "animals_elephant_004",
+        "source_label": "elephant",
+        "prediction": "dog",
+        "nearest": [
+          "dog_0421",
+          "cat_0401",
+          "cat_0329",
+          "dog_0089",
+          "dog_0201"
+        ],
+        "distances": [
+          0.35165655612945557,
+          0.3701136112213135,
+          0.37387651205062866,
+          0.3797524571418762,
+          0.3809359073638916
+        ]
+      }
+    ]
+  }
+}

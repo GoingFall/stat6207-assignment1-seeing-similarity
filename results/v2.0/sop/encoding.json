@@ -1,0 +1,78 @@
+{
+  "status": "passed",
+  "config_sha256": "993e3516e2bbe56677bc531878be942b2967729600df87a8934d1b84770aa17b",
+  "sop_lock_sha256": "2db78d1201c51bb5b3f5f34e5a85ac15d7420503787cd3e9c43b795163a22a0c",
+  "model": "facebook/dinov2-small",
+  "embedding": "CLS token, float32, L2-normalized",
+  "device": "NVIDIA GeForce RTX 5070 Laptop GPU",
+  "torch": "2.11.0+cu128",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "splits": {
+    "train": {
+      "images": 59551,
+      "shape": [
+        59551,
+        384
+      ],
+      "seconds": 367.6676454999979,
+      "images_per_second": 161.9696503863306,
+      "embedding_path": "data_v2/embeddings/sop/dinov2_train.npy",
+      "embedding_sha256": "438c7daffd76ca4d3cf1d69c928eac0d6373f5c2e8ace69acbbc7404a8119fd1",
+      "ids_path": "data_v2/embeddings/sop/dinov2_train_ids.json",
+      "ids_sha256": "b70a297ecac03ddab81192ad1a0299d9ff4f7dc52d76b74158b2abf2b7fea6a5",
+      "resources": {
+        "samples": 523,
+        "peak_rss_bytes": 1807482880,
+        "gpu_samples": 523,
+        "gpu_active_samples": 299,
+        "gpu_mean_active_utilization_percent": 52.812709030100336,
+        "gpu_peak_utilization_percent": 100.0,
+        "gpu_peak_memory_used_mib": 825.0
+      },
+      "gpu_peak_allocated_bytes": 490125824,
+      "gpu_peak_reserved_bytes": 658505728
+    },
+    "test": {
+      "images": 60502,
+      "shape": [
+        60502,
+        384
+      ],
+      "seconds": 352.41351209999993,
+      "images_per_second": 171.67900186197207,
+      "embedding_path": "data_v2/embeddings/sop/dinov2_test.npy",
+      "embedding_sha256": "cc0ad2b3f67e30e17c7b1c204eb3870a74f82780b626660f85136372e1b0b98d",
+      "ids_path": "data_v2/embeddings/sop/dinov2_test_ids.json",
+      "ids_sha256": "131f34cdbd0a61b3b690f6e5af50f5db68a8d4668e5a2d2a5373eb6fbe11c011",
+      "resources": {
+        "samples": 578,
+        "peak_rss_bytes": 1774469120,
+        "gpu_samples": 578,
+        "gpu_active_samples": 360,
+        "gpu_mean_active_utilization_percent": 54.81944444444444,
+        "gpu_peak_utilization_percent": 100.0,
+        "gpu_peak_memory_used_mib": 825.0
+      },
+      "gpu_peak_allocated_bytes": 490125824,
+      "gpu_peak_reserved_bytes": 658505728
+    }
+  },
+  "sop_config": {
+    "source": "ryanholbrook/stanford-online-products/versions/1",
+    "protocol": "official-product-disjoint-train-test; leave-one-out retrieval within test",
+    "self_exclusion": "exact_image_id_only",
+    "encoder": "facebook/dinov2-small",
+    "batch_size": 64,
+    "embedding": "CLS token, float32, L2-normalized",
+    "distance": "cosine via inner product on unit vectors",
+    "standard_gallery": "all 60502 official test images with exact query-image self exclusion",
+    "all_image_index": "systems-capacity-only; never reported as standard SOP semantic retrieval",
+    "metrics": [
+      "recall@1",
+      "recall@10",
+      "recall@100",
+      "map@1000"
+    ]
+  },
+  "sop_config_sha256": "709fc961a6c81f5243ed240cb3ddc00ecbb356dff463d4651f0e36462d7864bf"
+}

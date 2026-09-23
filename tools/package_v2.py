@@ -8,6 +8,7 @@ import tempfile
 from pathlib import Path
 
 from pipelines.prepare_data import ROOT
+from src.paths import resolve
 
 
 OUTPUT = ROOT / "releases/2.0"
@@ -22,9 +23,10 @@ def sha256(path: Path) -> str:
 
 
 def main() -> None:
-    if (ROOT / "VERSION").read_text(encoding="utf-8").strip() != "2.0":
-        raise RuntimeError("Set VERSION to 2.0 only after every Version 2.0 release gate passes")
-    verification_path = ROOT / "results_v2/checks/verification.json"
+    version = tuple(int(part) for part in (ROOT / "VERSION").read_text(encoding="utf-8").strip().split("."))
+    if version < (2, 0):
+        raise RuntimeError("VERSION must be at least 2.0 before the Version 2.0 release can be built")
+    verification_path = ROOT / "results/v2.0/checks/verification.json"
     verification = json.loads(verification_path.read_text(encoding="utf-8"))
     required = {
         "sop_retrieval", "sift1m_benchmark", "sift1m_scale_sweep", "inat_image_lock", "inat_embeddings",
@@ -41,7 +43,7 @@ def main() -> None:
     release_notes = ROOT / "releases/2.0/RELEASE-2.0.md"
     if release_notes.exists():
         files.append(release_notes)
-    for directory in ("src", "pipelines", "checks", "reporting", "tools", "configs/v2", ".github/workflows"):
+    for directory in ("src", "pipelines", "checks", "reporting", "tools", "configs/v2.0", ".github/workflows"):
         files.extend(path for path in (ROOT / directory).rglob("*") if path.is_file() and path.suffix != ".pyc" and "__pycache__" not in path.parts)
     files.extend(path for path in (ROOT / "docs").rglob("*.md") if path.is_file() and 'session' not in path.relative_to(ROOT).parts)
     private_inat_files = {
@@ -57,11 +59,11 @@ def main() -> None:
         "inat_birds_images_lock.sha256",
     }
     files.extend(
-        path for path in (ROOT / "data_v2/manifests").rglob("*")
+        path for path in (ROOT / "data/v2.0/manifests").rglob("*")
         if path.is_file() and path.name not in private_inat_files
     )
-    files.extend(path for path in (ROOT / "results_v2").rglob("*.json") if path.is_file() and not path.name.endswith("partial.json"))
-    files.extend(path for path in (ROOT / "results_v2/figures").glob("*.png") if path.is_file())
+    files.extend(path for path in (ROOT / "results/v2.0").rglob("*.json") if path.is_file() and not path.name.endswith("partial.json"))
+    files.extend(path for path in (ROOT / "results/v2.0/figures").glob("*.png") if path.is_file())
     forbidden_parts = {"raw", "processed", "embeddings"}
     forbidden_suffixes = {".npy", ".npz", ".pt", ".faiss"}
     selected = []
@@ -86,14 +88,14 @@ def main() -> None:
     if manifest_path.exists() or archive_path.exists():
         raise RuntimeError("Version 2.0 release artifacts already exist; refusing to overwrite")
     manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    image_manifest = ROOT / "data_v2/manifests/inat_birds_images.jsonl"
+    image_manifest = ROOT / "data/v2.0/manifests/inat_birds_images.jsonl"
     with tempfile.TemporaryDirectory(prefix="stat6207-release-") as folder:
         generated = {}
-        private_metadata_lock = json.loads((ROOT / "data_v2/manifests/inat_birds_lock.json").read_text(encoding="utf-8"))
+        private_metadata_lock = json.loads((ROOT / "data/v2.0/manifests/inat_birds_lock.json").read_text(encoding="utf-8"))
         public_metadata_records = {}
         for split, record in private_metadata_lock["manifests"].items():
             public_path = Path(folder) / f"inat_birds_{split}_public.jsonl"
-            with (ROOT / record["path"]).open(encoding="utf-8") as source, public_path.open("w", encoding="utf-8", newline="\n") as target:
+            with (resolve(record["path"])).open(encoding="utf-8") as source, public_path.open("w", encoding="utf-8", newline="\n") as target:
                 for line in source:
                     row = json.loads(line)
                     public = {key: row[key] for key in ("image_id", "class_id", "license")}
@@ -131,7 +133,7 @@ def main() -> None:
                 row = json.loads(line)
                 public = {key: row[key] for key in ("image_id", "class_id", "split", "bytes", "sha256", "license")}
                 target.write(json.dumps(public, sort_keys=True, separators=(",", ":")) + "\n")
-        private_lock = json.loads((ROOT / "data_v2/manifests/inat_birds_images_lock.json").read_text(encoding="utf-8"))
+        private_lock = json.loads((ROOT / "data/v2.0/manifests/inat_birds_images_lock.json").read_text(encoding="utf-8"))
         public_lock = {
             **private_lock,
             "schema_version": 2,

@@ -15,10 +15,11 @@ from pipelines.prepare_data import ROOT
 from src.retrieval.open_set import select_threshold
 from src.training.metrics import coverage_risk, open_set_metrics
 from src.training.metrics import expected_calibration_error, reliability_bins
+from src.paths import resolve
 
 
-EMBEDDINGS = ROOT / "data_v2/embeddings/inat_birds"
-OUTPUT = ROOT / "results_v2/inat"
+EMBEDDINGS = ROOT / "data/v2.0/embeddings/inat_birds"
+OUTPUT = ROOT / "results/v2.0/inat"
 
 
 def hash_file(path: Path) -> str:
@@ -72,14 +73,14 @@ def knn_scores(index, train_labels: np.ndarray, vectors: np.ndarray, k: int) -> 
 def main(revision: bool = False) -> None:
     global EMBEDDINGS, OUTPUT
     if revision:
-        EMBEDDINGS = ROOT / 'data_v21/embeddings/inat_birds'
-        OUTPUT = ROOT / 'results_v21/inat'
+        EMBEDDINGS = ROOT / 'data/v2.1/embeddings/inat_birds'
+        OUTPUT = ROOT / 'results/v2.1/inat'
         if (OUTPUT/'open_set.json').exists(): raise RuntimeError('Revision open-set result exists')
     training_path = OUTPUT / "training.json"
     training_result = json.loads(training_path.read_text(encoding="utf-8"))
     if training_result["status"] != "passed":
         raise RuntimeError("Passed balanced-probe training is required")
-    config_path = ROOT / ('configs/v21/experiment.json' if revision else 'configs/v2/experiment.json')
+    config_path = ROOT / ('configs/v2.1/experiment.json' if revision else 'configs/v2.0/experiment.json')
     config = json.loads(config_path.read_text(encoding='utf-8'))['inat_training']
     batch_size = config["linear_probe"]["batch_size"]
     train_x, train_labels = load("train")
@@ -88,7 +89,7 @@ def main(revision: bool = False) -> None:
     unknown_development_x, _ = load("unknown_development")
     unknown_test_x, _ = load("unknown_test")
 
-    checkpoint = torch.load(ROOT / training_result["balanced_probe"]["model_path"], map_location="cpu", weights_only=False)
+    checkpoint = torch.load(resolve(training_result["balanced_probe"]["model_path"]), map_location="cpu", weights_only=False)
     class_ids = np.asarray(checkpoint["class_ids"], dtype=np.int64)
     class_to_index = {class_id: index for index, class_id in enumerate(class_ids)}
     validation_y = np.array([class_to_index[int(value)] for value in validation_labels], dtype=np.int64)

@@ -10,10 +10,10 @@ from pipelines.prepare_data import ROOT
 from src.benchmarking.vector_io import read_fvecs, read_ivecs
 
 
-RAW = ROOT / "data_v2/raw/sift1m"
+RAW = ROOT / "data/v2.0/raw/sift1m"
 ARCHIVE = RAW / "sift.tar.gz"
-OUTPUT = ROOT / "data_v2/processed/sift1m"
-LOCK = ROOT / "data_v2/manifests/sift1m_lock.json"
+OUTPUT = ROOT / "data/v2.0/processed/sift1m"
+LOCK = ROOT / "data/v2.0/manifests/sift1m_lock.json"
 
 
 def file_hash(path: Path, algorithm: str = "sha256") -> str:
@@ -31,7 +31,7 @@ def canonical_hash(value: object) -> str:
 def main() -> None:
     if LOCK.exists():
         raise RuntimeError(f"SIFT1M is already locked at {LOCK}; refusing to overwrite")
-    config = json.loads((ROOT / "configs/v2/experiment.json").read_text())["sift1m"]
+    config = json.loads((ROOT / "configs/v2.0/experiment.json").read_text())["sift1m"]
     if file_hash(ARCHIVE, "md5") != config["archive_md5"]:
         raise RuntimeError("Official SIFT1M archive MD5 mismatch")
     OUTPUT.mkdir(parents=True, exist_ok=True)

@@ -11,8 +11,8 @@ from pipelines.prepare_data import ROOT
 from src.monitoring.drift import drift_metrics, estimate_rbf_gamma
 
 
-EMBEDDINGS = ROOT / "data_v2/embeddings/inat_birds"
-OUTPUT = ROOT / "results_v2/inat/monitoring.json"
+EMBEDDINGS = ROOT / "data/v2.0/embeddings/inat_birds"
+OUTPUT = ROOT / "results/v2.0/inat/monitoring.json"
 
 
 def hash_file(path: Path) -> str:
@@ -24,9 +24,9 @@ def hash_file(path: Path) -> str:
 
 
 def main() -> None:
-    config_path = ROOT / "configs/v2/experiment.json"
+    config_path = ROOT / "configs/v2.0/experiment.json"
     config = json.loads(config_path.read_text(encoding="utf-8"))["monitoring"]
-    encoding_path = ROOT / "results_v2/inat/encoding.json"
+    encoding_path = ROOT / "results/v2.0/inat/encoding.json"
     if json.loads(encoding_path.read_text(encoding="utf-8"))["status"] != "passed":
         raise RuntimeError("Passed locked embeddings are required")
     reference = np.load(EMBEDDINGS / f"{config['reference_split']}_embeddings.npy")

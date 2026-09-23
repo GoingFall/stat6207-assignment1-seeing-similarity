@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "criterion": "mean utilization among active nvidia-smi samples",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "python": "3.11.16",
+  "torch": "2.11.0+cu128",
+  "cuda_runtime": "12.8",
+  "driver": "616.92",
+  "gpu": "NVIDIA GeForce RTX 5070 Laptop GPU",
+  "compute_capability": [
+    12,
+    0
+  ],
+  "model": "facebook/dinov2-small",
+  "unique_images": 100,
+  "processed_images": 4700,
+  "passes": 47,
+  "batch_size": 16,
+  "elapsed_seconds": 10.092695400002412,
+  "images_per_second": 465.6833297474604,
+  "outputs_on_cuda": true,
+  "peak_allocated_bytes": 211802624,
+  "peak_reserved_bytes": 266338304,
+  "resources": {
+    "samples": 18,
+    "peak_rss_bytes": 1244545024,
+    "gpu_samples": 18,
+    "gpu_active_samples": 17,
+    "gpu_mean_active_utilization_percent": 88.82352941176471,
+    "gpu_peak_utilization_percent": 97.0,
+    "gpu_peak_memory_used_mib": 451.0
+  },
+  "target_active_utilization_percent": 80
+}

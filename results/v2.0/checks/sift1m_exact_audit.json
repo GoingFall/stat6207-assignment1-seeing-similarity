@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "queries": 256,
+  "sharded_exact_vs_faiss_flat": {
+    "recall_at_1": 1.0,
+    "recall_at_10": 1.0,
+    "recall_at_100": 0.9999609375
+  },
+  "sharded_exact_vs_official": {
+    "recall_at_1": 0.99609375,
+    "recall_at_10": 0.999609375,
+    "recall_at_100": 1.0
+  },
+  "faiss_flat_vs_official": {
+    "recall_at_1": 0.99609375,
+    "recall_at_10": 0.999609375,
+    "recall_at_100": 0.9999609375
+  },
+  "official_top1_tie_order_differences": [
+    {
+      "query_row": 219,
+      "official_id": 264459,
+      "computed_id": 200181,
+      "official_squared_l2": 47044.0,
+      "computed_squared_l2": 47044.0,
+      "equal_distance_tie": true
+    }
+  ],
+  "interpretation": "Both exact implementations agree at top-1/top-10; official overlap below 1.0 is caused by equal-distance tie ordering."
+}

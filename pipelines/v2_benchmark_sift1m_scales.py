@@ -15,6 +15,7 @@ from pipelines.v2_benchmark_sift1m import build_index
 from src.benchmarking.ann import recall_metrics, timed_search
 from src.benchmarking.resources import ResourceMonitor, process_rss_bytes
 from src.benchmarking.vector_io import read_fvecs
+from src.paths import resolve
 
 
 def hash_file(path: Path) -> str:
@@ -26,15 +27,15 @@ def hash_file(path: Path) -> str:
 
 
 def main() -> None:
-    benchmark_path = ROOT / "results_v2/ann/sift1m.json"
+    benchmark_path = ROOT / "results/v2.0/ann/sift1m.json"
     benchmark = json.loads(benchmark_path.read_text(encoding="utf-8"))
     if benchmark["status"] != "passed":
         raise RuntimeError("Passed 1M development selection is required")
-    config = json.loads((ROOT / "configs/v2/experiment.json").read_text(encoding="utf-8"))
-    lock = json.loads((ROOT / "data_v2/manifests/sift1m_lock.json").read_text(encoding="utf-8"))
-    base = read_fvecs(ROOT / lock["files"]["base"]["path"])
-    queries = read_fvecs(ROOT / lock["files"]["query"]["path"])
-    learn = read_fvecs(ROOT / lock["files"]["learn"]["path"])
+    config = json.loads((ROOT / "configs/v2.0/experiment.json").read_text(encoding="utf-8"))
+    lock = json.loads((ROOT / "data/v2.0/manifests/sift1m_lock.json").read_text(encoding="utf-8"))
+    base = read_fvecs(resolve(lock["files"]["base"]["path"]))
+    queries = read_fvecs(resolve(lock["files"]["query"]["path"]))
+    learn = read_fvecs(resolve(lock["files"]["learn"]["path"]))
     development = queries[: config["ann"]["query_counts"]["development"]]
     held_out = queries[config["ann"]["query_counts"]["development"] :]
     k = config["exact"]["k"]
@@ -42,13 +43,13 @@ def main() -> None:
     faiss.omp_set_num_threads(16)
     result = {
         "status": "running",
-        "selection_source": "results_v2/ann/sift1m.json development queries at 1M scale; no per-scale retuning",
+        "selection_source": "results/v2.0/ann/sift1m.json development queries at 1M scale; no per-scale retuning",
         "selection_source_sha256": hash_file(benchmark_path),
         "scales": {},
     }
     for scale in config["ann"]["scales"]:
         if scale == len(base):
-            result["scales"][str(scale)] = {"source": "results_v2/ann/sift1m.json", "families": {
+            result["scales"][str(scale)] = {"source": "results/v2.0/ann/sift1m.json", "families": {
                 family: {"params": data["selected_params"], "test": data["test"]}
                 for family, data in benchmark["families"].items()
             }}
@@ -99,10 +100,10 @@ def main() -> None:
                 del index
                 gc.collect()
         result["scales"][str(scale)] = scale_result
-        output = ROOT / "results_v2/ann/sift1m_scales_partial.json"
+        output = ROOT / "results/v2.0/ann/sift1m_scales_partial.json"
         output.write_text(json.dumps(result, indent=2), encoding="utf-8")
     result["status"] = "passed"
-    output = ROOT / "results_v2/ann/sift1m_scales.json"
+    output = ROOT / "results/v2.0/ann/sift1m_scales.json"
     output.write_text(json.dumps(result, indent=2), encoding="utf-8")
     print(json.dumps({"status": "passed", "scales": list(result["scales"])}, indent=2))
 

@@ -1,0 +1,366 @@
+{
+  "status": "passed",
+  "protocol_hash": "fd36526774dadb9d2ba0778193de0213901e4ba32683f5b2e72b1cb6e987a175",
+  "precision": "float64",
+  "scope": "seed 1001, 100 references/class; all 500 queries, three encoders and seven conditions",
+  "note": "Ordered ranks, including all 200 references; raw top-five mismatches need not imply different sets or KNN predictions. Diagnostic only; frozen experiment uses float32.",
+  "configurations": [
+    {
+      "model": "resnet18",
+      "condition": "blur_mild",
+      "queries": 500,
+      "references": 200,
+      "unit_full_order_mismatches": 0,
+      "raw_top5_order_mismatches": 482,
+      "max_identity_error": 3.552713678800501e-15,
+      "query_norm_range": [
+        15.219244026521608,
+        39.17051968360562
+      ],
+      "reference_norm_range": [
+        20.94105210781992,
+        34.45458457190677
+      ]
+    },
+    {
+      "model": "resnet18",
+      "condition": "blur_moderate",
+      "queries": 500,
+      "references": 200,
+      "unit_full_order_mismatches": 0,
+      "raw_top5_order_mismatches": 489,
+      "max_identity_error": 4.3298697960381105e-15,
+      "query_norm_range": [
+        15.23973337839667,
+        37.94637266224743
+      ],
+      "reference_norm_range": [
+        20.94105210781992,
+        34.45458457190677
+      ]
+    },
+    {
+      "model": "resnet18",
+      "condition": "clean",
+      "queries": 500,
+      "references": 200,
+      "unit_full_order_mismatches": 0,
+      "raw_top5_order_mismatches": 485,
+      "max_identity_error": 3.552713678800501e-15,
+      "query_norm_range": [
+        15.209621295991235,
+        39.86214786561566
+      ],
+      "reference_norm_range": [
+        20.94105210781992,
+        34.45458457190677
+      ]
+    },
+    {
+      "model": "resnet18",
+      "condition": "jpeg_mild",
+      "queries": 500,
+      "references": 200,
+      "unit_full_order_mismatches": 0,
+      "raw_top5_order_mismatches": 479,
+      "max_identity_error": 3.9968028886505635e-15,
+      "query_norm_range": [
+        12.631699311200641,
+        38.99808898975571
+      ],
+      "reference_norm_range": [
+        20.94105210781992,
+        34.45458457190677
+      ]
+    },
+    {
+      "model": "resnet18",
+      "condition": "jpeg_moderate",
+      "queries": 500,
+      "references": 200,
+      "unit_full_order_mismatches": 0,
+      "raw_top5_order_mismatches": 476,
+      "max_identity_error": 3.4416913763379853e-15,
+      "query_norm_range": [
+        16.9506781043437,
+        39.913156890869864
+      ],
+      "reference_norm_range": [
+        20.94105210781992,
+        34.45458457190677
+      ]
+    },
+    {
+      "model": "resnet18",
+      "condition": "occlusion_mild",
+      "queries": 500,
+      "references": 200,
+      "unit_full_order_mismatches": 0,
+      "raw_top5_order_mismatches": 459,
+      "max_identity_error": 3.552713678800501e-15,
+      "query_norm_range": [
+        17.31761275504095,
+        38.306473846313374
+      ],
+      "reference_norm_range": [
+        20.94105210781992,
+        34.45458457190677
+      ]
+    },
+    {
+      "model": "resnet18",
+      "condition": "occlusion_moderate",
+      "queries": 500,
+      "references": 200,
+      "unit_full_order_mismatches": 0,
+      "raw_top5_order_mismatches": 485,
+      "max_identity_error": 3.9968028886505635e-15,
+      "query_norm_range": [
+        17.695783249837895,
+        37.077449404501856
+      ],
+      "reference_norm_range": [
+        20.94105210781992,
+        34.45458457190677
+      ]
+    },
+    {
+      "model": "dinov2",
+      "condition": "blur_mild",
+      "queries": 500,
+      "references": 200,
+      "unit_full_order_mismatches": 0,
+      "raw_top5_order_mismatches": 304,
+      "max_identity_error": 4.440892098500626e-15,
+      "query_norm_range": [
+        42.29957915816085,
+        52.780272445407604
+      ],
+      "reference_norm_range": [
+        44.929919129193905,
+        52.549571931325914
+      ]
+    },
+    {
+      "model": "dinov2",
+      "condition": "blur_moderate",
+      "queries": 500,
+      "references": 200,
+      "unit_full_order_mismatches": 0,
+      "raw_top5_order_mismatches": 332,
+      "max_identity_error": 5.329070518200751e-15,
+      "query_norm_range": [
+        42.23256888412026,
+        52.81875099090681
+      ],
+      "reference_norm_range": [
+        44.929919129193905,
+        52.549571931325914
+      ]
+    },
+    {
+      "model": "dinov2",
+      "condition": "clean",
+      "queries": 500,
+      "references": 200,
+      "unit_full_order_mismatches": 0,
+      "raw_top5_order_mismatches": 306,
+      "max_identity_error": 4.884981308350689e-15,
+      "query_norm_range": [
+        42.28842520815621,
+        52.5787888475228
+      ],
+      "reference_norm_range": [
+        44.929919129193905,
+        52.549571931325914
+      ]
+    },
+    {
+      "model": "dinov2",
+      "condition": "jpeg_mild",
+      "queries": 500,
+      "references": 200,
+      "unit_full_order_mismatches": 0,
+      "raw_top5_order_mismatches": 322,
+      "max_identity_error": 4.6629367034256575e-15,
+      "query_norm_range": [
+        43.1379330364613,
+        52.994507092426815
+      ],
+      "reference_norm_range": [
+        44.929919129193905,
+        52.549571931325914
+      ]
+    },
+    {
+      "model": "dinov2",
+      "condition": "jpeg_moderate",
+      "queries": 500,
+      "references": 200,
+      "unit_full_order_mismatches": 0,
+      "raw_top5_order_mismatches": 310,
+      "max_identity_error": 5.329070518200751e-15,
+      "query_norm_range": [
+        41.89043274366959,
+        52.84119047349948
+      ],
+      "reference_norm_range": [
+        44.929919129193905,
+        52.549571931325914
+      ]
+    },
+    {
+      "model": "dinov2",
+      "condition": "occlusion_mild",
+      "queries": 500,
+      "references": 200,
+      "unit_full_order_mismatches": 0,
+      "raw_top5_order_mismatches": 310,
+      "max_identity_error": 4.884981308350689e-15,
+      "query_norm_range": [
+        44.20077610671133,
+        52.596549017696205
+      ],
+      "reference_norm_range": [
+        44.929919129193905,
+        52.549571931325914
+      ]
+    },
+    {
+      "model": "dinov2",
+      "condition": "occlusion_moderate",
+      "queries": 500,
+      "references": 200,
+      "unit_full_order_mismatches": 0,
+      "raw_top5_order_mismatches": 374,
+      "max_identity_error": 4.884981308350689e-15,
+      "query_norm_range": [
+        44.08625999525218,
+        51.87113504486692
+      ],
+      "reference_norm_range": [
+        44.929919129193905,
+        52.549571931325914
+      ]
+    },
+    {
+      "model": "clip",
+      "condition": "blur_mild",
+      "queries": 500,
+      "references": 200,
+      "unit_full_order_mismatches": 0,
+      "raw_top5_order_mismatches": 400,
+      "max_identity_error": 4.440892098500626e-15,
+      "query_norm_range": [
+        9.621355417015755,
+        12.35934068375068
+      ],
+      "reference_norm_range": [
+        9.518046649713261,
+        12.152820717905692
+      ]
+    },
+    {
+      "model": "clip",
+      "condition": "blur_moderate",
+      "queries": 500,
+      "references": 200,
+      "unit_full_order_mismatches": 0,
+      "raw_top5_order_mismatches": 457,
+      "max_identity_error": 4.3298697960381105e-15,
+      "query_norm_range": [
+        9.536884534913382,
+        12.371483922013882
+      ],
+      "reference_norm_range": [
+        9.518046649713261,
+        12.152820717905692
+      ]
+    },
+    {
+      "model": "clip",
+      "condition": "clean",
+      "queries": 500,
+      "references": 200,
+      "unit_full_order_mismatches": 0,
+      "raw_top5_order_mismatches": 419,
+      "max_identity_error": 4.9960036108132044e-15,
+      "query_norm_range": [
+        9.44557468810254,
+        12.439044180582462
+      ],
+      "reference_norm_range": [
+        9.518046649713261,
+        12.152820717905692
+      ]
+    },
+    {
+      "model": "clip",
+      "condition": "jpeg_mild",
+      "queries": 500,
+      "references": 200,
+      "unit_full_order_mismatches": 0,
+      "raw_top5_order_mismatches": 417,
+      "max_identity_error": 5.329070518200751e-15,
+      "query_norm_range": [
+        9.289979742035705,
+        12.855279484069255
+      ],
+      "reference_norm_range": [
+        9.518046649713261,
+        12.152820717905692
+      ]
+    },
+    {
+      "model": "clip",
+      "condition": "jpeg_moderate",
+      "queries": 500,
+      "references": 200,
+      "unit_full_order_mismatches": 0,
+      "raw_top5_order_mismatches": 416,
+      "max_identity_error": 4.884981308350689e-15,
+      "query_norm_range": [
+        9.630842279319594,
+        12.387316046052684
+      ],
+      "reference_norm_range": [
+        9.518046649713261,
+        12.152820717905692
+      ]
+    },
+    {
+      "model": "clip",
+      "condition": "occlusion_mild",
+      "queries": 500,
+      "references": 200,
+      "unit_full_order_mismatches": 0,
+      "raw_top5_order_mismatches": 464,
+      "max_identity_error": 4.274358644806853e-15,
+      "query_norm_range": [
+        9.561244300922608,
+        11.986395980871203
+      ],
+      "reference_norm_range": [
+        9.518046649713261,
+        12.152820717905692
+      ]
+    },
+    {
+      "model": "clip",
+      "condition": "occlusion_moderate",
+      "queries": 500,
+      "references": 200,
+      "unit_full_order_mismatches": 0,
+      "raw_top5_order_mismatches": 476,
+      "max_identity_error": 4.3298697960381105e-15,
+      "query_norm_range": [
+        9.825566756932906,
+        12.115127244832413
+      ],
+      "reference_norm_range": [
+        9.518046649713261,
+        12.152820717905692
+      ]
+    }
+  ]
+}

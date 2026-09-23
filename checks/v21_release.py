@@ -20,6 +20,7 @@ def main():
         for name,rec in manifest['files'].items():
             data=z.read(name)
             assert len(data)==rec['bytes'] and hashlib.sha256(data).hexdigest()==rec['sha256'],name
+        # The frozen 2.1 archive stores the pre-migration layout; audit it as published.
         lock=json.loads(z.read('data_v21/manifests/lock.json'))
         assert hashlib.sha256(z.read('configs/v21/experiment.json')).hexdigest()==lock['config_sha256']
         seen=set();ids=set()

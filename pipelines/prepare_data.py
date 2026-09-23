@@ -8,8 +8,7 @@ import cv2
 from PIL import Image, ImageOps, ImageFilter, ImageDraw
 import kagglehub
 
-ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/'data'
+from src.paths import OUT, R1, ROOT, V1
 def digest(data): return hashlib.sha256(data).hexdigest()
 def canonical(obj): return json.dumps(obj,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
 def canvas(path):
@@ -18,7 +17,7 @@ def main():
     if (OUT/'protocol.json').exists(): raise RuntimeError('Protocol already locked. Do not overwrite.')
     OUT.mkdir(exist_ok=True); (OUT/'images').mkdir(exist_ok=True)
     source=Path(kagglehub.dataset_download('bhavikjikadara/dog-and-cat-classification-dataset/versions/1'))
-    pilot=pd.read_csv(ROOT/'data/provenance/pilot_manifest.csv'); excluded=set(pilot[pilot.source.str.contains('bhavik')].source_path)
+    pilot=pd.read_csv(ROOT/'data/v1.0/provenance/pilot_manifest.csv'); excluded=set(pilot[pilot.source.str.contains('bhavik')].source_path)
     paths=[]
     for label in ['cat','dog']:
         items=sorted(p for p in source.rglob('*.jpg') if p.parent.name.lower()==label)

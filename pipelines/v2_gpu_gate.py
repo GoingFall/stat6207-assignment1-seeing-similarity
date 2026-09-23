@@ -16,9 +16,9 @@ from src.benchmarking.resources import ResourceMonitor
 
 
 def main() -> None:
-    config = json.loads((ROOT / "configs/v2/experiment.json").read_text())
+    config = json.loads((ROOT / "configs/v2.0/experiment.json").read_text())
     gate = config["gpu_gate"]
-    paths = sorted((ROOT / "data/images").glob("*.png"))[: gate["images"]]
+    paths = sorted((ROOT / "data/v1.0/images").glob("*.png"))[: gate["images"]]
     if len(paths) != gate["images"]:
         raise RuntimeError(f"Expected {gate['images']} local gate images, found {len(paths)}")
     if not torch.cuda.is_available():
@@ -86,7 +86,7 @@ def main() -> None:
         "resources": resources,
         "target_active_utilization_percent": gate["target_active_utilization_percent"],
     }
-    folder = ROOT / "results_v2/gates"
+    folder = ROOT / "results/v2.0/gates"
     folder.mkdir(parents=True, exist_ok=True)
     (folder / "gpu_gate.json").write_text(json.dumps(result, indent=2), encoding="utf-8")
     print(json.dumps(result, indent=2))

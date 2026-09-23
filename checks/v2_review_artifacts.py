@@ -16,6 +16,7 @@ from src.benchmarking.ann import sharded_exact_l2, choose_candidate
 from src.training.metrics import classification_metrics, class_groups
 from pipelines.v2_train_inat import aggregate_long_tail
 from src.retrieval.open_set import select_threshold
+from src.paths import resolve
 faiss.omp_set_num_threads(16); torch.set_num_threads(16)
 def load(p): return json.loads((ROOT/p).read_text(encoding='utf-8'))
 def rows(p): return [json.loads(x) for x in (ROOT/p).read_text(encoding='utf-8').splitlines()]
@@ -25,9 +26,9 @@ def sha(p):
         for b in iter(lambda:f.read(1048576),b''): h.update(b)
     return h.hexdigest()
 out={}
-sop={s:rows(f'data_v2/manifests/sop_{s}.jsonl') for s in ('train','test')}
-inat=rows('data_v2/manifests/inat_birds_images.jsonl')
-tasks=[(ROOT/'data_v2/processed/sop'/r['path'],r['sha256'],r['bytes']) for rr in sop.values() for r in rr]+[(ROOT/r['local_path'],r['sha256'],r['bytes']) for r in inat]
+sop={s:rows(f'data/v2.0/manifests/sop_{s}.jsonl') for s in ('train','test')}
+inat=rows('data/v2.0/manifests/inat_birds_images.jsonl')
+tasks=[(ROOT/'data/v2.0/processed/sop'/r['path'],r['sha256'],r['bytes']) for rr in sop.values() for r in rr]+[(resolve(r['local_path']),r['sha256'],r['bytes']) for r in inat]
 def check(t):
     p,h,n=t
     return p.exists() and p.stat().st_size==n and sha(p)==h
@@ -39,11 +40,11 @@ out['inat_cross_split_identical_bytes']=sum(len(s)>1 for s in byhash.values())
 sets={s:{r['image_id'] for r in inat if r['split']==s} for s in {r['split'] for r in inat}}
 assert sum(map(len,sets.values()))==len(set.union(*sets.values()))==len(inat)
 for split,rr in sop.items():
-    ids=load(f'data_v2/embeddings/sop/dinov2_{split}_ids.json')
+    ids=load(f'data/v2.0/embeddings/sop/dinov2_{split}_ids.json')
     assert ids==[r['image_id'] for r in rr]
 out['sop_id_alignment']=True
 lab=np.array([r['product_id'] for r in sop['test']]); counts=Counter(lab)
-neigh=np.load(ROOT/'results_v2/sop/exact_top1000.npy',mmap_mode='r')
+neigh=np.load(ROOT/'results/v2.0/sop/exact_top1000.npy',mmap_mode='r')
 hits={k:0 for k in (1,10,100)}; aps=0.; invalid=0; duplicates=0
 for start in range(0,len(lab),256):
     nn=np.asarray(neigh[start:start+256]); q=np.arange(start,start+len(nn))
@@ -54,16 +55,16 @@ for start in range(0,len(lab),256):
     den=np.array([min(counts[l]-1,1000) for l in lab[q]]); assert (den>0).all()
     aps+=np.sum(np.sum(np.cumsum(rel,axis=1)/np.arange(1,1001)*rel,axis=1)/den)
 out['sop_metrics']={**{f'recall_at_{k}':float(v/len(lab)) for k,v in hits.items()},'map_at_1000':float(aps/len(lab)),'duplicate_rows':duplicates}
-for k,v in load('results_v2/sop/retrieval.json')['standard_semantic'].items(): assert abs(out['sop_metrics'][k]-v)<1e-12
+for k,v in load('results/v2.0/sop/retrieval.json')['standard_semantic'].items(): assert abs(out['sop_metrics'][k]-v)<1e-12
 out['ann_selection']={}
-for file in ('results_v2/sop/retrieval.json','results_v2/ann/sift1m.json'):
+for file in ('results/v2.0/sop/retrieval.json','results/v2.0/ann/sift1m.json'):
     r=load(file)
     out['ann_selection'][file]={}
     for family,f in r['families'].items():
         selected=choose_candidate(f['development_candidates'],.95)
         assert selected['name']==f['selected']
         out['ann_selection'][file][family]=f['test']['recall_at_10']
-lt=load('data_v2/manifests/long_tail/index.json')
+lt=load('data/v2.0/manifests/long_tail/index.json')
 out['long_tail_sampling']=[]
 for rec in lt['runs']:
     r=load(rec['path']); selected=[i for ids in r['selected_image_ids'].values() for i in ids]
@@ -71,14 +72,14 @@ for rec in lt['runs']:
     assert all(len(r['selected_image_ids'][c])==n for c,n in r['counts'].items())
     assert max(r['counts'].values())/min(r['counts'].values())==10
     out['long_tail_sampling'].append({'seed':r['seed'],'images':len(selected),'min':min(r['counts'].values()),'max':max(r['counts'].values())})
-training=load('results_v2/inat/training.json')
+training=load('results/v2.0/inat/training.json')
 summary=aggregate_long_tail(training['long_tail'],list(training['long_tail_summary']))
 assert summary==training['long_tail_summary']; out['long_tail_aggregate_matches']=True
-emb=ROOT/'data_v2/embeddings/inat_birds'
+emb=ROOT/'data/v2.0/embeddings/inat_birds'
 train_y=np.load(emb/'train_labels.npy'); classes=np.unique(train_y)
 train_y=np.searchsorted(classes,train_y); y=np.searchsorted(classes,np.load(emb/'test_labels.npy'))
 x=np.load(emb/'test_embeddings.npy'); train_x=np.load(emb/'train_embeddings.npy')
-model=torch.load(ROOT/training['balanced_probe']['model_path'],map_location='cpu',weights_only=False)
+model=torch.load(resolve(training['balanced_probe']['model_path']),map_location='cpu',weights_only=False)
 w=model['state_dict']['weight'].numpy(); b=model['state_dict']['bias'].numpy()
 logits=x@w.T+b
 def softmax(z):
@@ -91,7 +92,7 @@ for i,r in enumerate(train_y[nn]):
     for c,n in Counter(r).items():p[i,c]=n/10
 out['knn_recomputed']=classification_metrics(y,p,dict(Counter(map(int,train_y))))
 out['group_f1_correction_balanced_probe']={g:{'saved':m['groups'][g]['macro_f1'],'corrected':float(f1_score(y,probs.argmax(1),labels=sorted(cs),average='macro',zero_division=0))} for g,cs in class_groups(dict(Counter(map(int,train_y)))).items()}
-osr=load('results_v2/inat/open_set.json'); scores=np.load(ROOT/osr['scores_path'])
+osr=load('results/v2.0/inat/open_set.json'); scores=np.load(resolve(osr['scores_path']))
 out['open_set_recomputed']={}
 for name,r in osr['methods'].items():
     kd,ud,kt,ut=[scores[f'{name}_{s}'] for s in ('known_development','unknown_development','known_test','unknown_test')]
@@ -118,5 +119,5 @@ with zipfile.ZipFile(zpath) as z:
     assert all(len(z.read(n))==r['bytes'] and hashlib.sha256(z.read(n)).hexdigest()==r['sha256'] for n,r in records.items())
     out['release']={'sha256':sha(zpath),'entries':len(z.namelist()),'all_entry_hashes_passed':True,'session_files':[n for n in z.namelist() if 'session' in n]}
 out['v1_archive_sha256']=sha(ROOT/'releases/1.0/Assignment1-submission.zip')
-Path('results_v2/checks/review-2026-09-23.json').write_text(json.dumps(out,indent=2),encoding='utf-8')
+Path('results/v2.0/checks/review-2026-09-23.json').write_text(json.dumps(out,indent=2),encoding='utf-8')
 print(json.dumps(out,indent=2))

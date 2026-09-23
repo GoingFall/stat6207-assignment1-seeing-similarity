@@ -19,8 +19,9 @@ def permitted(name):
     if name in ('README.md','VERSION','requirements.txt','environment.yml','.gitignore','.gitattributes','MANIFEST-2.1.json'): return True
     if p.suffix=='.py' and p.parts[0] in ('src','pipelines','checks','reporting','tools'): return True
     if name.startswith('.github/workflows/') and p.suffix in ('.yml','.yaml'): return True
-    if name.startswith(('configs/v21/','data_v21/manifests/','results_v21/')) and p.suffix=='.json': return True
-    if name.startswith('results_v21/figures/') and p.suffix=='.png': return True
+    # Frozen 2.1 archives store the pre-migration layout; new builds use the current one.
+    if name.startswith(('configs/v21/','configs/v2.1/','data_v21/manifests/','data/v2.1/manifests/','results_v21/','results/v2.1/')) and p.suffix=='.json': return True
+    if name.startswith(('results_v21/figures/','results/v2.1/figures/')) and p.suffix=='.png': return True
     return name in ('docs/report/V21-RESULTS.md','docs/report/V2-REVIEW-2026-09-23.md','releases/2.1/RELEASE-2.1.md')
 
 
@@ -28,15 +29,15 @@ def main():
     folder=ROOT/'releases/2.1'
     archive_path=folder/'Assignment1-2.1.zip'
     if archive_path.exists() or (folder/'MANIFEST-2.1.json').exists(): raise RuntimeError('Revision release already exists')
-    if (ROOT/'VERSION').read_text().strip()!='2.1':raise RuntimeError('VERSION must be 2.1')
+    if tuple(int(p) for p in (ROOT/'VERSION').read_text().strip().split('.'))<(2,1):raise RuntimeError('VERSION must be at least 2.1')
     subprocess.run([sys.executable,'-m','checks.v21_contracts'],cwd=ROOT,check=True)
     subprocess.run([sys.executable,'-m','checks.v21_verify'],cwd=ROOT,check=True)
-    write_json(ROOT/'results_v21/release_source_snapshot.json', {
+    write_json(ROOT/'results/v2.1/release_source_snapshot.json', {
         'scope':'Packaging-time source snapshot; pre-training critical source hashes are separately in provenance.json',
         'files':{p.relative_to(ROOT).as_posix():sha256(p) for directory in ('src','pipelines','checks','reporting','tools') for p in (ROOT/directory).rglob('*.py')},
     })
     paths=[]
-    for directory in ('src','pipelines','checks','reporting','tools','configs/v21','data_v21/manifests','results_v21','.github/workflows'):
+    for directory in ('src','pipelines','checks','reporting','tools','configs/v2.1','data/v2.1/manifests','results/v2.1','.github/workflows'):
         paths.extend(p for p in (ROOT/directory).rglob('*') if p.is_file() and permitted(p.relative_to(ROOT).as_posix()))
     for name in ('README.md','VERSION','requirements.txt','environment.yml','.gitignore','.gitattributes','docs/report/V21-RESULTS.md','docs/report/V2-REVIEW-2026-09-23.md','releases/2.1/RELEASE-2.1.md'):
         p=ROOT/name

@@ -10,15 +10,16 @@ import numpy as np
 from pipelines.prepare_data import ROOT
 from src.benchmarking.ann import recall_metrics, sharded_exact_l2
 from src.benchmarking.vector_io import read_fvecs, read_ivecs
+from src.paths import resolve
 
 
 def main() -> None:
-    config = json.loads((ROOT / "configs/v2/experiment.json").read_text(encoding="utf-8"))
-    lock = json.loads((ROOT / "data_v2/manifests/sift1m_lock.json").read_text(encoding="utf-8"))
-    base = read_fvecs(ROOT / lock["files"]["base"]["path"])
+    config = json.loads((ROOT / "configs/v2.0/experiment.json").read_text(encoding="utf-8"))
+    lock = json.loads((ROOT / "data/v2.0/manifests/sift1m_lock.json").read_text(encoding="utf-8"))
+    base = read_fvecs(resolve(lock["files"]["base"]["path"]))
     count = config["exact"]["feasibility_queries"]
-    queries = read_fvecs(ROOT / lock["files"]["query"]["path"])[:count]
-    official = read_ivecs(ROOT / lock["files"]["groundtruth"]["path"])[:count]
+    queries = read_fvecs(resolve(lock["files"]["query"]["path"]))[:count]
+    official = read_ivecs(resolve(lock["files"]["groundtruth"]["path"]))[:count]
     shard_distances, shard_ids = sharded_exact_l2(
         base, queries, config["exact"]["k"], config["exact"]["query_batch"], config["exact"]["database_shard"]
     )
@@ -53,7 +54,7 @@ def main() -> None:
         "official_top1_tie_order_differences": mismatches,
         "interpretation": "Both exact implementations agree at top-1/top-10; official overlap below 1.0 is caused by equal-distance tie ordering.",
     }
-    output = ROOT / "results_v2/checks/sift1m_exact_audit.json"
+    output = ROOT / "results/v2.0/checks/sift1m_exact_audit.json"
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(result, indent=2), encoding="utf-8")
     print(json.dumps(result, indent=2))

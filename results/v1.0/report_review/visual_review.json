@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "reviewer": "AI assistant; rendered-page inspection, not human review",
+  "current_pages": 11,
+  "previous_pages": 6,
+  "pilot_pages": 7,
+  "reviewed": [
+    "All current and prior pages via rendered contact sheets",
+    "Enlarged current pages 2, 3, 6, 7 and 10 for image captions, tables and references",
+    "All eight rubric tasks and eleven PDF bookmarks",
+    "No out-of-page text, clipped tables, isolated captions or references-only spill page",
+    "Current retrieval, UMAP, normalization, k sensitivity, confusion matrices and GPU attribution restored",
+    "Normalization revision: all ten pages checked via contact sheets; enlarged B2 page 7 checked for formulas, definitions, diagnostic scope and table fit",
+    "Supplement revision: enlarged pages 2, 4, 5 and 9 checked for dog retrieval, class failure rates, OOD page pointer and pixel baseline; A3 now has its own page"
+  ],
+  "scope": "Report content/layout review; no human source-label verification"
+}

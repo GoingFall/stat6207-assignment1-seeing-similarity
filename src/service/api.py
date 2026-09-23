@@ -12,18 +12,18 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def status_payload(root: Path = ROOT) -> dict:
     artifacts = {
-        "gpu_gate": root / "results_v2/gates/gpu_gate.json",
-        "faiss_smoke": root / "results_v2/gates/faiss_smoke.json",
-        "sop_lock": root / "data_v2/manifests/sop_lock.json",
-        "sop_retrieval": root / "results_v2/sop/retrieval.json",
-        "sift1m_lock": root / "data_v2/manifests/sift1m_lock.json",
-        "sift1m_benchmark": root / "results_v2/ann/sift1m.json",
-        "sift1m_scale_sweep": root / "results_v2/ann/sift1m_scales.json",
-        "inat_image_lock": root / "data_v2/manifests/inat_birds_images_lock.json",
-        "inat_encoding": root / "results_v2/inat/encoding.json",
-        "inat_training": root / "results_v2/inat/training.json",
-        "inat_open_set": root / "results_v2/inat/open_set.json",
-        "inat_monitoring": root / "results_v2/inat/monitoring.json",
+        "gpu_gate": root / "results/v2.0/gates/gpu_gate.json",
+        "faiss_smoke": root / "results/v2.0/gates/faiss_smoke.json",
+        "sop_lock": root / "data/v2.0/manifests/sop_lock.json",
+        "sop_retrieval": root / "results/v2.0/sop/retrieval.json",
+        "sift1m_lock": root / "data/v2.0/manifests/sift1m_lock.json",
+        "sift1m_benchmark": root / "results/v2.0/ann/sift1m.json",
+        "sift1m_scale_sweep": root / "results/v2.0/ann/sift1m_scales.json",
+        "inat_image_lock": root / "data/v2.0/manifests/inat_birds_images_lock.json",
+        "inat_encoding": root / "results/v2.0/inat/encoding.json",
+        "inat_training": root / "results/v2.0/inat/training.json",
+        "inat_open_set": root / "results/v2.0/inat/open_set.json",
+        "inat_monitoring": root / "results/v2.0/inat/monitoring.json",
     }
     return {
         "service": "stat6207-retrieval-v2",
@@ -33,11 +33,11 @@ def status_payload(root: Path = ROOT) -> dict:
         "revision_2_1": {
             name: (root / path).exists()
             for name, path in {
-                "split_lock": "data_v21/manifests/lock.json",
-                "training": "results_v21/inat/training.json",
-                "open_set": "results_v21/inat/open_set.json",
-                "monitoring": "results_v21/inat/monitoring.json",
-                "verification": "results_v21/verification.json",
+                "split_lock": "data/v2.1/manifests/lock.json",
+                "training": "results/v2.1/inat/training.json",
+                "open_set": "results/v2.1/inat/open_set.json",
+                "monitoring": "results/v2.1/inat/monitoring.json",
+                "verification": "results/v2.1/verification.json",
             }.items()
         },
     }

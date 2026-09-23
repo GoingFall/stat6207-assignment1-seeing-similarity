@@ -20,6 +20,6 @@ def main():
                 flag='high_confidence_disagreement' if opposite>=.8 and own<=.1 else ('uncertain' if max(cat,dog)<.8 else 'agreement')
                 results.append(dict(id=r['id'],source_label=r['source_label'],cat_mass=cat,dog_mass=dog,flag=flag))
     payload=dict(model='EfficientNet-B0 IMAGENET1K_V1',test_manifest_sha256=p['test_manifest_sha256'],protocol_hash=(OUT/'protocol.sha256').read_text(),labels_changed=0,rows=results,note='Independent model predictions are not verified labels; no filtering or relabeling.')
-    (OUT/'results/label_audit.json').write_text(json.dumps(payload,indent=2));print('Audit flags:',{flag:sum(r['flag']==flag for r in results) for flag in ['agreement','uncertain','high_confidence_disagreement']},flush=True)
+    (R1/'label_audit.json').write_text(json.dumps(payload,indent=2));print('Audit flags:',{flag:sum(r['flag']==flag for r in results) for flag in ['agreement','uncertain','high_confidence_disagreement']},flush=True)
 
 if __name__=='__main__':main()

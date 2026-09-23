@@ -1,0 +1,1638 @@
+{
+  "status": "passed",
+  "config_sha256": "99341037809e7f79195fc9d03542edb61de9a9cc852f476e18d62b1924176e38",
+  "ann_config": {
+    "scales": [
+      10000,
+      50000,
+      120000,
+      1000000
+    ],
+    "query_counts": {
+      "development": 1000,
+      "test": 9000
+    },
+    "selection": {
+      "minimum_development_recall_at_10": 0.95,
+      "rule": "lowest development batch-256 p95 latency meeting recall threshold; otherwise highest recall then lowest latency"
+    },
+    "warmup_queries": 100,
+    "timed_repetitions": 3,
+    "batch_sizes": [
+      1,
+      256
+    ],
+    "hnsw": {
+      "M": 32,
+      "efConstruction": 200,
+      "efSearch": [
+        32,
+        64,
+        128,
+        256
+      ]
+    },
+    "ivf_flat": {
+      "nlist": [
+        256,
+        1024,
+        4096
+      ],
+      "nprobe": [
+        1,
+        4,
+        16,
+        64
+      ]
+    },
+    "ivf_pq": {
+      "nlist": [
+        256,
+        1024,
+        4096
+      ],
+      "nprobe": [
+        1,
+        4,
+        16,
+        64
+      ],
+      "m": 16,
+      "nbits": 8
+    }
+  },
+  "ann_config_sha256": "7bf9129e96548edf7ef09b28c53563913fc3ba7933209f012429e1778a46fc2b",
+  "exact_config": {
+    "query_batch": 256,
+    "database_shard": 100000,
+    "k": 100,
+    "feasibility_queries": 256
+  },
+  "exact_config_sha256": "2bde798ea697a9347a7158214b73cd11417a6cea98122a22f721481f01646f1b",
+  "sift1m_config": {
+    "source": "ftp://ftp.irisa.fr/local/texmex/corpus/sift.tar.gz",
+    "official_page": "http://corpus-texmex.irisa.fr/",
+    "license": "CC0",
+    "archive_md5": "b23d1b3b2ee8469d819b61ca900ef0ed",
+    "expected": {
+      "base": [
+        1000000,
+        128
+      ],
+      "query": [
+        10000,
+        128
+      ],
+      "learn": [
+        100000,
+        128
+      ],
+      "groundtruth": [
+        10000,
+        100
+      ]
+    }
+  },
+  "sift1m_config_sha256": "2d30100912f6d7b0db35412b8357fea0c529fc2575033b83d151783eed7ec567",
+  "data_lock_sha256": "3ce04e78ad0dc258aedd958850a04a1426e85bbd9e95bfa30502e83d9ebc40b5",
+  "faiss": "1.15.1",
+  "threads": 16,
+  "metric_definition": "mean set overlap against official exact top-k; equal-distance tie ordering may reduce overlap without distance error",
+  "development_queries": 1000,
+  "test_queries": 9000,
+  "families": {
+    "hnsw": {
+      "selection_rule": {
+        "minimum_development_recall_at_10": 0.95,
+        "rule": "lowest development batch-256 p95 latency meeting recall threshold; otherwise highest recall then lowest latency"
+      },
+      "development_candidates": [
+        {
+          "name": "hnsw-M32-efConstruction200-efSearch32",
+          "params": {
+            "M": 32,
+            "efConstruction": 200,
+            "efSearch": 32
+          },
+          "build": {
+            "seconds": 82.86585380000179,
+            "rss_before_bytes": 689770496,
+            "rss_after_bytes": 1479835648,
+            "resources": {
+              "samples": 289,
+              "peak_rss_bytes": 1504169984,
+              "gpu_samples": 289,
+              "gpu_active_samples": 0,
+              "gpu_mean_active_utilization_percent": 0.0,
+              "gpu_peak_utilization_percent": 0.0,
+              "gpu_peak_memory_used_mib": 46.0
+            }
+          },
+          "serialized_bytes": 784129506,
+          "development": {
+            "recall_at_1": 0.952,
+            "recall_at_10": 0.9313,
+            "recall_at_100": 0.77232,
+            "batch_256": {
+              "batch_size": 256,
+              "repetitions": 3,
+              "batches": 12,
+              "search_seconds": 0.07457679999060929,
+              "qps": 40226.98748642688,
+              "per_query_p50_ms": 0.025012863674113574,
+              "per_query_p95_ms": 0.027466562514177895,
+              "per_query_p99_ms": 0.028548000020123254,
+              "resources": {
+                "samples": 1,
+                "peak_rss_bytes": 1496346624,
+                "gpu_samples": 1,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            },
+            "single": {
+              "batch_size": 1,
+              "repetitions": 1,
+              "batches": 1000,
+              "search_seconds": 0.1726656005048426,
+              "qps": 5791.541552435362,
+              "per_query_p50_ms": 0.16724999295547605,
+              "per_query_p95_ms": 0.25261500268243253,
+              "per_query_p99_ms": 0.2925270007108338,
+              "resources": {
+                "samples": 1,
+                "peak_rss_bytes": 1498992640,
+                "gpu_samples": 1,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            }
+          }
+        },
+        {
+          "name": "hnsw-M32-efConstruction200-efSearch64",
+          "params": {
+            "M": 32,
+            "efConstruction": 200,
+            "efSearch": 64
+          },
+          "build": {
+            "seconds": 82.86585380000179,
+            "rss_before_bytes": 689770496,
+            "rss_after_bytes": 1479835648,
+            "resources": {
+              "samples": 289,
+              "peak_rss_bytes": 1504169984,
+              "gpu_samples": 289,
+              "gpu_active_samples": 0,
+              "gpu_mean_active_utilization_percent": 0.0,
+              "gpu_peak_utilization_percent": 0.0,
+              "gpu_peak_memory_used_mib": 46.0
+            }
+          },
+          "serialized_bytes": 784129506,
+          "development": {
+            "recall_at_1": 0.979,
+            "recall_at_10": 0.9753,
+            "recall_at_100": 0.90405,
+            "batch_256": {
+              "batch_size": 256,
+              "repetitions": 3,
+              "batches": 12,
+              "search_seconds": 0.11900980003701989,
+              "qps": 25208.008072165507,
+              "per_query_p50_ms": 0.0399245151033389,
+              "per_query_p95_ms": 0.04401857423488309,
+              "per_query_p99_ms": 0.0443002773789658,
+              "resources": {
+                "samples": 1,
+                "peak_rss_bytes": 1499193344,
+                "gpu_samples": 1,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            },
+            "single": {
+              "batch_size": 1,
+              "repetitions": 1,
+              "batches": 1000,
+              "search_seconds": 0.24258230037230533,
+              "qps": 4122.3122975800015,
+              "per_query_p50_ms": 0.2426999999443069,
+              "per_query_p95_ms": 0.32371999113820493,
+              "per_query_p99_ms": 0.3577210023649968,
+              "resources": {
+                "samples": 1,
+                "peak_rss_bytes": 1501274112,
+                "gpu_samples": 1,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            }
+          }
+        },
+        {
+          "name": "hnsw-M32-efConstruction200-efSearch128",
+          "params": {
+            "M": 32,
+            "efConstruction": 200,
+            "efSearch": 128
+          },
+          "build": {
+            "seconds": 82.86585380000179,
+            "rss_before_bytes": 689770496,
+            "rss_after_bytes": 1479835648,
+            "resources": {
+              "samples": 289,
+              "peak_rss_bytes": 1504169984,
+              "gpu_samples": 289,
+              "gpu_active_samples": 0,
+              "gpu_mean_active_utilization_percent": 0.0,
+              "gpu_peak_utilization_percent": 0.0,
+              "gpu_peak_memory_used_mib": 46.0
+            }
+          },
+          "serialized_bytes": 784129506,
+          "development": {
+            "recall_at_1": 0.988,
+            "recall_at_10": 0.9941,
+            "recall_at_100": 0.97102,
+            "batch_256": {
+              "batch_size": 256,
+              "repetitions": 3,
+              "batches": 12,
+              "search_seconds": 0.20340289999148808,
+              "qps": 14749.05225110135,
+              "per_query_p50_ms": 0.06873105471072449,
+              "per_query_p95_ms": 0.07680164332251431,
+              "per_query_p99_ms": 0.07995963899543705,
+              "resources": {
+                "samples": 1,
+                "peak_rss_bytes": 1501396992,
+                "gpu_samples": 1,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            },
+            "single": {
+              "batch_size": 1,
+              "repetitions": 1,
+              "batches": 1000,
+              "search_seconds": 0.4145491001690971,
+              "qps": 2412.25948769903,
+              "per_query_p50_ms": 0.41545000567566603,
+              "per_query_p95_ms": 0.5602150005870498,
+              "per_query_p99_ms": 0.624913999781711,
+              "resources": {
+                "samples": 2,
+                "peak_rss_bytes": 1502220288,
+                "gpu_samples": 2,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            }
+          }
+        },
+        {
+          "name": "hnsw-M32-efConstruction200-efSearch256",
+          "params": {
+            "M": 32,
+            "efConstruction": 200,
+            "efSearch": 256
+          },
+          "build": {
+            "seconds": 82.86585380000179,
+            "rss_before_bytes": 689770496,
+            "rss_after_bytes": 1479835648,
+            "resources": {
+              "samples": 289,
+              "peak_rss_bytes": 1504169984,
+              "gpu_samples": 289,
+              "gpu_active_samples": 0,
+              "gpu_mean_active_utilization_percent": 0.0,
+              "gpu_peak_utilization_percent": 0.0,
+              "gpu_peak_memory_used_mib": 46.0
+            }
+          },
+          "serialized_bytes": 784129506,
+          "development": {
+            "recall_at_1": 0.99,
+            "recall_at_10": 0.999,
+            "recall_at_100": 0.99364,
+            "batch_256": {
+              "batch_size": 256,
+              "repetitions": 3,
+              "batches": 12,
+              "search_seconds": 0.35584439999365713,
+              "qps": 8430.651149922478,
+              "per_query_p50_ms": 0.117678589676557,
+              "per_query_p95_ms": 0.13390510168307926,
+              "per_query_p99_ms": 0.13539445782390855,
+              "resources": {
+                "samples": 2,
+                "peak_rss_bytes": 1502236672,
+                "gpu_samples": 2,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            },
+            "single": {
+              "batch_size": 1,
+              "repetitions": 1,
+              "batches": 1000,
+              "search_seconds": 1.0241004999406869,
+              "qps": 976.4666651934232,
+              "per_query_p50_ms": 1.0107499911100604,
+              "per_query_p95_ms": 1.393954991362989,
+              "per_query_p99_ms": 1.594013000431005,
+              "resources": {
+                "samples": 4,
+                "peak_rss_bytes": 1502265344,
+                "gpu_samples": 4,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            }
+          }
+        }
+      ],
+      "selected": "hnsw-M32-efConstruction200-efSearch64",
+      "selected_params": {
+        "M": 32,
+        "efConstruction": 200,
+        "efSearch": 64
+      },
+      "test": {
+        "recall_at_1": 0.9827777777777778,
+        "recall_at_10": 0.9813333333333333,
+        "recall_at_100": 0.9092022222222222,
+        "batch_256": {
+          "batch_size": 256,
+          "repetitions": 3,
+          "batches": 108,
+          "search_seconds": 1.0916075000714045,
+          "qps": 24734.16497984291,
+          "per_query_p50_ms": 0.04082460938548138,
+          "per_query_p95_ms": 0.046078105475544355,
+          "per_query_p99_ms": 0.05128989058562181,
+          "resources": {
+            "samples": 4,
+            "peak_rss_bytes": 1511161856,
+            "gpu_samples": 4,
+            "gpu_active_samples": 0,
+            "gpu_mean_active_utilization_percent": 0.0,
+            "gpu_peak_utilization_percent": 0.0,
+            "gpu_peak_memory_used_mib": 46.0
+          }
+        },
+        "single": {
+          "batch_size": 1,
+          "repetitions": 1,
+          "batches": 1000,
+          "search_seconds": 0.27273640007479116,
+          "qps": 3666.5439586566918,
+          "per_query_p50_ms": 0.26965000142809004,
+          "per_query_p95_ms": 0.3663999967102427,
+          "per_query_p99_ms": 0.42020199820399284,
+          "resources": {
+            "samples": 2,
+            "peak_rss_bytes": 1506447360,
+            "gpu_samples": 2,
+            "gpu_active_samples": 0,
+            "gpu_mean_active_utilization_percent": 0.0,
+            "gpu_peak_utilization_percent": 0.0,
+            "gpu_peak_memory_used_mib": 46.0
+          }
+        }
+      }
+    },
+    "ivf_flat": {
+      "selection_rule": {
+        "minimum_development_recall_at_10": 0.95,
+        "rule": "lowest development batch-256 p95 latency meeting recall threshold; otherwise highest recall then lowest latency"
+      },
+      "development_candidates": [
+        {
+          "name": "ivf_flat-nlist256-nprobe1",
+          "params": {
+            "nlist": 256,
+            "nprobe": 1
+          },
+          "build": {
+            "seconds": 1.2412331000086851,
+            "rss_before_bytes": 723218432,
+            "rss_after_bytes": 1265127424,
+            "resources": {
+              "samples": 5,
+              "peak_rss_bytes": 910233600,
+              "gpu_samples": 5,
+              "gpu_active_samples": 0,
+              "gpu_mean_active_utilization_percent": 0.0,
+              "gpu_peak_utilization_percent": 0.0,
+              "gpu_peak_memory_used_mib": 46.0
+            }
+          },
+          "serialized_bytes": 520133259,
+          "development": {
+            "recall_at_1": 0.551,
+            "recall_at_10": 0.495,
+            "recall_at_100": 0.41069,
+            "batch_256": {
+              "batch_size": 256,
+              "repetitions": 3,
+              "batches": 12,
+              "search_seconds": 0.1382535999728134,
+              "qps": 21699.25412857191,
+              "per_query_p50_ms": 0.04440664062599353,
+              "per_query_p95_ms": 0.052678281255680304,
+              "per_query_p99_ms": 0.05452284376985972,
+              "resources": {
+                "samples": 1,
+                "peak_rss_bytes": 1265520640,
+                "gpu_samples": 1,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            },
+            "single": {
+              "batch_size": 1,
+              "repetitions": 1,
+              "batches": 1000,
+              "search_seconds": 0.14535140001680702,
+              "qps": 6879.878693183346,
+              "per_query_p50_ms": 0.13515000318875536,
+              "per_query_p95_ms": 0.23391499125864357,
+              "per_query_p99_ms": 0.2987170034612062,
+              "resources": {
+                "samples": 1,
+                "peak_rss_bytes": 1268432896,
+                "gpu_samples": 1,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            }
+          }
+        },
+        {
+          "name": "ivf_flat-nlist256-nprobe4",
+          "params": {
+            "nlist": 256,
+            "nprobe": 4
+          },
+          "build": {
+            "seconds": 1.2412331000086851,
+            "rss_before_bytes": 723218432,
+            "rss_after_bytes": 1265127424,
+            "resources": {
+              "samples": 5,
+              "peak_rss_bytes": 910233600,
+              "gpu_samples": 5,
+              "gpu_active_samples": 0,
+              "gpu_mean_active_utilization_percent": 0.0,
+              "gpu_peak_utilization_percent": 0.0,
+              "gpu_peak_memory_used_mib": 46.0
+            }
+          },
+          "serialized_bytes": 520133259,
+          "development": {
+            "recall_at_1": 0.865,
+            "recall_at_10": 0.8297,
+            "recall_at_100": 0.75642,
+            "batch_256": {
+              "batch_size": 256,
+              "repetitions": 3,
+              "batches": 12,
+              "search_seconds": 0.5247204000188503,
+              "qps": 5717.330601006224,
+              "per_query_p50_ms": 0.17108976296718725,
+              "per_query_p95_ms": 0.19572193358783352,
+              "per_query_p99_ms": 0.19909876173926477,
+              "resources": {
+                "samples": 2,
+                "peak_rss_bytes": 1268727808,
+                "gpu_samples": 2,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            },
+            "single": {
+              "batch_size": 1,
+              "repetitions": 1,
+              "batches": 1000,
+              "search_seconds": 0.4236944003641838,
+              "qps": 2360.191683299228,
+              "per_query_p50_ms": 0.39510000351583585,
+              "per_query_p95_ms": 0.7108299992978573,
+              "per_query_p99_ms": 0.8841450088948477,
+              "resources": {
+                "samples": 2,
+                "peak_rss_bytes": 1268793344,
+                "gpu_samples": 2,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            }
+          }
+        },
+        {
+          "name": "ivf_flat-nlist256-nprobe16",
+          "params": {
+            "nlist": 256,
+            "nprobe": 16
+          },
+          "build": {
+            "seconds": 1.2412331000086851,
+            "rss_before_bytes": 723218432,
+            "rss_after_bytes": 1265127424,
+            "resources": {
+              "samples": 5,
+              "peak_rss_bytes": 910233600,
+              "gpu_samples": 5,
+              "gpu_active_samples": 0,
+              "gpu_mean_active_utilization_percent": 0.0,
+              "gpu_peak_utilization_percent": 0.0,
+              "gpu_peak_memory_used_mib": 46.0
+            }
+          },
+          "serialized_bytes": 520133259,
+          "development": {
+            "recall_at_1": 0.985,
+            "recall_at_10": 0.9848,
+            "recall_at_100": 0.96844,
+            "batch_256": {
+              "batch_size": 256,
+              "repetitions": 3,
+              "batches": 12,
+              "search_seconds": 1.8905130000202917,
+              "qps": 1586.8708651925692,
+              "per_query_p50_ms": 0.6358308593803486,
+              "per_query_p95_ms": 0.6608979115110836,
+              "per_query_p99_ms": 0.6705817698237861,
+              "resources": {
+                "samples": 4,
+                "peak_rss_bytes": 1269813248,
+                "gpu_samples": 4,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            },
+            "single": {
+              "batch_size": 1,
+              "repetitions": 1,
+              "batches": 1000,
+              "search_seconds": 1.1389295999251772,
+              "qps": 878.0173946358894,
+              "per_query_p50_ms": 1.09859999793116,
+              "per_query_p95_ms": 1.655369987565791,
+              "per_query_p99_ms": 1.9202300095639655,
+              "resources": {
+                "samples": 5,
+                "peak_rss_bytes": 1270116352,
+                "gpu_samples": 5,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            }
+          }
+        },
+        {
+          "name": "ivf_flat-nlist256-nprobe64",
+          "params": {
+            "nlist": 256,
+            "nprobe": 64
+          },
+          "build": {
+            "seconds": 1.2412331000086851,
+            "rss_before_bytes": 723218432,
+            "rss_after_bytes": 1265127424,
+            "resources": {
+              "samples": 5,
+              "peak_rss_bytes": 910233600,
+              "gpu_samples": 5,
+              "gpu_active_samples": 0,
+              "gpu_mean_active_utilization_percent": 0.0,
+              "gpu_peak_utilization_percent": 0.0,
+              "gpu_peak_memory_used_mib": 46.0
+            }
+          },
+          "serialized_bytes": 520133259,
+          "development": {
+            "recall_at_1": 0.99,
+            "recall_at_10": 0.9994,
+            "recall_at_100": 0.99964,
+            "batch_256": {
+              "batch_size": 256,
+              "repetitions": 3,
+              "batches": 12,
+              "search_seconds": 7.292977199977031,
+              "qps": 411.35463854315196,
+              "per_query_p50_ms": 2.442112971448688,
+              "per_query_p95_ms": 2.473641904619669,
+              "per_query_p99_ms": 2.4745307947273627,
+              "resources": {
+                "samples": 15,
+                "peak_rss_bytes": 1271422976,
+                "gpu_samples": 15,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            },
+            "single": {
+              "batch_size": 1,
+              "repetitions": 1,
+              "batches": 1000,
+              "search_seconds": 4.35036269997363,
+              "qps": 229.86589141316,
+              "per_query_p50_ms": 4.387200002383906,
+              "per_query_p95_ms": 5.811275010637473,
+              "per_query_p99_ms": 6.704273000941612,
+              "resources": {
+                "samples": 17,
+                "peak_rss_bytes": 1271488512,
+                "gpu_samples": 17,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            }
+          }
+        },
+        {
+          "name": "ivf_flat-nlist1024-nprobe1",
+          "params": {
+            "nlist": 1024,
+            "nprobe": 1
+          },
+          "build": {
+            "seconds": 3.7959609999961685,
+            "rss_before_bytes": 739356672,
+            "rss_after_bytes": 1429692416,
+            "resources": {
+              "samples": 14,
+              "peak_rss_bytes": 779341824,
+              "gpu_samples": 14,
+              "gpu_active_samples": 0,
+              "gpu_mean_active_utilization_percent": 0.0,
+              "gpu_peak_utilization_percent": 0.0,
+              "gpu_peak_memory_used_mib": 46.0
+            }
+          },
+          "serialized_bytes": 520532619,
+          "development": {
+            "recall_at_1": 0.447,
+            "recall_at_10": 0.3814,
+            "recall_at_100": 0.28942,
+            "batch_256": {
+              "batch_size": 256,
+              "repetitions": 3,
+              "batches": 12,
+              "search_seconds": 0.043148499957169406,
+              "qps": 69527.33010366285,
+              "per_query_p50_ms": 0.013966601528636602,
+              "per_query_p95_ms": 0.016380488301592777,
+              "per_query_p99_ms": 0.01638891019069888,
+              "resources": {
+                "samples": 1,
+                "peak_rss_bytes": 1429696512,
+                "gpu_samples": 1,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            },
+            "single": {
+              "batch_size": 1,
+              "repetitions": 1,
+              "batches": 1000,
+              "search_seconds": 0.06979059998411685,
+              "qps": 14328.57720420204,
+              "per_query_p50_ms": 0.06770000618416816,
+              "per_query_p95_ms": 0.10132499955943783,
+              "per_query_p99_ms": 0.12821200041798864,
+              "resources": {
+                "samples": 1,
+                "peak_rss_bytes": 1429745664,
+                "gpu_samples": 1,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            }
+          }
+        },
+        {
+          "name": "ivf_flat-nlist1024-nprobe4",
+          "params": {
+            "nlist": 1024,
+            "nprobe": 4
+          },
+          "build": {
+            "seconds": 3.7959609999961685,
+            "rss_before_bytes": 739356672,
+            "rss_after_bytes": 1429692416,
+            "resources": {
+              "samples": 14,
+              "peak_rss_bytes": 779341824,
+              "gpu_samples": 14,
+              "gpu_active_samples": 0,
+              "gpu_mean_active_utilization_percent": 0.0,
+              "gpu_peak_utilization_percent": 0.0,
+              "gpu_peak_memory_used_mib": 46.0
+            }
+          },
+          "serialized_bytes": 520532619,
+          "development": {
+            "recall_at_1": 0.756,
+            "recall_at_10": 0.6886,
+            "recall_at_100": 0.58465,
+            "batch_256": {
+              "batch_size": 256,
+              "repetitions": 3,
+              "batches": 12,
+              "search_seconds": 0.1386254000099143,
+              "qps": 21641.05567800305,
+              "per_query_p50_ms": 0.04634941407744009,
+              "per_query_p95_ms": 0.05109270408276,
+              "per_query_p99_ms": 0.051421299456153285,
+              "resources": {
+                "samples": 1,
+                "peak_rss_bytes": 1429954560,
+                "gpu_samples": 1,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            },
+            "single": {
+              "batch_size": 1,
+              "repetitions": 1,
+              "batches": 1000,
+              "search_seconds": 0.14027090001036413,
+              "qps": 7129.062406572664,
+              "per_query_p50_ms": 0.13405000208877027,
+              "per_query_p95_ms": 0.21157499577384437,
+              "per_query_p99_ms": 0.26091200750670396,
+              "resources": {
+                "samples": 1,
+                "peak_rss_bytes": 1429962752,
+                "gpu_samples": 1,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            }
+          }
+        },
+        {
+          "name": "ivf_flat-nlist1024-nprobe16",
+          "params": {
+            "nlist": 1024,
+            "nprobe": 16
+          },
+          "build": {
+            "seconds": 3.7959609999961685,
+            "rss_before_bytes": 739356672,
+            "rss_after_bytes": 1429692416,
+            "resources": {
+              "samples": 14,
+              "peak_rss_bytes": 779341824,
+              "gpu_samples": 14,
+              "gpu_active_samples": 0,
+              "gpu_mean_active_utilization_percent": 0.0,
+              "gpu_peak_utilization_percent": 0.0,
+              "gpu_peak_memory_used_mib": 46.0
+            }
+          },
+          "serialized_bytes": 520532619,
+          "development": {
+            "recall_at_1": 0.935,
+            "recall_at_10": 0.9155,
+            "recall_at_100": 0.86205,
+            "batch_256": {
+              "batch_size": 256,
+              "repetitions": 3,
+              "batches": 12,
+              "search_seconds": 0.5385545999743044,
+              "qps": 5570.465836041762,
+              "per_query_p50_ms": 0.1828521551566343,
+              "per_query_p95_ms": 0.19357449218375677,
+              "per_query_p99_ms": 0.19443146093124142,
+              "resources": {
+                "samples": 2,
+                "peak_rss_bytes": 1429983232,
+                "gpu_samples": 2,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            },
+            "single": {
+              "batch_size": 1,
+              "repetitions": 1,
+              "batches": 1000,
+              "search_seconds": 0.4133681000821525,
+              "qps": 2419.151356384928,
+              "per_query_p50_ms": 0.3846499967039563,
+              "per_query_p95_ms": 0.6528400059323755,
+              "per_query_p99_ms": 0.7846060072188265,
+              "resources": {
+                "samples": 2,
+                "peak_rss_bytes": 1430048768,
+                "gpu_samples": 2,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            }
+          }
+        },
+        {
+          "name": "ivf_flat-nlist1024-nprobe64",
+          "params": {
+            "nlist": 1024,
+            "nprobe": 64
+          },
+          "build": {
+            "seconds": 3.7959609999961685,
+            "rss_before_bytes": 739356672,
+            "rss_after_bytes": 1429692416,
+            "resources": {
+              "samples": 14,
+              "peak_rss_bytes": 779341824,
+              "gpu_samples": 14,
+              "gpu_active_samples": 0,
+              "gpu_mean_active_utilization_percent": 0.0,
+              "gpu_peak_utilization_percent": 0.0,
+              "gpu_peak_memory_used_mib": 46.0
+            }
+          },
+          "serialized_bytes": 520532619,
+          "development": {
+            "recall_at_1": 0.989,
+            "recall_at_10": 0.995,
+            "recall_at_100": 0.98712,
+            "batch_256": {
+              "batch_size": 256,
+              "repetitions": 3,
+              "batches": 12,
+              "search_seconds": 1.9042043999943417,
+              "qps": 1575.4611217203965,
+              "per_query_p50_ms": 0.6374316204236383,
+              "per_query_p95_ms": 0.6630144726528897,
+              "per_query_p99_ms": 0.6644563320270436,
+              "resources": {
+                "samples": 4,
+                "peak_rss_bytes": 1430126592,
+                "gpu_samples": 4,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            },
+            "single": {
+              "batch_size": 1,
+              "repetitions": 1,
+              "batches": 1000,
+              "search_seconds": 1.3685039997071726,
+              "qps": 730.7249377524481,
+              "per_query_p50_ms": 1.2755499992636032,
+              "per_query_p95_ms": 2.0891699983621943,
+              "per_query_p99_ms": 2.584429003909463,
+              "resources": {
+                "samples": 5,
+                "peak_rss_bytes": 1430233088,
+                "gpu_samples": 5,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            }
+          }
+        }
+      ],
+      "selected": "ivf_flat-nlist256-nprobe16",
+      "selected_params": {
+        "nlist": 256,
+        "nprobe": 16
+      },
+      "test": {
+        "recall_at_1": 0.9812222222222222,
+        "recall_at_10": 0.9836222222222222,
+        "recall_at_100": 0.96955,
+        "batch_256": {
+          "batch_size": 256,
+          "repetitions": 3,
+          "batches": 108,
+          "search_seconds": 17.446636200067587,
+          "qps": 1547.5762599953453,
+          "per_query_p50_ms": 0.6444722656056001,
+          "per_query_p95_ms": 0.7034712890742867,
+          "per_query_p99_ms": 0.734891937477755,
+          "resources": {
+            "samples": 37,
+            "peak_rss_bytes": 1288953856,
+            "gpu_samples": 37,
+            "gpu_active_samples": 0,
+            "gpu_mean_active_utilization_percent": 0.0,
+            "gpu_peak_utilization_percent": 0.0,
+            "gpu_peak_memory_used_mib": 46.0
+          }
+        },
+        "single": {
+          "batch_size": 1,
+          "repetitions": 1,
+          "batches": 1000,
+          "search_seconds": 1.2614771997614298,
+          "qps": 792.7214223048342,
+          "per_query_p50_ms": 1.2169999972684309,
+          "per_query_p95_ms": 1.865735003229929,
+          "per_query_p99_ms": 2.4428080033976585,
+          "resources": {
+            "samples": 5,
+            "peak_rss_bytes": 1276059648,
+            "gpu_samples": 5,
+            "gpu_active_samples": 0,
+            "gpu_mean_active_utilization_percent": 0.0,
+            "gpu_peak_utilization_percent": 0.0,
+            "gpu_peak_memory_used_mib": 46.0
+          }
+        }
+      }
+    },
+    "ivf_pq": {
+      "selection_rule": {
+        "minimum_development_recall_at_10": 0.95,
+        "rule": "lowest development batch-256 p95 latency meeting recall threshold; otherwise highest recall then lowest latency"
+      },
+      "development_candidates": [
+        {
+          "name": "ivf_pq-m16-nbits8-nlist256-nprobe1",
+          "params": {
+            "nlist": 256,
+            "nprobe": 1,
+            "m": 16,
+            "nbits": 8
+          },
+          "build": {
+            "seconds": 18.01520779999555,
+            "rss_before_bytes": 755941376,
+            "rss_after_bytes": 799309824,
+            "resources": {
+              "samples": 67,
+              "peak_rss_bytes": 832638976,
+              "gpu_samples": 67,
+              "gpu_active_samples": 0,
+              "gpu_mean_active_utilization_percent": 0.0,
+              "gpu_peak_utilization_percent": 0.0,
+              "gpu_peak_memory_used_mib": 46.0
+            }
+          },
+          "serialized_bytes": 24264372,
+          "development": {
+            "recall_at_1": 0.31,
+            "recall_at_10": 0.3665,
+            "recall_at_100": 0.35937,
+            "batch_256": {
+              "batch_size": 256,
+              "repetitions": 3,
+              "batches": 12,
+              "search_seconds": 0.031305500015150756,
+              "qps": 95829.80621769677,
+              "per_query_p50_ms": 0.010313335143689921,
+              "per_query_p95_ms": 0.011682207036756154,
+              "per_query_p99_ms": 0.01169269139154494,
+              "resources": {
+                "samples": 1,
+                "peak_rss_bytes": 799416320,
+                "gpu_samples": 1,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            },
+            "single": {
+              "batch_size": 1,
+              "repetitions": 1,
+              "batches": 1000,
+              "search_seconds": 0.11492440008441918,
+              "qps": 8701.372374060142,
+              "per_query_p50_ms": 0.10965000547003001,
+              "per_query_p95_ms": 0.17143999575637278,
+              "per_query_p99_ms": 0.23240899434313178,
+              "resources": {
+                "samples": 1,
+                "peak_rss_bytes": 799027200,
+                "gpu_samples": 1,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            }
+          }
+        },
+        {
+          "name": "ivf_pq-m16-nbits8-nlist256-nprobe4",
+          "params": {
+            "nlist": 256,
+            "nprobe": 4,
+            "m": 16,
+            "nbits": 8
+          },
+          "build": {
+            "seconds": 18.01520779999555,
+            "rss_before_bytes": 755941376,
+            "rss_after_bytes": 799309824,
+            "resources": {
+              "samples": 67,
+              "peak_rss_bytes": 832638976,
+              "gpu_samples": 67,
+              "gpu_active_samples": 0,
+              "gpu_mean_active_utilization_percent": 0.0,
+              "gpu_peak_utilization_percent": 0.0,
+              "gpu_peak_memory_used_mib": 46.0
+            }
+          },
+          "serialized_bytes": 24264372,
+          "development": {
+            "recall_at_1": 0.398,
+            "recall_at_10": 0.5157,
+            "recall_at_100": 0.55585,
+            "batch_256": {
+              "batch_size": 256,
+              "repetitions": 3,
+              "batches": 12,
+              "search_seconds": 0.09348860001773573,
+              "qps": 32089.4740046473,
+              "per_query_p50_ms": 0.031090968490318494,
+              "per_query_p95_ms": 0.033964873380188595,
+              "per_query_p99_ms": 0.03422538845782207,
+              "resources": {
+                "samples": 1,
+                "peak_rss_bytes": 799031296,
+                "gpu_samples": 1,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            },
+            "single": {
+              "batch_size": 1,
+              "repetitions": 1,
+              "batches": 1000,
+              "search_seconds": 0.27452150007593445,
+              "qps": 3642.7019367277003,
+              "per_query_p50_ms": 0.2607000060379505,
+              "per_query_p95_ms": 0.41873000154737383,
+              "per_query_p99_ms": 0.4933140017965343,
+              "resources": {
+                "samples": 2,
+                "peak_rss_bytes": 799842304,
+                "gpu_samples": 2,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            }
+          }
+        },
+        {
+          "name": "ivf_pq-m16-nbits8-nlist256-nprobe16",
+          "params": {
+            "nlist": 256,
+            "nprobe": 16,
+            "m": 16,
+            "nbits": 8
+          },
+          "build": {
+            "seconds": 18.01520779999555,
+            "rss_before_bytes": 755941376,
+            "rss_after_bytes": 799309824,
+            "resources": {
+              "samples": 67,
+              "peak_rss_bytes": 832638976,
+              "gpu_samples": 67,
+              "gpu_active_samples": 0,
+              "gpu_mean_active_utilization_percent": 0.0,
+              "gpu_peak_utilization_percent": 0.0,
+              "gpu_peak_memory_used_mib": 46.0
+            }
+          },
+          "serialized_bytes": 24264372,
+          "development": {
+            "recall_at_1": 0.428,
+            "recall_at_10": 0.5551,
+            "recall_at_100": 0.6199,
+            "batch_256": {
+              "batch_size": 256,
+              "repetitions": 3,
+              "batches": 12,
+              "search_seconds": 0.2867046000174014,
+              "qps": 10463.731659059242,
+              "per_query_p50_ms": 0.09591953124754582,
+              "per_query_p95_ms": 0.10144560549179005,
+              "per_query_p99_ms": 0.10231099610336969,
+              "resources": {
+                "samples": 2,
+                "peak_rss_bytes": 799862784,
+                "gpu_samples": 2,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            },
+            "single": {
+              "batch_size": 1,
+              "repetitions": 1,
+              "batches": 1000,
+              "search_seconds": 0.804693899830454,
+              "qps": 1242.708563107905,
+              "per_query_p50_ms": 0.7735999970464036,
+              "per_query_p95_ms": 1.1332649984979069,
+              "per_query_p99_ms": 1.3069830116000956,
+              "resources": {
+                "samples": 4,
+                "peak_rss_bytes": 799842304,
+                "gpu_samples": 4,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            }
+          }
+        },
+        {
+          "name": "ivf_pq-m16-nbits8-nlist256-nprobe64",
+          "params": {
+            "nlist": 256,
+            "nprobe": 64,
+            "m": 16,
+            "nbits": 8
+          },
+          "build": {
+            "seconds": 18.01520779999555,
+            "rss_before_bytes": 755941376,
+            "rss_after_bytes": 799309824,
+            "resources": {
+              "samples": 67,
+              "peak_rss_bytes": 832638976,
+              "gpu_samples": 67,
+              "gpu_active_samples": 0,
+              "gpu_mean_active_utilization_percent": 0.0,
+              "gpu_peak_utilization_percent": 0.0,
+              "gpu_peak_memory_used_mib": 46.0
+            }
+          },
+          "serialized_bytes": 24264372,
+          "development": {
+            "recall_at_1": 0.429,
+            "recall_at_10": 0.557,
+            "recall_at_100": 0.62433,
+            "batch_256": {
+              "batch_size": 256,
+              "repetitions": 3,
+              "batches": 12,
+              "search_seconds": 1.1469810999988113,
+              "qps": 2615.561843175192,
+              "per_query_p50_ms": 0.3846333984256489,
+              "per_query_p95_ms": 0.41595910425048166,
+              "per_query_p99_ms": 0.4199886958399828,
+              "resources": {
+                "samples": 5,
+                "peak_rss_bytes": 800464896,
+                "gpu_samples": 5,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            },
+            "single": {
+              "batch_size": 1,
+              "repetitions": 1,
+              "batches": 1000,
+              "search_seconds": 2.9822534000122687,
+              "qps": 335.3169117003559,
+              "per_query_p50_ms": 3.0393999986699782,
+              "per_query_p95_ms": 3.8690549932653084,
+              "per_query_p99_ms": 4.529322998860152,
+              "resources": {
+                "samples": 12,
+                "peak_rss_bytes": 800481280,
+                "gpu_samples": 12,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            }
+          }
+        },
+        {
+          "name": "ivf_pq-m16-nbits8-nlist1024-nprobe1",
+          "params": {
+            "nlist": 1024,
+            "nprobe": 1,
+            "m": 16,
+            "nbits": 8
+          },
+          "build": {
+            "seconds": 19.379612900011125,
+            "rss_before_bytes": 761884672,
+            "rss_after_bytes": 815349760,
+            "resources": {
+              "samples": 73,
+              "peak_rss_bytes": 838856704,
+              "gpu_samples": 73,
+              "gpu_active_samples": 0,
+              "gpu_mean_active_utilization_percent": 0.0,
+              "gpu_peak_utilization_percent": 0.0,
+              "gpu_peak_memory_used_mib": 46.0
+            }
+          },
+          "serialized_bytes": 24663732,
+          "development": {
+            "recall_at_1": 0.269,
+            "recall_at_10": 0.3119,
+            "recall_at_100": 0.2717,
+            "batch_256": {
+              "batch_size": 256,
+              "repetitions": 3,
+              "batches": 12,
+              "search_seconds": 0.022621999989496544,
+              "qps": 132614.26935694934,
+              "per_query_p50_ms": 0.007298484654217552,
+              "per_query_p95_ms": 0.009031894529698548,
+              "per_query_p99_ms": 0.009168878897298782,
+              "resources": {
+                "samples": 1,
+                "peak_rss_bytes": 815919104,
+                "gpu_samples": 1,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            },
+            "single": {
+              "batch_size": 1,
+              "repetitions": 1,
+              "batches": 1000,
+              "search_seconds": 0.07269019994419068,
+              "qps": 13757.012647754023,
+              "per_query_p50_ms": 0.06739999662386253,
+              "per_query_p95_ms": 0.10180499011767097,
+              "per_query_p99_ms": 0.12070900222170165,
+              "resources": {
+                "samples": 1,
+                "peak_rss_bytes": 817528832,
+                "gpu_samples": 1,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            }
+          }
+        },
+        {
+          "name": "ivf_pq-m16-nbits8-nlist1024-nprobe4",
+          "params": {
+            "nlist": 1024,
+            "nprobe": 4,
+            "m": 16,
+            "nbits": 8
+          },
+          "build": {
+            "seconds": 19.379612900011125,
+            "rss_before_bytes": 761884672,
+            "rss_after_bytes": 815349760,
+            "resources": {
+              "samples": 73,
+              "peak_rss_bytes": 838856704,
+              "gpu_samples": 73,
+              "gpu_active_samples": 0,
+              "gpu_mean_active_utilization_percent": 0.0,
+              "gpu_peak_utilization_percent": 0.0,
+              "gpu_peak_memory_used_mib": 46.0
+            }
+          },
+          "serialized_bytes": 24663732,
+          "development": {
+            "recall_at_1": 0.411,
+            "recall_at_10": 0.4722,
+            "recall_at_100": 0.48275,
+            "batch_256": {
+              "batch_size": 256,
+              "repetitions": 3,
+              "batches": 12,
+              "search_seconds": 0.0390571000170894,
+              "qps": 76810.61826626536,
+              "per_query_p50_ms": 0.012512176740215339,
+              "per_query_p95_ms": 0.01631009835734701,
+              "per_query_p99_ms": 0.016656847288737512,
+              "resources": {
+                "samples": 1,
+                "peak_rss_bytes": 817549312,
+                "gpu_samples": 1,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            },
+            "single": {
+              "batch_size": 1,
+              "repetitions": 1,
+              "batches": 1000,
+              "search_seconds": 0.1321491995768156,
+              "qps": 7567.204365991795,
+              "per_query_p50_ms": 0.1299499999731779,
+              "per_query_p95_ms": 0.18590500330901705,
+              "per_query_p99_ms": 0.218547004769789,
+              "resources": {
+                "samples": 1,
+                "peak_rss_bytes": 818151424,
+                "gpu_samples": 1,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            }
+          }
+        },
+        {
+          "name": "ivf_pq-m16-nbits8-nlist1024-nprobe16",
+          "params": {
+            "nlist": 1024,
+            "nprobe": 16,
+            "m": 16,
+            "nbits": 8
+          },
+          "build": {
+            "seconds": 19.379612900011125,
+            "rss_before_bytes": 761884672,
+            "rss_after_bytes": 815349760,
+            "resources": {
+              "samples": 73,
+              "peak_rss_bytes": 838856704,
+              "gpu_samples": 73,
+              "gpu_active_samples": 0,
+              "gpu_mean_active_utilization_percent": 0.0,
+              "gpu_peak_utilization_percent": 0.0,
+              "gpu_peak_memory_used_mib": 46.0
+            }
+          },
+          "serialized_bytes": 24663732,
+          "development": {
+            "recall_at_1": 0.444,
+            "recall_at_10": 0.545,
+            "recall_at_100": 0.60047,
+            "batch_256": {
+              "batch_size": 256,
+              "repetitions": 3,
+              "batches": 12,
+              "search_seconds": 0.1023851000063587,
+              "qps": 29301.13854275361,
+              "per_query_p50_ms": 0.033369181029887965,
+              "per_query_p95_ms": 0.04007103718953627,
+              "per_query_p99_ms": 0.04028869022371165,
+              "resources": {
+                "samples": 1,
+                "peak_rss_bytes": 818151424,
+                "gpu_samples": 1,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            },
+            "single": {
+              "batch_size": 1,
+              "repetitions": 1,
+              "batches": 1000,
+              "search_seconds": 0.321150600182591,
+              "qps": 3113.8039269783317,
+              "per_query_p50_ms": 0.3138499887427315,
+              "per_query_p95_ms": 0.45446499643730925,
+              "per_query_p99_ms": 0.5359110060089733,
+              "resources": {
+                "samples": 2,
+                "peak_rss_bytes": 818163712,
+                "gpu_samples": 2,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            }
+          }
+        },
+        {
+          "name": "ivf_pq-m16-nbits8-nlist1024-nprobe64",
+          "params": {
+            "nlist": 1024,
+            "nprobe": 64,
+            "m": 16,
+            "nbits": 8
+          },
+          "build": {
+            "seconds": 19.379612900011125,
+            "rss_before_bytes": 761884672,
+            "rss_after_bytes": 815349760,
+            "resources": {
+              "samples": 73,
+              "peak_rss_bytes": 838856704,
+              "gpu_samples": 73,
+              "gpu_active_samples": 0,
+              "gpu_mean_active_utilization_percent": 0.0,
+              "gpu_peak_utilization_percent": 0.0,
+              "gpu_peak_memory_used_mib": 46.0
+            }
+          },
+          "serialized_bytes": 24663732,
+          "development": {
+            "recall_at_1": 0.459,
+            "recall_at_10": 0.5588,
+            "recall_at_100": 0.62953,
+            "batch_256": {
+              "batch_size": 256,
+              "repetitions": 3,
+              "batches": 12,
+              "search_seconds": 0.32830829996964894,
+              "qps": 9137.752534058201,
+              "per_query_p50_ms": 0.10695136717231435,
+              "per_query_p95_ms": 0.12466595769441921,
+              "per_query_p99_ms": 0.12892801911793242,
+              "resources": {
+                "samples": 2,
+                "peak_rss_bytes": 818176000,
+                "gpu_samples": 2,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            },
+            "single": {
+              "batch_size": 1,
+              "repetitions": 1,
+              "batches": 1000,
+              "search_seconds": 0.9206701001239708,
+              "qps": 1086.1653917786048,
+              "per_query_p50_ms": 0.8900000029825605,
+              "per_query_p95_ms": 1.2428499903762713,
+              "per_query_p99_ms": 1.4239600011205766,
+              "resources": {
+                "samples": 4,
+                "peak_rss_bytes": 818208768,
+                "gpu_samples": 4,
+                "gpu_active_samples": 0,
+                "gpu_mean_active_utilization_percent": 0.0,
+                "gpu_peak_utilization_percent": 0.0,
+                "gpu_peak_memory_used_mib": 46.0
+              }
+            }
+          }
+        }
+      ],
+      "selected": "ivf_pq-m16-nbits8-nlist1024-nprobe64",
+      "selected_params": {
+        "nlist": 1024,
+        "nprobe": 64,
+        "m": 16,
+        "nbits": 8
+      },
+      "test": {
+        "recall_at_1": 0.464,
+        "recall_at_10": 0.5630777777777778,
+        "recall_at_100": 0.6381044444444445,
+        "batch_256": {
+          "batch_size": 256,
+          "repetitions": 3,
+          "batches": 108,
+          "search_seconds": 3.042607099938323,
+          "qps": 8873.968643715885,
+          "per_query_p50_ms": 0.11173144531539947,
+          "per_query_p95_ms": 0.13064396486299756,
+          "per_query_p99_ms": 0.13716447812271326,
+          "resources": {
+            "samples": 11,
+            "peak_rss_bytes": 816992256,
+            "gpu_samples": 11,
+            "gpu_active_samples": 0,
+            "gpu_mean_active_utilization_percent": 0.0,
+            "gpu_peak_utilization_percent": 0.0,
+            "gpu_peak_memory_used_mib": 46.0
+          }
+        },
+        "single": {
+          "batch_size": 1,
+          "repetitions": 1,
+          "batches": 1000,
+          "search_seconds": 0.8971053999412106,
+          "qps": 1114.696221943968,
+          "per_query_p50_ms": 0.872799995704554,
+          "per_query_p95_ms": 1.2418049962434452,
+          "per_query_p99_ms": 1.3580209933570586,
+          "resources": {
+            "samples": 4,
+            "peak_rss_bytes": 802525184,
+            "gpu_samples": 4,
+            "gpu_active_samples": 0,
+            "gpu_mean_active_utilization_percent": 0.0,
+            "gpu_peak_utilization_percent": 0.0,
+            "gpu_peak_memory_used_mib": 46.0
+          }
+        }
+      }
+    }
+  },
+  "exact_build": {
+    "seconds": 0.0788544999959413,
+    "rss_before_bytes": 683081728,
+    "rss_after_bytes": 1195261952,
+    "resources": {
+      "samples": 1,
+      "peak_rss_bytes": 683196416,
+      "gpu_samples": 1,
+      "gpu_active_samples": 0,
+      "gpu_mean_active_utilization_percent": 0.0,
+      "gpu_peak_utilization_percent": 0.0,
+      "gpu_peak_memory_used_mib": 46.0
+    }
+  },
+  "exact_feasibility": {
+    "implementation": "bounded NumPy exact L2 with deterministic shard top-k merge",
+    "recall_at_1": 0.99609375,
+    "recall_at_10": 0.999609375,
+    "recall_at_100": 1.0,
+    "seconds": 1.8758881999965524,
+    "qps": 136.46868720666322,
+    "query_batch": 256,
+    "database_shard": 100000,
+    "resources": {
+      "samples": 7,
+      "peak_rss_bytes": 1812324352,
+      "gpu_samples": 7,
+      "gpu_active_samples": 0,
+      "gpu_mean_active_utilization_percent": 0.0,
+      "gpu_peak_utilization_percent": 0.0,
+      "gpu_peak_memory_used_mib": 46.0
+    },
+    "interpretation": "Recall below 1.0 against official IDs is caused by equal-distance tie ordering; independent sharded exact and Faiss Flat agree at top-1/top-10."
+  },
+  "ivf_feasibility": {
+    "training_vectors": 100000,
+    "minimum_vectors_per_centroid": 39,
+    "excluded_nlist": [
+      4096
+    ]
+  },
+  "exact_audit": "results_v2/checks/sift1m_exact_audit.json"
+}

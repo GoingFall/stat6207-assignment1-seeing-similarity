@@ -11,7 +11,7 @@ from src.retrieval.encoders import load_encoder
 from pipelines.prepare_data import ROOT,OUT
 
 def main():
-    torch.set_num_threads(4);data=json.loads((ROOT/'site/assets/data.json').read_text());qi=next(i for i,r in enumerate(data['queries']) if r['id']==data['protocol']['display_ids'][0]);query=data['queries'][qi]
+    torch.set_num_threads(4);data=json.loads((ROOT/'site/v1.0/assets/data.json').read_text());qi=next(i for i,r in enumerate(data['queries']) if r['id']==data['protocol']['display_ids'][0]);query=data['queries'][qi]
     key='resnet18|cosine|clean';rank=data['ranks'][key][qi];candidates=[data['reference'][rank[0]],data['reference'][rank[-1]]]
     model,process,forward=load_encoder('resnet18','cuda');activations=[]
     def capture(module,inputs,output):
@@ -31,7 +31,7 @@ def main():
             axes[row,2*col].set_title(r['id'],fontsize=9);axes[row,2*col+1].set_title('Positive similarity evidence',fontsize=8)
         records.append(dict(query=query['id'],candidate=candidate['id'],rank='nearest' if row==0 else 'farthest',cosine_similarity=score))
     for ax in axes.flat:ax.axis('off')
-    fig.suptitle('ResNet-18 pairwise cosine Grad-CAM: nearest pair (top), farthest pair (bottom)',fontsize=11);fig.tight_layout();fig.savefig(OUT/'figures/gradcam.png',dpi=180);plt.close(fig);hook.remove()
-    (OUT/'results/gradcam.json').write_text(json.dumps(dict(device=torch.cuda.get_device_name(),selection='first prespecified display ID; nearest/farthest under ResNet cosine seed1001',pairs=records),indent=2));print('GPU pairwise attribution complete')
+    fig.suptitle('ResNet-18 pairwise cosine Grad-CAM: nearest pair (top), farthest pair (bottom)',fontsize=11);fig.tight_layout();fig.savefig(R1/'figures/gradcam.png',dpi=180);plt.close(fig);hook.remove()
+    (R1/'gradcam.json').write_text(json.dumps(dict(device=torch.cuda.get_device_name(),selection='first prespecified display ID; nearest/farthest under ResNet cosine seed1001',pairs=records),indent=2));print('GPU pairwise attribution complete')
 
 if __name__=='__main__':main()

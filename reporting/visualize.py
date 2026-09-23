@@ -5,10 +5,10 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from PIL import Image
-from pipelines.prepare_data import ROOT,OUT
+from pipelines.prepare_data import ROOT,OUT,R1
 
 def main():
-    site=json.loads((ROOT/'site/assets/data.json').read_text());data=site['evaluation'];p=site['protocol'];figures=OUT/'figures'
+    site=json.loads((ROOT/'site/v1.0/assets/data.json').read_text());data=site['evaluation'];p=site['protocol'];figures=R1/'figures'
     queries=site['queries'];refs=site['reference'];models=p['models'];colors=['#266a9f','#ba6031','#558255']
     qi=next(i for i,r in enumerate(queries) if r['id']==p['display_ids'][0]);q=queries[qi]
     key='resnet18|cosine|clean';rank=site['ranks'][key][qi];ds=site['distances'][key][qi]
@@ -70,7 +70,7 @@ def main():
     fig,ax=plt.subplots(figsize=(10,6))
     for i,r in enumerate(data['comparisons']):ax.plot(np.array(r['ci'])*100,[i,i],color=colors[0]);ax.scatter(r['difference']*100,i,color=colors[0])
     ax.axvline(0,color='gray',lw=.8);ax.set_yticks(range(12),[r['a']+' minus '+r['b'] for r in data['comparisons']],fontsize=8);ax.set(xlabel='Paired accuracy difference (percentage points), 95% query interval',title='Prespecified six-perturbation endpoint, 100/class, k=5');ax.invert_yaxis();fig.tight_layout();fig.savefig(figures/'effects.png',dpi=180);plt.close(fig)
-    prediction=np.load(OUT/'results/predictions.npz')['resnet18|cosine|raw|clean|100|5'][0];truth=np.array(data['truth']);fig,axes=plt.subplots(2,5,figsize=(12,5))
+    prediction=np.load(R1/'predictions.npz')['resnet18|cosine|raw|clean|100|5'][0];truth=np.array(data['truth']);fig,axes=plt.subplots(2,5,figsize=(12,5))
     for ax,ident in zip(axes.flat,p['display_ids']):
         i=next(i for i,r in enumerate(queries) if r['id']==ident);r=queries[i];guess='dog' if prediction[i] else 'cat';ax.imshow(Image.open(OUT/r['image']));ax.axis('off');ax.set_title(f"{ident}\nSource {r['source_label']} / {guess}",fontsize=8)
     fig.suptitle('Ten preselected unseen images; ResNet-18 cosine k=5, seed 1001');fig.tight_layout();fig.savefig(figures/'unseen.png',dpi=180);plt.close(fig)

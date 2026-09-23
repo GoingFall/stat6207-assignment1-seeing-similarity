@@ -1,0 +1,5 @@
+{
+  "status": "passed",
+  "independent_scipy_query_seed_checks": 50,
+  "pixel_accuracy": 0.5212
+}

@@ -10,7 +10,7 @@ from pipelines.prepare_data import ROOT
 from src.training.long_tail import sample_ids
 
 
-OUTPUT = ROOT / "data_v2/manifests/long_tail"
+OUTPUT = ROOT / "data/v2.0/manifests/long_tail"
 
 
 def canonical(value: object) -> bytes:
@@ -18,9 +18,9 @@ def canonical(value: object) -> bytes:
 
 
 def main() -> None:
-    config_path = ROOT / "configs/v2/experiment.json"
+    config_path = ROOT / "configs/v2.0/experiment.json"
     config = json.loads(config_path.read_text(encoding="utf-8"))
-    source_path = ROOT / "data_v2/manifests/inat_birds_train.jsonl"
+    source_path = ROOT / "data/v2.0/manifests/inat_birds_train.jsonl"
     candidates = defaultdict(list)
     for line in source_path.read_text(encoding="utf-8").splitlines():
         row = json.loads(line)

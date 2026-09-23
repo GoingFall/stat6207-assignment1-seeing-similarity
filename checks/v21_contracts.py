@@ -18,9 +18,11 @@ def main():
     except AssertionError: pass
     else: raise AssertionError('Content leakage was accepted')
     from tools.package_v21 import permitted
-    for name in ('docs/session/session-transcript.md','data_v21/embeddings/a.npy','results_v21/inat/model.pt','releases/2.0/Assignment1-2.0.zip','../secret.json','results_v21/inat/training_partial.json'):
+    for name in ('docs/session/session-transcript.md','data_v21/embeddings/a.npy','results_v21/inat/model.pt','releases/2.0/Assignment1-2.0.zip','../secret.json','results_v21/inat/training_partial.json',
+                 'data/v2.1/embeddings/a.npy','results/v2.1/inat/model.pt','results/v2.1/inat/training_partial.json'):
         assert not permitted(name), name
-    assert permitted('data_v21/manifests/lock.json')
+    assert permitted('data_v21/manifests/lock.json')  # frozen 2.1 archive layout
+    assert permitted('data/v2.1/manifests/lock.json')  # current layout
     print('V2.1 regression contracts passed')
 
 if __name__ == '__main__': main()

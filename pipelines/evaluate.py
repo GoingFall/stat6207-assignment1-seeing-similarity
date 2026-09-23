@@ -9,7 +9,7 @@ from torchvision.models import efficientnet_b0, EfficientNet_B0_Weights
 from sklearn.metrics import f1_score, confusion_matrix
 from src.retrieval.encoders import encode
 from src.retrieval.distances import normalize, pairwise
-from pipelines.prepare_data import OUT, digest, canonical
+from pipelines.prepare_data import OUT, digest, canonical,R1
 
 
 def load_locked():
@@ -27,7 +27,7 @@ def load_locked():
 def main():
     torch.set_num_threads(4);torch.manual_seed(42)
     p,rows=load_locked(); protocol_hash=(OUT/'protocol.sha256').read_text().strip()
-    out=OUT/'results';out.mkdir(exist_ok=True); cache=OUT/'embeddings';cache.mkdir(exist_ok=True)
+    out=R1;out.mkdir(exist_ok=True); cache=OUT/'embeddings';cache.mkdir(exist_ok=True)
     test=np.array([i for i,r in enumerate(rows) if r['split']=='test'])
     refs=np.array([i for i,r in enumerate(rows) if r['split']=='reference'])
     label=np.array([r['source_label']=='dog' for r in rows]); truth=label[test]

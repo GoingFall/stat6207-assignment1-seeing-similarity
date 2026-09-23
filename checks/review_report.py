@@ -5,8 +5,8 @@ from PIL import Image,ImageOps,ImageDraw
 from pipelines.prepare_data import ROOT,OUT
 
 def main():
-    folder=OUT/'results/report_review';folder.mkdir(exist_ok=True)
-    reports={'pilot':ROOT/'backup/pilot/report.pdf','previous':ROOT/'backup/v3-before-reorganization/report.pdf','current':ROOT/'report.pdf'}
+    folder=R1/'report_review';folder.mkdir(exist_ok=True)
+    reports={'pilot':ROOT/'archive/2026-09-21-pilot-270-image/report.pdf','previous':ROOT/'archive/2026-09-21-v1.0-before-source-reorganization/report.pdf','current':ROOT/'report/v1.0/report.pdf'}
     summary={}
     for name,path in reports.items():
         if not path.exists():continue
@@ -27,7 +27,7 @@ def main():
             sheet.save(destination/f'{name}-contact-{start//4+1}.png')
         (target/'text.txt').write_text('\n\n'.join(texts),encoding='utf-8')
         summary[name]=dict(pages=len(doc),characters=sum(map(len,texts)),page_characters=list(map(len,texts)),out_of_bounds=issues)
-    current=pymupdf.open(ROOT/'report.pdf');content='\n'.join(page.get_text() for page in current)
+    current=pymupdf.open(ROOT/'report/v1.0/report.pdf');content='\n'.join(page.get_text() for page in current)
     assert not summary['current']['out_of_bounds']
     assert all(section in content for section in ['A1.','A2.','A3.','A4.','A5.','B1.','B2.','B3.','C. OpenCode'])
     assert len(current.get_toc())==11

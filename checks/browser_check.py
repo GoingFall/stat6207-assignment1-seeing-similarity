@@ -6,7 +6,7 @@ from playwright.sync_api import sync_playwright
 from pipelines.prepare_data import ROOT,OUT
 
 def main():
-    server=ThreadingHTTPServer(('127.0.0.1',0),partial(SimpleHTTPRequestHandler,directory=str(ROOT/'site')))
+    server=ThreadingHTTPServer(('127.0.0.1',0),partial(SimpleHTTPRequestHandler,directory=str(ROOT/'site/v1.0')))
     threading.Thread(target=server.serve_forever,daemon=True).start();errors=[]
     with sync_playwright() as p:
         browser=p.chromium.launch(channel='msedge');page=browser.new_page(viewport={'width':1440,'height':1000})
@@ -19,8 +19,8 @@ def main():
         assert page.locator('#metric option[value="cosine"]').inner_text()=='Cosine (unit directions)'
         page.locator('#normalization-guide summary').click()
         assert 'rank mismatches: 0' in page.locator('#normalization-verification').inner_text()
-        page.locator('#normalization-guide').screenshot(path=str(OUT/'results/normalization-guide.png'))
-        data=json.loads((ROOT/'site/assets/data.json').read_text())
+        page.locator('#normalization-guide').screenshot(path=str(R1/'normalization-guide.png'))
+        data=json.loads((ROOT/'site/v1.0/assets/data.json').read_text())
         page.wait_for_function("document.querySelectorAll('#heatmap-output canvas').length===2")
         before=page.locator('#nearest').inner_text();page.select_option('#metric','l1')
         assert page.locator('#nearest').inner_text()!=before
@@ -67,16 +67,16 @@ def main():
         assert data['queries'][int(page.locator('#query').input_value())]['id'] in page.locator('#map-selection').inner_text()
         page.wait_for_function("document.querySelector('#heatmap-output canvas') !== null")
         page.wait_for_function('Array.from(document.images).every(i=>i.complete && i.naturalWidth>0)')
-        page.locator('#maps').screenshot(path=str(OUT/'results/umap-after.png'))
-        page.locator('#lab').screenshot(path=str(OUT/'results/retrieval-heatmaps.png'))
-        page.locator('#cases').screenshot(path=str(OUT/'results/case-heatmaps.png'))
-        page.screenshot(path=str(OUT/'results/desktop.png'),full_page=True)
+        page.locator('#maps').screenshot(path=str(R1/'umap-after.png'))
+        page.locator('#lab').screenshot(path=str(R1/'retrieval-heatmaps.png'))
+        page.locator('#cases').screenshot(path=str(R1/'case-heatmaps.png'))
+        page.screenshot(path=str(R1/'desktop.png'),full_page=True)
         page.set_viewport_size({'width':390,'height':844})
         page.wait_for_function('document.documentElement.scrollWidth <= innerWidth+1')
-        page.locator('#normalization-guide').screenshot(path=str(OUT/'results/normalization-mobile.png'))
-        page.screenshot(path=str(OUT/'results/mobile.png'),full_page=True)
+        page.locator('#normalization-guide').screenshot(path=str(R1/'normalization-mobile.png'))
+        page.screenshot(path=str(R1/'mobile.png'),full_page=True)
         assert not errors,errors;browser.close()
-    server.shutdown();(OUT/'results/browser_check.json').write_text(json.dumps(dict(status='passed',browser='Edge',page_errors=errors,checks=['63 control combinations match recorded ranks/votes','actual k voting set','21 condition/metric heatmaps','14 unseen/error heatmaps','pair selector and overlay toggle','model scope guard','12 comparison rows','map click and selected marker','all image resources','390px responsive layout']),indent=2))
+    server.shutdown();(R1/'browser_check.json').write_text(json.dumps(dict(status='passed',browser='Edge',page_errors=errors,checks=['63 control combinations match recorded ranks/votes','actual k voting set','21 condition/metric heatmaps','14 unseen/error heatmaps','pair selector and overlay toggle','model scope guard','12 comparison rows','map click and selected marker','all image resources','390px responsive layout']),indent=2))
     print('Formal browser checks passed')
 
 if __name__=='__main__':main()

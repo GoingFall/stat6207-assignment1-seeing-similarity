@@ -16,6 +16,7 @@ from pipelines.prepare_data import ROOT
 from src.benchmarking.ann import choose_candidate, overlap_recall, timed_search
 from src.benchmarking.resources import ResourceMonitor, process_rss_bytes
 from src.retrieval.metrics import remove_self, retrieval_metrics
+from src.paths import resolve
 
 
 def file_hash(path: Path) -> str:
@@ -50,13 +51,13 @@ def build(family: str, dimension: int, params: dict):
 
 
 def main() -> None:
-    config_path = ROOT / "configs/v2/experiment.json"
+    config_path = ROOT / "configs/v2.0/experiment.json"
     config = json.loads(config_path.read_text(encoding="utf-8"))
     ann, sop = config["ann"], config["sop"]
-    lock_path = ROOT / "data_v2/manifests/sop_lock.json"
+    lock_path = ROOT / "data/v2.0/manifests/sop_lock.json"
     lock = json.loads(lock_path.read_text(encoding="utf-8"))
-    manifest = load_manifest(ROOT / lock["manifests"]["test"]["path"])
-    vectors_path = ROOT / "data_v2/embeddings/sop/dinov2_test.npy"
+    manifest = load_manifest(resolve(lock["manifests"]["test"]["path"]))
+    vectors_path = ROOT / "data/v2.0/embeddings/sop/dinov2_test.npy"
     vectors = np.load(vectors_path)
     if vectors.shape != (len(manifest), 384):
         raise AssertionError("Embedding rows do not match the frozen SOP test manifest")
@@ -64,7 +65,7 @@ def main() -> None:
     product_ids = np.array([row["product_id"] for row in manifest], dtype=np.int64)
     k_search = 1001
     faiss.omp_set_num_threads(16)
-    output = ROOT / "results_v2/sop"
+    output = ROOT / "results/v2.0/sop"
     output.mkdir(parents=True, exist_ok=True)
 
     exact = faiss.IndexFlatIP(vectors.shape[1])

@@ -1,0 +1,18 @@
+{
+  "device": "NVIDIA GeForce RTX 5070 Laptop GPU",
+  "selection": "first prespecified display ID; nearest/farthest under ResNet cosine seed1001",
+  "pairs": [
+    {
+      "query": "cat_0525",
+      "candidate": "cat_0289",
+      "rank": "nearest",
+      "cosine_similarity": 0.8171595931053162
+    },
+    {
+      "query": "cat_0525",
+      "candidate": "dog_0329",
+      "rank": "farthest",
+      "cosine_similarity": 0.4347233176231384
+    }
+  ]
+}

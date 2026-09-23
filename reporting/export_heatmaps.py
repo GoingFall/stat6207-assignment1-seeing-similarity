@@ -13,7 +13,7 @@ from src.retrieval.encoders import load_encoder
 from pipelines.prepare_data import ROOT,OUT,digest
 
 def main():
-    torch.set_num_threads(4);site=ROOT/'site';d=json.loads((site/'assets/data.json').read_text());conditions=list(d['protocol']['conditions']);refs=d['reference'];queries=d['queries'];folder=site/'heatmaps';folder.mkdir(exist_ok=True)
+    torch.set_num_threads(4);site=ROOT/'site/v1.0';d=json.loads((site/'assets/data.json').read_text());conditions=list(d['protocol']['conditions']);refs=d['reference'];queries=d['queries'];folder=site/'heatmaps';folder.mkdir(exist_ok=True)
     model,process,forward=load_encoder('resnet18','cuda');captured=[]
     hook=model.layer4.register_forward_hook(lambda m,i,o:captured.append(o.detach()))
     paths=[OUT/r['image'] for r in refs]+[OUT/r['image'] if c=='clean' else OUT/c/f"{r['id']}.png" for c in conditions for r in queries]
@@ -48,6 +48,6 @@ def main():
             records.append(dict(condition=c,metric=metric,bytes=len(raw),sha256=digest(raw)))
             print('Exported',c,metric,flush=True)
     meta=dict(model='resnet18',layer='layer4',shape=[500,10,2,7,7],order='query, nearest five then farthest five, query/candidate, y, x',conditions=conditions,metrics=['l1','l2','cosine'],protocol_hash=d['protocol_hash'],palette=np.uint8(colormaps['inferno'](np.linspace(0,1,256))[:,:3]*255).tolist(),files=records,note='Positive evidence for pairwise similarity (cosine) or negative distance (L1/L2); per-map normalized. Not a KNN voting derivative.')
-    (folder/'index.json').write_text(json.dumps(meta,separators=(',',':')));(OUT/'results/heatmap_check.json').write_text(json.dumps(dict(status='passed',maps=500*10*2*21,autograd_pairs=21,max_normalized_error=max_error,device=torch.cuda.get_device_name(),protocol_hash=d['protocol_hash']),indent=2));print('All heatmap exports verified',flush=True)
+    (folder/'index.json').write_text(json.dumps(meta,separators=(',',':')));(R1/'heatmap_check.json').write_text(json.dumps(dict(status='passed',maps=500*10*2*21,autograd_pairs=21,max_normalized_error=max_error,device=torch.cuda.get_device_name(),protocol_hash=d['protocol_hash']),indent=2));print('All heatmap exports verified',flush=True)
 
 if __name__=='__main__':main()

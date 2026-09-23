@@ -12,9 +12,9 @@ from tfrecord.reader import tfrecord_loader
 from pipelines.prepare_data import ROOT
 
 
-SOURCE = ROOT / "data_v2/raw/sop/stanford_online_products/1.0.0"
-OUTPUT = ROOT / "data_v2/processed/sop"
-LOCK = ROOT / "data_v2/manifests/sop_lock.json"
+SOURCE = ROOT / "data/v2.0/raw/sop/stanford_online_products/1.0.0"
+OUTPUT = ROOT / "data/v2.0/processed/sop"
+LOCK = ROOT / "data/v2.0/manifests/sop_lock.json"
 
 
 def canonical(value: object) -> bytes:
@@ -82,7 +82,7 @@ def main() -> None:
             raise AssertionError(f"{split}: extracted {len(records)}, expected {expected[split]}")
         if min(counts.values()) < 2:
             raise AssertionError(f"{split}: a product has fewer than two images")
-        manifest_path = ROOT / f"data_v2/manifests/sop_{split}.jsonl"
+        manifest_path = ROOT / f"data/v2.0/manifests/sop_{split}.jsonl"
         manifest_path.parent.mkdir(parents=True, exist_ok=True)
         manifest_bytes = b"".join(canonical(record) + b"\n" for record in records)
         manifest_path.write_bytes(manifest_bytes)

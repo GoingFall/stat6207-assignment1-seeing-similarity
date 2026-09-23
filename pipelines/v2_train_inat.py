@@ -18,10 +18,11 @@ from torch.utils.data import DataLoader, TensorDataset, WeightedRandomSampler
 from pipelines.prepare_data import ROOT
 from src.benchmarking.resources import ResourceMonitor
 from src.training.metrics import classification_metrics
+from src.paths import resolve
 
 
-EMBEDDINGS = ROOT / "data_v2/embeddings/inat_birds"
-OUTPUT = ROOT / "results_v2/inat"
+EMBEDDINGS = ROOT / "data/v2.0/embeddings/inat_birds"
+OUTPUT = ROOT / "results/v2.0/inat"
 
 
 def hash_file(path: Path) -> str:
@@ -144,15 +145,15 @@ def aggregate_long_tail(records: list[dict], methods: list[str]) -> dict:
 def main(revision: bool = False) -> None:
     global EMBEDDINGS, OUTPUT
     if revision:
-        EMBEDDINGS = ROOT / 'data_v21/embeddings/inat_birds'
-        OUTPUT = ROOT / 'results_v21/inat'
+        EMBEDDINGS = ROOT / 'data/v2.1/embeddings/inat_birds'
+        OUTPUT = ROOT / 'results/v2.1/inat'
         if (OUTPUT / 'training.json').exists():
             raise RuntimeError('Completed revision training exists')
     pipeline_start = time.perf_counter()
     encoding = json.loads((OUTPUT / "encoding.json").read_text(encoding="utf-8"))
     if encoding["status"] != "passed":
         raise RuntimeError("Locked iNaturalist embeddings are required")
-    config_path = ROOT / ('configs/v21/experiment.json' if revision else 'configs/v2/experiment.json')
+    config_path = ROOT / ('configs/v2.1/experiment.json' if revision else 'configs/v2.0/experiment.json')
     full_config = json.loads(config_path.read_text(encoding="utf-8"))
     training = full_config["inat_training"]
     probe_config = training["linear_probe"]
@@ -222,14 +223,14 @@ def main(revision: bool = False) -> None:
         result['balanced_probe']['predictions'] = save_predictions('balanced', balanced_model, train_x, train_y, dict(Counter(map(int, train_y))))
         from src.training.provenance import artifact
         result['knn_predictions'] = artifact(OUTPUT/'knn_predictions.npz', ROOT)
-        result['provenance_sha256'] = hash_file(ROOT/'results_v21/provenance.json')
-        result['split_lock_sha256'] = hash_file(ROOT/'data_v21/manifests/lock.json')
-    long_tail_index = json.loads((ROOT / ('data_v21/manifests/lock.json' if revision else 'data_v2/manifests/long_tail/index.json')).read_text(encoding='utf-8'))
+        result['provenance_sha256'] = hash_file(ROOT/'results/v2.1/provenance.json')
+        result['split_lock_sha256'] = hash_file(ROOT/'data/v2.1/manifests/lock.json')
+    long_tail_index = json.loads((ROOT / ('data/v2.1/manifests/lock.json' if revision else 'data/v2.0/manifests/long_tail/index.json')).read_text(encoding='utf-8'))
     if revision: long_tail_index = long_tail_index['long_tail']
     position = {int(image_id): index for index, image_id in enumerate(train_ids)}
     with ResourceMonitor(0.5) as monitor:
         for run_record in long_tail_index["runs"]:
-            lock = json.loads((ROOT / run_record["path"]).read_text(encoding="utf-8"))
+            lock = json.loads((resolve(run_record["path"])).read_text(encoding="utf-8"))
             selected_ids = [image_id for values in lock["selected_image_ids"].values() for image_id in values]
             selected = np.array([position[int(image_id)] for image_id in selected_ids])
             run_x, run_y = train_x[selected], train_y[selected]

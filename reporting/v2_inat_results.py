@@ -10,7 +10,7 @@ from pipelines.prepare_data import ROOT
 
 
 def load_passed(name: str) -> dict:
-    path = ROOT / f"results_v2/inat/{name}.json"
+    path = ROOT / f"results/v2.0/inat/{name}.json"
     result = json.loads(path.read_text(encoding="utf-8"))
     if result["status"] != "passed":
         raise RuntimeError(f"iNaturalist {name} result is incomplete")
@@ -21,7 +21,7 @@ def main() -> None:
     training = load_passed("training")
     open_set = load_passed("open_set")
     monitoring = load_passed("monitoring")
-    output = ROOT / "results_v2/figures"
+    output = ROOT / "results/v2.0/figures"
     output.mkdir(parents=True, exist_ok=True)
 
     summary = {
@@ -34,7 +34,7 @@ def main() -> None:
         "far_ood": open_set["far_ood_status"],
         "monitoring": monitoring["evaluations"],
     }
-    (ROOT / "results_v2/inat/summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    (ROOT / "results/v2.0/inat/summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
 
     methods = list(training["long_tail_summary"])
     metrics = ("macro_f1", "balanced_accuracy", "head_recall", "medium_recall", "tail_recall")
@@ -128,7 +128,7 @@ def main() -> None:
 
     print(json.dumps({
         "status": "passed",
-        "summary": "results_v2/inat/summary.json",
+        "summary": "results/v2.0/inat/summary.json",
         "figures": ["inat-long-tail.png", "inat-calibration.png", "inat-reliability.png", "inat-near-ood.png", "inat-monitoring.png"],
     }, indent=2))
 

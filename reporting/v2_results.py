@@ -15,13 +15,13 @@ def selected_record(family: dict) -> dict:
 
 
 def main() -> None:
-    sop_path = ROOT / "results_v2/sop/retrieval.json"
+    sop_path = ROOT / "results/v2.0/sop/retrieval.json"
     if not sop_path.exists():
         raise FileNotFoundError("Run python -m pipelines.v2_benchmark_sop first")
     sop = json.loads(sop_path.read_text(encoding="utf-8"))
     if sop["status"] != "passed":
         raise RuntimeError("SOP result is not authoritative/passed")
-    output = ROOT / "results_v2/figures"
+    output = ROOT / "results/v2.0/figures"
     output.mkdir(parents=True, exist_ok=True)
 
     semantic = sop["standard_semantic"]
@@ -75,7 +75,7 @@ def main() -> None:
     fig.savefig(output / "sop-ann-tradeoffs.png", dpi=180)
     plt.close(fig)
 
-    sift_path = ROOT / "results_v2/ann/sift1m.json"
+    sift_path = ROOT / "results/v2.0/ann/sift1m.json"
     if sift_path.exists():
         sift = json.loads(sift_path.read_text(encoding="utf-8"))
         if sift["status"] == "passed":
@@ -105,7 +105,7 @@ def main() -> None:
             fig.savefig(output / "sift1m-ann-tradeoffs.png", dpi=180)
             plt.close(fig)
 
-    scales_path = ROOT / "results_v2/ann/sift1m_scales.json"
+    scales_path = ROOT / "results/v2.0/ann/sift1m_scales.json"
     if scales_path.exists():
         scales = json.loads(scales_path.read_text(encoding="utf-8"))
         if scales["status"] == "passed":
@@ -138,7 +138,7 @@ def main() -> None:
             plt.close(fig)
             summary["sift1m_scales"] = scales["scales"]
 
-    (ROOT / "results_v2/summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    (ROOT / "results/v2.0/summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
     print(json.dumps({"status": "passed", "figures": sorted(path.name for path in output.glob("*.png"))}, indent=2))
 
 

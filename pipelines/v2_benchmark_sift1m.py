@@ -14,6 +14,7 @@ from pipelines.prepare_data import ROOT
 from src.benchmarking.ann import choose_candidate, recall_metrics, sharded_exact_l2, timed_search
 from src.benchmarking.resources import ResourceMonitor, process_rss_bytes
 from src.benchmarking.vector_io import read_fvecs, read_ivecs
+from src.paths import resolve
 
 
 def hash_file(path: Path) -> str:
@@ -48,12 +49,12 @@ def build_index(kind: str, dimension: int, params: dict):
 
 
 def main() -> None:
-    config_path = ROOT / "configs/v2/experiment.json"
+    config_path = ROOT / "configs/v2.0/experiment.json"
     config = json.loads(config_path.read_text(encoding="utf-8"))
     ann = config["ann"]
-    lock = json.loads((ROOT / "data_v2/manifests/sift1m_lock.json").read_text(encoding="utf-8"))
+    lock = json.loads((ROOT / "data/v2.0/manifests/sift1m_lock.json").read_text(encoding="utf-8"))
     arrays = {
-        name: (read_ivecs if name == "groundtruth" else read_fvecs)(ROOT / record["path"])
+        name: (read_ivecs if name == "groundtruth" else read_fvecs)(resolve(record["path"]))
         for name, record in lock["files"].items()
     }
     base, queries, learn, truth = arrays["base"], arrays["query"], arrays["learn"], arrays["groundtruth"]
@@ -63,7 +64,7 @@ def main() -> None:
     k = ann["exact"]["k"] if "exact" in ann else config["exact"]["k"]
     repetitions = ann["timed_repetitions"]
     faiss.omp_set_num_threads(16)
-    output = ROOT / "results_v2/ann"
+    output = ROOT / "results/v2.0/ann"
     output.mkdir(parents=True, exist_ok=True)
     result = {
         "status": "running",
@@ -74,7 +75,7 @@ def main() -> None:
         "exact_config_sha256": canonical_hash(config["exact"]),
         "sift1m_config": config["sift1m"],
         "sift1m_config_sha256": canonical_hash(config["sift1m"]),
-        "data_lock_sha256": hash_file(ROOT / "data_v2/manifests/sift1m_lock.json"),
+        "data_lock_sha256": hash_file(ROOT / "data/v2.0/manifests/sift1m_lock.json"),
         "faiss": getattr(faiss, "__version__", "unknown"),
         "threads": faiss.omp_get_max_threads(),
         "metric_definition": "mean set overlap against official exact top-k; equal-distance tie ordering may reduce overlap without distance error",

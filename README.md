@@ -1,6 +1,6 @@
 # Seeing Similarity — STAT6207 Assignment 1
 
-**Active workspace: Version 2.1 revision.** Frozen Version 1.0 and Version 2.0 archives remain unchanged under `releases/1.0/` and `releases/2.0/`. The 2.0 audit is in `docs/report/V2-REVIEW-2026-09-23.md`; corrected content-cleaned iNaturalist experiments are documented in `docs/report/V21-RESULTS.md`, with locks under `data_v21/manifests/` and results under `results_v21/`. Root-level `report.pdf`, `site/` and `data/` remain the historical Version 1.0 assignment.
+**Active workspace: Version 2.1 revision.** Frozen Version 1.0 and Version 2.0 archives remain unchanged under `releases/1.0/` and `releases/2.0/`. The 2.0 audit is in `docs/report/V2-REVIEW-2026-09-23.md`; corrected content-cleaned iNaturalist experiments are documented in `docs/report/V21-RESULTS.md`, with locks under `data/v2.1/manifests/` and results under `results/v2.1/`. The historical Version 1.0 assignment lives in `data/v1.0/`, `site/v1.0/` and `report/v1.0/`.
 
 ## Version 2.1 revision
 
@@ -21,36 +21,49 @@ python -m checks.v21_release
 
 Private source data and hash-locked V2 embeddings are required for the experiment/full verification. Original encoder revision was not recorded in V2; 2.1 certifies feature-conditional reproducibility only. The public package contains code, redacted manifests, aggregate metrics and figures; checkpoints, logits, source images and transcripts stay local. `checks.v21_release` audits the package without those private artifacts. Do not rerun the historical commands below against frozen results; restore the original implementation from the historical archive in a separate workspace if needed.
 
-Start with `report.pdf`; serve `site/` to explore the Version 1.0 result. Active documentation is indexed in `docs/README.md`. Earlier reports, scripts and submission archives remain under `backup/`.
+Start with `report/v1.0/report.pdf`; serve `site/v1.0/` to explore the Version 1.0 result. Active documentation is indexed in `docs/README.md`. Earlier reports, scripts and submission archives remain under `archive/`, indexed in `archive/README.md`.
 
 ## Main files
 
-- `report.pdf` / `docs/report/report_text.md`: current report, organized as A1–A5 Basic Tasks, B1–B3 Advanced Tasks, and C OpenCode decisions/reproducibility.
-- `site/`: portable static website and matching downloadable report.
-- `data/`: locked manifests/images, embeddings, results, audit, figures and OOD supplement.
-- `data/results/report_review/`: current rendered pages and layout checks; prior PDF renders live beside their reports under `backup/`.
+- `report/v1.0/report.pdf` / `docs/report/report_text.md`: current report, organized as A1–A5 Basic Tasks, B1–B3 Advanced Tasks, and C OpenCode decisions/reproducibility.
+- `site/v1.0/`: portable static website and matching downloadable report.
+- `data/v1.0/`: locked manifests, images, embeddings, audit and OOD supplement.
+- `results/v1.0/`: regenerated results, checks, figures and `report_review/` rendered pages; prior PDF renders live beside their reports under `archive/`.
 - `docs/`: course material, protocols, plans, report notes, release notes and session records.
 - `releases/1.0/Assignment1-submission.zip`: immutable Version 1.0 submission package.
-- `backup/`: old versions retained for provenance, not active execution.
+- `archive/`: dated historical snapshots retained for provenance, not active execution.
 
 ## Project structure
 
+Every versioned area is split by release number (`vMAJOR.MINOR`). Frozen archives under `releases/` are
+never renamed, because `results/v2.1/provenance.json` records their paths and hashes.
+
 ```text
-src/retrieval/   Reusable encoders and distance functions
-pipelines/       Data preparation, evaluation, statistics, audits and supplements
+src/             Reusable encoders, distance functions, metrics, monitoring and path resolution
+pipelines/       Data preparation, evaluation, statistics, audits and supplements (v2_*/v21_* are release-scoped)
 reporting/       Figures, Grad-CAM, static-site export and PDF generation
-checks/          Numerical, browser, delivery and rendered-report checks
+checks/          Numerical, browser, delivery, contract and release checks
 tools/           Packaging, deployment and session-export utilities
 docs/            Categorized active documentation and collaboration record
-data/            Locked inputs, embeddings, results and generated figures
-data_v2/         Version 2.0 local datasets, immutable manifests and embeddings; raw images are not release artifacts
-results_v2/      Version 2.0 machine-specific gates and benchmark measurements
-configs/v2/      Preregistered Version 2.0 parameters
-site/            Portable static website
+configs/v2.0/    Preregistered Version 2.0 parameters
+configs/v2.1/    Preregistered Version 2.1 parameters
+data/v1.0/       Version 1.0 locked inputs, images, embeddings and protocol
+data/v2.0/       Version 2.0 local datasets, immutable manifests and embeddings; raw images are not release artifacts
+data/v2.1/       Version 2.1 immutable manifests and embeddings
+results/v1.0/    Version 1.0 generated results, checks, figures and rendered pages
+results/v2.0/    Version 2.0 machine-specific gates and benchmark measurements
+results/v2.1/    Version 2.1 revision results, provenance and verification records
+site/v1.0/       Portable static website
+report/v1.0/     Version 1.0 rendered report
 releases/1.0/    Frozen Version 1.0 archive; never modified by active scripts
 releases/2.0/    Version 2.0 public package, manifest, checksums and release notes
-backup/          Historical development versions
+releases/2.1/    Version 2.1 public package, manifest, checksums and release notes
+archive/         Dated historical development snapshots
 ```
+
+`src/paths.py` is the single source of truth for these roots (`V1`/`V2`/`V21`, `R1`/`R2`/`R21`, `DATA`,
+`RESULTS`, `CONFIG`, `SITE`, `REPORT`). `src.paths.resolve()` additionally maps the pre-migration names
+(`data_v2/`, `results_v21/`, ...) that frozen artifacts recorded, so historical provenance keeps resolving.
 
 Run Python entry points from the project root with module syntax, for example `python -m checks.verify`. This keeps imports stable after the source reorganization.
 
@@ -60,14 +73,14 @@ Run Python entry points from the project root with module syntax, for example `p
 conda env create -f environment.yml
 conda activate stat6207-a1
 python -m pip install -r requirements.txt
-python -m http.server 8001 --directory site
+python -m http.server 8001 --directory site/v1.0
 ```
 
 Open http://localhost:8001. The environment pins CUDA 12.8 PyTorch wheels supporting RTX 5070 sm_120. First-time dataset/model downloads need internet. The website itself uses bundled assets and precomputed data.
 
 ## Version 2.0 execution
 
-Version 2.0 is isolated from the frozen Version 1.0 result. It writes downloaded/local-only data to `data_v2/` and measurements to `results_v2/`; it does not modify `releases/1.0/`. The authoritative plan is `docs/plans/PLAN-2.0-ANN-OPENSET.md`, and completed gates are summarized in `docs/report/V2-EXECUTION-LOG.md`.
+Version 2.0 is isolated from the frozen Version 1.0 result. It writes downloaded/local-only data to `data/v2.0/` and measurements to `results/v2.0/`; it does not modify `releases/1.0/`. The authoritative plan is `docs/plans/PLAN-2.0-ANN-OPENSET.md`, and completed gates are summarized in `docs/report/V2-EXECUTION-LOG.md`.
 
 Core commands, in milestone order:
 
@@ -123,27 +136,27 @@ python -m checks.review_report
 python -m tools.package_submission
 ```
 
-Evaluation checks protocol/image hashes before using caches. For a fresh GPU encoding run, archive `data/embeddings/` and use an empty cache directory. Data preparation from scratch uses `python -m pipelines.prepare_data` in a separate project copy whose `data/` retains only `provenance/`; it refuses to overwrite `data/protocol.json`. `data/provenance/pilot_manifest.csv` supplies pilot exclusions, and 20 original Animals-10 images supply the supplementary probes, so current scripts do not depend on `backup/`.
+Evaluation checks protocol/image hashes before using caches. For a fresh GPU encoding run, archive `data/v1.0/embeddings/` and use an empty cache directory. Data preparation from scratch uses `python -m pipelines.prepare_data` in a separate project copy whose `data/v1.0/` retains only `provenance/`; it refuses to overwrite `data/v1.0/protocol.json`. `data/v1.0/provenance/pilot_manifest.csv` supplies pilot exclusions, and the 20 original Animals-10 images in `data/v1.0/provenance/images/` supply the supplementary probes, so current scripts do not depend on `archive/`.
 
-The current immutable protocol is `data/protocol.json`, with SHA-256 in `data/protocol.sha256`. There are 1,000 reference-pool images, 500 balanced tests, six independent nonclean variants per test and 4,500 model inputs/encoder. Common preprocessing is EXIF/RGB plus direct bicubic ImageOps.fit to 224, then each official processor. Ten seeds share nested 10/25/50/100-per-class libraries. Main KNN is fixed k=5. No model champion is selected.
+The current immutable protocol is `data/v1.0/protocol.json`, with SHA-256 in `data/v1.0/protocol.sha256`. There are 1,000 reference-pool images, 500 balanced tests, six independent nonclean variants per test and 4,500 model inputs/encoder. Common preprocessing is EXIF/RGB plus direct bicubic ImageOps.fit to 224, then each official processor. Ten seeds share nested 10/25/50/100-per-class libraries. Main KNN is fixed k=5. No model champion is selected.
 
-`reporting.visualize` regenerates current retrieval, UMAP, k and confusion figures; `reporting.explain` uses CUDA for current-data pairwise ResNet Grad-CAM. Other locked result figures are also regenerated there. `reporting.make_report` updates both root and website copies of the PDF. Refresh the session export with `python -m tools.export_session --cli PATH_TO_OPENCODE`.
+`reporting.visualize` regenerates current retrieval, UMAP, k and confusion figures; `reporting.explain` uses CUDA for current-data pairwise ResNet Grad-CAM. Other locked result figures are also regenerated there. `reporting.make_report` updates both the `report/v1.0/` and `site/v1.0/` copies of the PDF. Refresh the session export with `python -m tools.export_session --cli PATH_TO_OPENCODE`.
 
-`reporting.export_heatmaps` exports all ResNet-18 query/condition/distance nearest-five and farthest-five pairwise Grad-CAM maps to `site/heatmaps/`. The layer4 maps exploit the exact global-average-pooling gradient identity and are checked against autograd for both sides of 21 condition/metric pairs. Compact 7×7 maps are interpolated over the actual model crop in the browser. Targets are cosine similarity or negative L1/L2 distance, never the KNN vote. DINOv2/CLIP do not display ResNet maps as their own attribution.
+`reporting.export_heatmaps` exports all ResNet-18 query/condition/distance nearest-five and farthest-five pairwise Grad-CAM maps to `site/v1.0/heatmaps/`. The layer4 maps exploit the exact global-average-pooling gradient identity and are checked against autograd for both sides of 21 condition/metric pairs. Compact 7×7 maps are interpolated over the actual model crop in the browser. Targets are cosine similarity or negative L1/L2 distance, never the KNN vote. DINOv2/CLIP do not display ResNet maps as their own attribution.
 
 The main explorer shows an explicit updated-configuration line, all k voting neighbours, pair-selection buttons and optional Grad-CAM. The unseen/error section independently supports all ten preselected cases and four displayed errors. UMAP includes source-class/split legends, a selected-query ring and observations about the actual projection. Changing k need not change the top-five rankings or predicted class; this is made explicit in the interface.
 
-Distance labels distinguish **L1/L2 (raw features)** from **cosine (unit directions)**. `raw` means no extra embedding normalization before the distance function; cosine still normalizes internally. `unit` explicitly normalizes both query and reference embeddings. Only unit-L2 and cosine are guaranteed to have the same ordering, since squared unit-L2 equals twice cosine distance. Pixel standardization and model LayerNorm are different operations. `checks.verify` independently checks this identity and full rankings using float64/SciPy for all 21 model/condition combinations at seed 1001, and writes `data/results/normalization_check.json` plus its website copy. This diagnostic feeds the website explanation and report B2; run it before generating the report.
+Distance labels distinguish **L1/L2 (raw features)** from **cosine (unit directions)**. `raw` means no extra embedding normalization before the distance function; cosine still normalizes internally. `unit` explicitly normalizes both query and reference embeddings. Only unit-L2 and cosine are guaranteed to have the same ordering, since squared unit-L2 equals twice cosine distance. Pixel standardization and model LayerNorm are different operations. `checks.verify` independently checks this identity and full rankings using float64/SciPy for all 21 model/condition combinations at seed 1001, and writes `results/v1.0/normalization_check.json` plus its website copy. This diagnostic feeds the website explanation and report B2; run it before generating the report.
 
 ## Results and verification
 
-`pipelines.supplement` adds a post-hoc descriptive raw RGB pixel KNN baseline on the locked clean test and all ten shared reference draws (224×224, Euclidean, k=5). It runs float64 distances on CUDA, verifies sampled distances by direct subtraction, and saves predictions and `data/results/supplement.json`, including class-specific ResNet failure counts. Run before `reporting.make_report`. The extra dog retrieval uses the first dog in the existing preselected display list.
+`pipelines.supplement` adds a post-hoc descriptive raw RGB pixel KNN baseline on the locked clean test and all ten shared reference draws (224×224, Euclidean, k=5). It runs float64 distances on CUDA, verifies sampled distances by direct subtraction, and saves predictions and `results/v1.0/supplement.json`, including class-specific ResNet failure counts. Run before `reporting.make_report`. The extra dog retrieval uses the first dog in the existing preselected display list.
 
 The prespecified cosine six-perturbation endpoint is 94.62% for ResNet-18, 98.25% for DINOv2 and 98.2733% for CLIP. The latter two each exceed ResNet (Holm p≈0.000300); DINOv2 versus CLIP is not clearly different (p≈0.9566). This is not equivalence. Within CLIP, L1 exceeds L2/cosine by about 0.42/0.39 percentage points. No cost ranking or CPU/GPU speed ratio is claimed.
 
 All labels are source-provided and unverified. Independent EfficientNet flags 223 agreements, 276 uncertain images and one high-confidence disagreement; none changes the lock. Query bootstrap is paired and source-class stratified, conditional on ten realized reference draws. Labels, public pretraining overlap and synthetic perturbations limit the claims.
 
-Checks are recorded in `data/results/`: 111 metric records, 63 independently checked distance configurations, paired tests, exact regeneration of 3,000 variants, actual Edge interactions/mobile layout and PDF rendering. See `docs/report/REPORT-REVISION.md` for the visual review and restored coverage.
+Checks are recorded in `results/v1.0/`: 111 metric records, 63 independently checked distance configurations, paired tests, exact regeneration of 3,000 variants, actual Edge interactions/mobile layout and PDF rendering. See `docs/report/REPORT-REVISION.md` for the visual review and restored coverage.
 
 ## Publish
 
@@ -152,7 +165,7 @@ hf auth login
 python -m tools.deploy --repo YOUR_USERNAME/stat6207-seeing-similarity
 ```
 
-Deploys only `site/` to a Hugging Face Static Space. An authenticated user account is required; no public deployment is claimed.
+Deploys only `site/v1.0/` to a Hugging Face Static Space. An authenticated user account is required; no public deployment is claimed.
 
 ## Sources
 

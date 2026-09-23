@@ -1,4 +1,10 @@
-# Python caches and environments
+# Local-only or regenerated artifacts. Frozen releases stay tracked.
+#
+# The rule is "evidence is tracked, bulk is not": locks, manifests, checksums, result JSON and
+# figures are committed; raw images, embeddings, checkpoints and the frozen Version 1.0 archive
+# are not. Nothing that was tracked before the 2026-09-23 layout normalisation is ignored here.
+
+# --- Python caches and environments ---
 __pycache__/
 *.py[cod]
 *.pyd
@@ -13,7 +19,7 @@ env/
 .env
 .env.*
 
-# IDE and operating-system files
+# --- IDE and operating-system files ---
 .idea/
 .vscode/
 .DS_Store
@@ -22,46 +28,68 @@ Desktop.ini
 *.tmp
 *.log
 
-# Frozen Version 1.0 local data/site and historical working copies
-/data/
-/backup/
+# --- Version 1.0 locked inputs and generated media stay local ---
+# The provenance probes, protocol metadata and evidence JSON are tracked because active scripts
+# and the audit depend on them.
+/data/v1.0/*
+!/data/v1.0/provenance/
+!/data/v1.0/audit.json
+!/data/v1.0/manifest.json
+!/data/v1.0/protocol.json
+!/data/v1.0/protocol.sha256
+!/data/v1.0/test_manifest.json
+!/data/v1.0/variant_hashes.json
+
+# --- Downloaded or derived bulk data (all releases) ---
+/data/v2.0/raw/
+/data/v2.0/processed/
+/data/v2.0/embeddings/
+/data/v2.1/raw/
+/data/v2.1/processed/
+/data/v2.1/embeddings/
+
+# --- Version 1.0 site, report and historical working copies ---
+/archive/
 /site/
+/report/
 /docs/session/session-transcript.json
 /docs/session/session-transcript.md
-/report.pdf
-/Assignment1-submission.zip
-/Assignment1-submission.zip.sha256
-/MANIFEST-1.0.json
-/releases/1.0/Assignment1-submission.zip
 
-# Version 2.0 downloaded/restricted data and derived vectors
-/data_v2/raw/
-/data_v2/processed/
-/data_v2/embeddings/
-
-# Restricted/local iNaturalist manifests contain source or local paths.
+# --- Private iNaturalist metadata: aggregates only are published ---
 # The audited release archive contains path-redacted public equivalents.
-/data_v2/manifests/inat_birds_lock.json
-/data_v2/manifests/inat_birds_lock.sha256
-/data_v2/manifests/inat_birds_images.jsonl
-/data_v2/manifests/inat_birds_images_lock.json
-/data_v2/manifests/inat_birds_images_lock.sha256
-/data_v2/manifests/inat_birds_train.jsonl
-/data_v2/manifests/inat_birds_validation.jsonl
-/data_v2/manifests/inat_birds_test.jsonl
-/data_v2/manifests/inat_birds_unknown_development.jsonl
-/data_v2/manifests/inat_birds_unknown_test.jsonl
+/data/v2.0/manifests/inat_birds_lock.json
+/data/v2.0/manifests/inat_birds_lock.sha256
+/data/v2.0/manifests/inat_birds_images.jsonl
+/data/v2.0/manifests/inat_birds_images_lock.json
+/data/v2.0/manifests/inat_birds_images_lock.sha256
+/data/v2.0/manifests/inat_birds_train.jsonl
+/data/v2.0/manifests/inat_birds_validation.jsonl
+/data/v2.0/manifests/inat_birds_test.jsonl
+/data/v2.0/manifests/inat_birds_unknown_development.jsonl
+/data/v2.0/manifests/inat_birds_unknown_test.jsonl
 
-# Large/local-only experiment artifacts
-/results_v2/**/*.npy
-/results_v2/**/*.npz
-/results_v2/**/*.pt
-/results_v2/**/*.pth
-/results_v2/**/*.faiss
-/results_v2/**/*partial.json
-/results_v2/sop/retrieval-superseded-undertrained-ivf.json
+# --- Large binaries and in-flight run state ---
+/results/v1.0/*
+!/results/v1.0/*.json
+!/results/v1.0/ood/
+/results/v1.0/ood/*
+!/results/v1.0/ood/*.json
+!/results/v1.0/report_review/
+/results/v1.0/report_review/*
+!/results/v1.0/report_review/*.json
+/results/v2.0/**/*.npy
+/results/v2.0/**/*.npz
+/results/v2.0/**/*.pt
+/results/v2.0/**/*.pth
+/results/v2.0/**/*.faiss
+/results/v2.0/**/*partial.json
+/results/v2.0/sop/retrieval-superseded-undertrained-ivf.json
+/results/v2.1/**/*.npz
+/results/v2.1/**/*.npy
+/results/v2.1/**/*.pt
+/results/v2.1/**/*partial.json
 
-# Generic model/index/archive outputs
+# --- Generic model/index/archive outputs ---
 *.ckpt
 *.onnx
 *.safetensors
@@ -73,13 +101,8 @@ Desktop.ini
 *.7z
 *.zip
 
-# Keep the audited, publishable Version 2.0 release archive
+# --- Frozen release archives are published on purpose ---
 !/releases/2.0/Assignment1-2.0.zip
-
-# Revision 2.1: public locks/results only; private vectors and models stay local.
-/data_v21/embeddings/
-/results_v21/**/*.npz
-/results_v21/**/*.npy
-/results_v21/**/*.pt
-/results_v21/**/*partial.json
 !/releases/2.1/Assignment1-2.1.zip
+# 1.0 is 740 MB, above the GitHub file limit; its checksum and manifest are tracked instead.
+/releases/1.0/Assignment1-submission.zip

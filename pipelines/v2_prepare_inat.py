@@ -11,8 +11,8 @@ from pathlib import Path
 from pipelines.prepare_data import ROOT
 
 
-SOURCE = ROOT / "data_v2/raw/inat_birds_metadata"
-LOCK = ROOT / "data_v2/manifests/inat_birds_lock.json"
+SOURCE = ROOT / "data/v2.0/raw/inat_birds_metadata"
+LOCK = ROOT / "data/v2.0/manifests/inat_birds_lock.json"
 
 
 def digest(data: bytes) -> str:
@@ -43,7 +43,7 @@ def table_rows(columnar: dict) -> list[dict]:
 def main() -> None:
     if LOCK.exists():
         raise RuntimeError(f"iNaturalist split is already locked at {LOCK}; refusing to overwrite")
-    config_path = ROOT / "configs/v2/experiment.json"
+    config_path = ROOT / "configs/v2.0/experiment.json"
     full_config = json.loads(config_path.read_text(encoding="utf-8"))
     config = full_config["inat_birds"]
     classes = table_rows(load_maybe_zipped_json(SOURCE / "bird_classes.json"))
@@ -110,7 +110,7 @@ def main() -> None:
 
     manifest_records = {}
     for split, rows in image_splits.items():
-        path = ROOT / f"data_v2/manifests/inat_birds_{split}.jsonl"
+        path = ROOT / f"data/v2.0/manifests/inat_birds_{split}.jsonl"
         payload = b"".join(canonical(row) + b"\n" for row in rows)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(payload)

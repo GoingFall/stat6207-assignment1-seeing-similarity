@@ -2,14 +2,14 @@
 import json
 import numpy as np
 import pandas as pd
-from pipelines.prepare_data import OUT,ROOT,canvas,digest
+from pipelines.prepare_data import OUT,ROOT,canvas,digest,R1
 from src.retrieval.encoders import encode
 from src.retrieval.distances import pairwise
 
 def main():
     p=json.loads((OUT/'protocol.json').read_text());rows=json.loads((OUT/'manifest.json').read_text())
     old=pd.read_csv(OUT/'provenance/pilot_manifest.csv');ood=old[old.source.str.contains('animals10')].to_dict('records');assert len(ood)==20
-    folder=OUT/'ood';folder.mkdir(exist_ok=True);site=ROOT/'site';(site/'ood').mkdir(exist_ok=True)
+    folder=R1/'ood';folder.mkdir(exist_ok=True);site=ROOT/'site/v1.0';(site/'ood').mkdir(exist_ok=True)
     paths=[]
     for r in ood:
         im=canvas(OUT/'provenance'/r['image']);path=folder/f"{r['id']}.png";im.save(path);im.save(site/'ood'/path.name);paths.append(path)

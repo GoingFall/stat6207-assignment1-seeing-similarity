@@ -8,23 +8,24 @@ import numpy as np
 from pipelines.prepare_data import ROOT
 from src.training.provenance import sha256, write_json, artifact, assert_content_disjoint
 from src.training.long_tail import sample_ids
+from src.paths import resolve
 
 
 def main():
-    output = ROOT / 'data_v21'
+    output = ROOT / 'data/v2.1'
     lock_path = output / 'manifests/lock.json'
     if lock_path.exists():
         raise RuntimeError('V2.1 lock exists; refusing to rewrite')
-    config_path = ROOT / 'configs/v21/experiment.json'
+    config_path = ROOT / 'configs/v2.1/experiment.json'
     config = json.loads(config_path.read_text())
-    old = json.loads((ROOT / 'results_v2/inat/encoding.json').read_text())
-    source_path = ROOT / 'data_v2/manifests/inat_birds_images.jsonl'
-    image_lock = json.loads((ROOT / 'data_v2/manifests/inat_birds_images_lock.json').read_text())
+    old = json.loads((ROOT / 'results/v2.0/inat/encoding.json').read_text())
+    source_path = ROOT / 'data/v2.0/manifests/inat_birds_images.jsonl'
+    image_lock = json.loads((ROOT / 'data/v2.0/manifests/inat_birds_images_lock.json').read_text())
     assert sha256(source_path) == image_lock['manifest_sha256']
     rows = [json.loads(line) for line in source_path.read_text().splitlines()]
     groups = defaultdict(list)
     for row in rows:
-        assert sha256(ROOT / row['local_path']) == row['sha256']
+        assert sha256(resolve(row['local_path'])) == row['sha256']
         groups[row['sha256']].append(row)
     priority = {s: i for i, s in enumerate(('train', 'validation', 'test', 'unknown_development', 'unknown_test'))}
     clean, removed = [], []
@@ -71,29 +72,36 @@ def main():
         try: sample_ids(candidates, 50, seed)
         except ValueError as e: blocked.append({'seed': seed, 'ratio': 50, 'reason': str(e)})
         else: raise AssertionError('50:1 must be blocked')
-    frozen = {'config': config, 'config_sha256': sha256(config_path), 'source_manifest_sha256': sha256(source_path), 'source_encoding': artifact(ROOT/'results_v2/inat/encoding.json', ROOT), 'manifests': manifests, 'removed': removed, 'unused_known_ids': unused, 'long_tail': {'runs': runs, 'blocked': blocked}}
+    frozen = {'config': config, 'config_sha256': sha256(config_path), 'source_manifest_sha256': sha256(source_path), 'source_encoding': artifact(ROOT/'results/v2.0/inat/encoding.json', ROOT), 'manifests': manifests, 'removed': removed, 'unused_known_ids': unused, 'long_tail': {'runs': runs, 'blocked': blocked}}
     # Publish split/config lock before constructing any revised training artifacts.
     write_json(lock_path, frozen)
     result = {'status': 'running', 'lock': artifact(lock_path, ROOT), 'model': 'V2 hash-locked frozen DINOv2 features', 'splits': {}}
     for split, record in manifests.items():
         source = old['splits'][split]['artifacts']
-        for a in source.values(): assert sha256(ROOT/a['path']) == a['sha256']
-        ids = np.load(ROOT/source['image_ids']['path'])
+        for a in source.values(): assert sha256(resolve(a['path'])) == a['sha256']
+        ids = np.load(resolve(source['image_ids']['path']))
         position = {int(i): j for j, i in enumerate(ids)}
-        public = json.loads((ROOT/record['path']).read_text())
+        public = json.loads((resolve(record['path'])).read_text())
         positions = [position[r['image_id']] for r in public]
         artifacts = {}
         for kind in ('embeddings', 'labels', 'image_ids'):
-            values = np.load(ROOT/source[kind]['path'], mmap_mode='r')[positions]
+            values = np.load(resolve(source[kind]['path']), mmap_mode='r')[positions]
             path = output/f'embeddings/inat_birds/{split}_{kind}.npy'
             path.parent.mkdir(parents=True, exist_ok=True)
             np.save(path, values, allow_pickle=False)
             artifacts[kind] = artifact(path, ROOT)
         result['splits'][split] = {'artifacts': artifacts, 'source_artifacts': source, 'images': len(public)}
     result['status'] = 'passed'
-    write_json(ROOT/'results_v21/inat/encoding.json', result)
+    write_json(ROOT/'results/v2.1/inat/encoding.json', result)
     provenance = {'python': platform.python_version(), 'platform': platform.platform(), 'pip_freeze': subprocess.check_output([__import__('sys').executable, '-m', 'pip', 'freeze'], text=True).splitlines(), 'code': {p.relative_to(ROOT).as_posix(): sha256(p) for folder in ('src','pipelines','checks','tools') for p in (ROOT/folder).rglob('*.py')}, 'frozen_releases': {v: artifact(ROOT/p, ROOT) for v,p in [('1.0','releases/1.0/Assignment1-submission.zip'),('2.0','releases/2.0/Assignment1-2.0.zip')]}}
-    write_json(ROOT/'results_v21/provenance.json', provenance)
+    # Keep the audited layout-migration annex: it records the pre/post hash of every file the directory
+# normalisation touched. If the sources changed again the annex hashes no longer match and
+# checks.v21_verify fails loudly instead of silently accepting a stale audit.
+provenance_path=ROOT/'results/v2.1/provenance.json'
+if provenance_path.is_file():
+    annex=json.loads(provenance_path.read_text(encoding='utf-8')).get('layout_migration')
+    if annex:provenance['layout_migration']=annex
+write_json(provenance_path, provenance)
     print(json.dumps({'splits': manifests, 'quarantined_or_deduplicated': len(removed), 'blocked_50': len(blocked)}, indent=2))
 
 

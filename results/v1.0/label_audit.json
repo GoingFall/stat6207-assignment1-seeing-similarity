@@ -1,0 +1,3509 @@
+{
+  "model": "EfficientNet-B0 IMAGENET1K_V1",
+  "test_manifest_sha256": "b825458b71b55bbbb6ec3aeedfe12bd39e5ad2484ba21e0b7523d6f5aaffa9bb",
+  "protocol_hash": "fd36526774dadb9d2ba0778193de0213901e4ba32683f5b2e72b1cb6e987a175",
+  "labels_changed": 0,
+  "rows": [
+    {
+      "id": "cat_0500",
+      "source_label": "cat",
+      "cat_mass": 0.7662951946258545,
+      "dog_mass": 0.01775294542312622,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0501",
+      "source_label": "cat",
+      "cat_mass": 0.23246338963508606,
+      "dog_mass": 0.25971320271492004,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0502",
+      "source_label": "cat",
+      "cat_mass": 0.18975430727005005,
+      "dog_mass": 0.06989050656557083,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0503",
+      "source_label": "cat",
+      "cat_mass": 0.7521360516548157,
+      "dog_mass": 0.022771421819925308,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0504",
+      "source_label": "cat",
+      "cat_mass": 0.6809892058372498,
+      "dog_mass": 0.011528488248586655,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0505",
+      "source_label": "cat",
+      "cat_mass": 0.9541295766830444,
+      "dog_mass": 0.0034991770517081022,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0506",
+      "source_label": "cat",
+      "cat_mass": 0.5744403004646301,
+      "dog_mass": 0.1744525134563446,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0507",
+      "source_label": "cat",
+      "cat_mass": 0.807070791721344,
+      "dog_mass": 0.04090765491127968,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0508",
+      "source_label": "cat",
+      "cat_mass": 0.13506783545017242,
+      "dog_mass": 0.03743697330355644,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0509",
+      "source_label": "cat",
+      "cat_mass": 0.6972600817680359,
+      "dog_mass": 0.023386256769299507,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0510",
+      "source_label": "cat",
+      "cat_mass": 0.013359484262764454,
+      "dog_mass": 0.6539828181266785,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0511",
+      "source_label": "cat",
+      "cat_mass": 0.7579023838043213,
+      "dog_mass": 0.026162419468164444,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0512",
+      "source_label": "cat",
+      "cat_mass": 0.3083457350730896,
+      "dog_mass": 0.11505946516990662,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0513",
+      "source_label": "cat",
+      "cat_mass": 0.2796004116535187,
+      "dog_mass": 0.02166729047894478,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0514",
+      "source_label": "cat",
+      "cat_mass": 0.9723367094993591,
+      "dog_mass": 0.0027773650363087654,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0515",
+      "source_label": "cat",
+      "cat_mass": 0.6238986253738403,
+      "dog_mass": 0.03615588694810867,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0516",
+      "source_label": "cat",
+      "cat_mass": 0.015459539368748665,
+      "dog_mass": 0.02536504529416561,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0517",
+      "source_label": "cat",
+      "cat_mass": 0.4466804265975952,
+      "dog_mass": 0.0736730769276619,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0518",
+      "source_label": "cat",
+      "cat_mass": 0.8401234149932861,
+      "dog_mass": 0.0246973168104887,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0519",
+      "source_label": "cat",
+      "cat_mass": 0.14391785860061646,
+      "dog_mass": 0.10508015006780624,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0520",
+      "source_label": "cat",
+      "cat_mass": 0.47569647431373596,
+      "dog_mass": 0.07198414206504822,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0521",
+      "source_label": "cat",
+      "cat_mass": 0.918281078338623,
+      "dog_mass": 0.006622075568884611,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0522",
+      "source_label": "cat",
+      "cat_mass": 0.223088800907135,
+      "dog_mass": 0.26452699303627014,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0523",
+      "source_label": "cat",
+      "cat_mass": 0.2122020423412323,
+      "dog_mass": 0.39266249537467957,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0524",
+      "source_label": "cat",
+      "cat_mass": 0.08513762056827545,
+      "dog_mass": 0.06495393812656403,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0525",
+      "source_label": "cat",
+      "cat_mass": 0.44881945848464966,
+      "dog_mass": 0.07764981687068939,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0526",
+      "source_label": "cat",
+      "cat_mass": 0.9146623611450195,
+      "dog_mass": 0.0061854044906795025,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0527",
+      "source_label": "cat",
+      "cat_mass": 0.8044289946556091,
+      "dog_mass": 0.09113232791423798,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0528",
+      "source_label": "cat",
+      "cat_mass": 0.4545746445655823,
+      "dog_mass": 0.04604030027985573,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0529",
+      "source_label": "cat",
+      "cat_mass": 0.0072667840868234634,
+      "dog_mass": 0.8420107960700989,
+      "flag": "high_confidence_disagreement"
+    },
+    {
+      "id": "cat_0530",
+      "source_label": "cat",
+      "cat_mass": 0.12447775155305862,
+      "dog_mass": 0.026854563504457474,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0531",
+      "source_label": "cat",
+      "cat_mass": 0.9307748675346375,
+      "dog_mass": 0.006536661647260189,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0532",
+      "source_label": "cat",
+      "cat_mass": 0.6521459817886353,
+      "dog_mass": 0.03683335706591606,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0533",
+      "source_label": "cat",
+      "cat_mass": 0.48776254057884216,
+      "dog_mass": 0.37215059995651245,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0534",
+      "source_label": "cat",
+      "cat_mass": 0.9050238132476807,
+      "dog_mass": 0.006328648887574673,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0535",
+      "source_label": "cat",
+      "cat_mass": 0.04102613404393196,
+      "dog_mass": 0.19677308201789856,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0536",
+      "source_label": "cat",
+      "cat_mass": 0.23444445431232452,
+      "dog_mass": 0.06559436023235321,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0537",
+      "source_label": "cat",
+      "cat_mass": 0.6338446140289307,
+      "dog_mass": 0.023815473541617393,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0538",
+      "source_label": "cat",
+      "cat_mass": 0.7964075803756714,
+      "dog_mass": 0.0735093206167221,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0539",
+      "source_label": "cat",
+      "cat_mass": 0.06413977593183517,
+      "dog_mass": 0.1407446414232254,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0540",
+      "source_label": "cat",
+      "cat_mass": 0.5708781480789185,
+      "dog_mass": 0.12650476396083832,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0541",
+      "source_label": "cat",
+      "cat_mass": 0.30724602937698364,
+      "dog_mass": 0.12518805265426636,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0542",
+      "source_label": "cat",
+      "cat_mass": 0.2073812037706375,
+      "dog_mass": 0.0372738353908062,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0543",
+      "source_label": "cat",
+      "cat_mass": 0.5670678615570068,
+      "dog_mass": 0.03402448818087578,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0544",
+      "source_label": "cat",
+      "cat_mass": 0.7006938457489014,
+      "dog_mass": 0.044285550713539124,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0545",
+      "source_label": "cat",
+      "cat_mass": 0.9336556792259216,
+      "dog_mass": 0.0026276842691004276,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0546",
+      "source_label": "cat",
+      "cat_mass": 0.9030360579490662,
+      "dog_mass": 0.007233720272779465,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0547",
+      "source_label": "cat",
+      "cat_mass": 0.057255905121564865,
+      "dog_mass": 0.07442839443683624,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0548",
+      "source_label": "cat",
+      "cat_mass": 0.33296024799346924,
+      "dog_mass": 0.05085788667201996,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0549",
+      "source_label": "cat",
+      "cat_mass": 0.014863197691738605,
+      "dog_mass": 0.776114284992218,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0550",
+      "source_label": "cat",
+      "cat_mass": 0.4547460377216339,
+      "dog_mass": 0.041456177830696106,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0551",
+      "source_label": "cat",
+      "cat_mass": 0.5700303912162781,
+      "dog_mass": 0.034673046320676804,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0552",
+      "source_label": "cat",
+      "cat_mass": 0.6924653053283691,
+      "dog_mass": 0.034719038754701614,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0553",
+      "source_label": "cat",
+      "cat_mass": 0.8405176401138306,
+      "dog_mass": 0.046291328966617584,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0554",
+      "source_label": "cat",
+      "cat_mass": 0.22615373134613037,
+      "dog_mass": 0.047412432730197906,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0555",
+      "source_label": "cat",
+      "cat_mass": 0.38402312994003296,
+      "dog_mass": 0.1818661093711853,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0556",
+      "source_label": "cat",
+      "cat_mass": 0.1289844810962677,
+      "dog_mass": 0.06728185713291168,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0557",
+      "source_label": "cat",
+      "cat_mass": 0.03761301934719086,
+      "dog_mass": 0.547349750995636,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0558",
+      "source_label": "cat",
+      "cat_mass": 0.8537424206733704,
+      "dog_mass": 0.017255719751119614,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0559",
+      "source_label": "cat",
+      "cat_mass": 0.581162691116333,
+      "dog_mass": 0.021618206053972244,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0560",
+      "source_label": "cat",
+      "cat_mass": 0.75733482837677,
+      "dog_mass": 0.03226269781589508,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0561",
+      "source_label": "cat",
+      "cat_mass": 0.8179172277450562,
+      "dog_mass": 0.027147121727466583,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0562",
+      "source_label": "cat",
+      "cat_mass": 0.7732100486755371,
+      "dog_mass": 0.09911016374826431,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0563",
+      "source_label": "cat",
+      "cat_mass": 0.9374716281890869,
+      "dog_mass": 0.007667649071663618,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0564",
+      "source_label": "cat",
+      "cat_mass": 0.760444164276123,
+      "dog_mass": 0.015840275213122368,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0565",
+      "source_label": "cat",
+      "cat_mass": 0.366046667098999,
+      "dog_mass": 0.019875304773449898,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0566",
+      "source_label": "cat",
+      "cat_mass": 0.0401240773499012,
+      "dog_mass": 0.4836081564426422,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0567",
+      "source_label": "cat",
+      "cat_mass": 0.09657017886638641,
+      "dog_mass": 0.7702329158782959,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0568",
+      "source_label": "cat",
+      "cat_mass": 0.9627366065979004,
+      "dog_mass": 0.003712013363838196,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0569",
+      "source_label": "cat",
+      "cat_mass": 0.6156275868415833,
+      "dog_mass": 0.02101929672062397,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0570",
+      "source_label": "cat",
+      "cat_mass": 0.368863582611084,
+      "dog_mass": 0.06239938735961914,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0571",
+      "source_label": "cat",
+      "cat_mass": 0.8753641247749329,
+      "dog_mass": 0.031795669347047806,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0572",
+      "source_label": "cat",
+      "cat_mass": 0.9277077913284302,
+      "dog_mass": 0.0053318883292376995,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0573",
+      "source_label": "cat",
+      "cat_mass": 0.3064650297164917,
+      "dog_mass": 0.015304068103432655,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0574",
+      "source_label": "cat",
+      "cat_mass": 0.18576017022132874,
+      "dog_mass": 0.05869587883353233,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0575",
+      "source_label": "cat",
+      "cat_mass": 0.7188456058502197,
+      "dog_mass": 0.0699688047170639,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0576",
+      "source_label": "cat",
+      "cat_mass": 0.4436493217945099,
+      "dog_mass": 0.05827265605330467,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0577",
+      "source_label": "cat",
+      "cat_mass": 0.053356707096099854,
+      "dog_mass": 0.010896679013967514,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0578",
+      "source_label": "cat",
+      "cat_mass": 0.9283310174942017,
+      "dog_mass": 0.004937687888741493,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0579",
+      "source_label": "cat",
+      "cat_mass": 0.901166558265686,
+      "dog_mass": 0.0128480801358819,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0580",
+      "source_label": "cat",
+      "cat_mass": 0.8975364565849304,
+      "dog_mass": 0.010051712393760681,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0581",
+      "source_label": "cat",
+      "cat_mass": 0.37633419036865234,
+      "dog_mass": 0.056572068482637405,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0582",
+      "source_label": "cat",
+      "cat_mass": 0.7813223600387573,
+      "dog_mass": 0.032410021871328354,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0583",
+      "source_label": "cat",
+      "cat_mass": 0.18921884894371033,
+      "dog_mass": 0.3269653618335724,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0584",
+      "source_label": "cat",
+      "cat_mass": 0.20717182755470276,
+      "dog_mass": 0.427463173866272,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0585",
+      "source_label": "cat",
+      "cat_mass": 0.09690016508102417,
+      "dog_mass": 0.22345341742038727,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0586",
+      "source_label": "cat",
+      "cat_mass": 0.8436815142631531,
+      "dog_mass": 0.017986975610256195,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0587",
+      "source_label": "cat",
+      "cat_mass": 0.2540661096572876,
+      "dog_mass": 0.010150217451155186,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0588",
+      "source_label": "cat",
+      "cat_mass": 0.2923833727836609,
+      "dog_mass": 0.0498121939599514,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0589",
+      "source_label": "cat",
+      "cat_mass": 0.616378128528595,
+      "dog_mass": 0.0230113472789526,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0590",
+      "source_label": "cat",
+      "cat_mass": 0.14702725410461426,
+      "dog_mass": 0.036677926778793335,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0591",
+      "source_label": "cat",
+      "cat_mass": 0.6570477485656738,
+      "dog_mass": 0.03660568594932556,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0592",
+      "source_label": "cat",
+      "cat_mass": 0.6676357388496399,
+      "dog_mass": 0.09556503593921661,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0593",
+      "source_label": "cat",
+      "cat_mass": 0.19165995717048645,
+      "dog_mass": 0.04407261312007904,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0594",
+      "source_label": "cat",
+      "cat_mass": 0.7020071744918823,
+      "dog_mass": 0.020866243168711662,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0595",
+      "source_label": "cat",
+      "cat_mass": 0.9506630897521973,
+      "dog_mass": 0.004522156435996294,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0596",
+      "source_label": "cat",
+      "cat_mass": 0.371248722076416,
+      "dog_mass": 0.022759290412068367,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0597",
+      "source_label": "cat",
+      "cat_mass": 0.8967196941375732,
+      "dog_mass": 0.009384672157466412,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0598",
+      "source_label": "cat",
+      "cat_mass": 0.3194618821144104,
+      "dog_mass": 0.028247272595763206,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0599",
+      "source_label": "cat",
+      "cat_mass": 0.40189191699028015,
+      "dog_mass": 0.05273941904306412,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0600",
+      "source_label": "cat",
+      "cat_mass": 0.7605071067810059,
+      "dog_mass": 0.01644599251449108,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0601",
+      "source_label": "cat",
+      "cat_mass": 0.11177460849285126,
+      "dog_mass": 0.4186836779117584,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0602",
+      "source_label": "cat",
+      "cat_mass": 0.06686125695705414,
+      "dog_mass": 0.008862361311912537,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0603",
+      "source_label": "cat",
+      "cat_mass": 0.853126049041748,
+      "dog_mass": 0.012651413679122925,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0604",
+      "source_label": "cat",
+      "cat_mass": 0.6420763731002808,
+      "dog_mass": 0.04153842106461525,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0605",
+      "source_label": "cat",
+      "cat_mass": 0.8152315616607666,
+      "dog_mass": 0.018504392355680466,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0606",
+      "source_label": "cat",
+      "cat_mass": 0.8704251050949097,
+      "dog_mass": 0.007671325001865625,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0607",
+      "source_label": "cat",
+      "cat_mass": 0.6101601123809814,
+      "dog_mass": 0.04152369499206543,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0608",
+      "source_label": "cat",
+      "cat_mass": 0.6641748547554016,
+      "dog_mass": 0.02696138247847557,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0609",
+      "source_label": "cat",
+      "cat_mass": 0.18310917913913727,
+      "dog_mass": 0.047008395195007324,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0610",
+      "source_label": "cat",
+      "cat_mass": 0.6682320833206177,
+      "dog_mass": 0.03414914384484291,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0611",
+      "source_label": "cat",
+      "cat_mass": 0.5110151171684265,
+      "dog_mass": 0.022029463201761246,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0612",
+      "source_label": "cat",
+      "cat_mass": 0.8846890330314636,
+      "dog_mass": 0.007916812784969807,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0613",
+      "source_label": "cat",
+      "cat_mass": 0.8986841440200806,
+      "dog_mass": 0.00962978508323431,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0614",
+      "source_label": "cat",
+      "cat_mass": 0.6422820091247559,
+      "dog_mass": 0.031961314380168915,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0615",
+      "source_label": "cat",
+      "cat_mass": 0.6983762979507446,
+      "dog_mass": 0.025361498817801476,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0616",
+      "source_label": "cat",
+      "cat_mass": 0.008810261264443398,
+      "dog_mass": 0.010573513805866241,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0617",
+      "source_label": "cat",
+      "cat_mass": 0.3455636501312256,
+      "dog_mass": 0.37957894802093506,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0618",
+      "source_label": "cat",
+      "cat_mass": 0.5083337426185608,
+      "dog_mass": 0.04819725453853607,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0619",
+      "source_label": "cat",
+      "cat_mass": 0.3712196350097656,
+      "dog_mass": 0.034381743520498276,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0620",
+      "source_label": "cat",
+      "cat_mass": 0.01841316930949688,
+      "dog_mass": 0.3752369284629822,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0621",
+      "source_label": "cat",
+      "cat_mass": 0.8916606307029724,
+      "dog_mass": 0.008790320716798306,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0622",
+      "source_label": "cat",
+      "cat_mass": 0.87031090259552,
+      "dog_mass": 0.008150731213390827,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0623",
+      "source_label": "cat",
+      "cat_mass": 0.8874945640563965,
+      "dog_mass": 0.008210970088839531,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0624",
+      "source_label": "cat",
+      "cat_mass": 0.08654557168483734,
+      "dog_mass": 0.613490879535675,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0625",
+      "source_label": "cat",
+      "cat_mass": 0.5069916844367981,
+      "dog_mass": 0.20674486458301544,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0626",
+      "source_label": "cat",
+      "cat_mass": 0.08170478790998459,
+      "dog_mass": 0.03282291069626808,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0627",
+      "source_label": "cat",
+      "cat_mass": 0.13279375433921814,
+      "dog_mass": 0.10507648438215256,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0628",
+      "source_label": "cat",
+      "cat_mass": 0.9088261127471924,
+      "dog_mass": 0.013612027280032635,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0629",
+      "source_label": "cat",
+      "cat_mass": 0.4328797459602356,
+      "dog_mass": 0.1685682237148285,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0630",
+      "source_label": "cat",
+      "cat_mass": 0.6288532018661499,
+      "dog_mass": 0.017540793865919113,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0631",
+      "source_label": "cat",
+      "cat_mass": 0.3498387038707733,
+      "dog_mass": 0.01461653783917427,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0632",
+      "source_label": "cat",
+      "cat_mass": 0.438313364982605,
+      "dog_mass": 0.07976175099611282,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0633",
+      "source_label": "cat",
+      "cat_mass": 0.5730567574501038,
+      "dog_mass": 0.011796790175139904,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0634",
+      "source_label": "cat",
+      "cat_mass": 0.16763871908187866,
+      "dog_mass": 0.06328510493040085,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0635",
+      "source_label": "cat",
+      "cat_mass": 0.3967890739440918,
+      "dog_mass": 0.018936527892947197,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0636",
+      "source_label": "cat",
+      "cat_mass": 0.6853976249694824,
+      "dog_mass": 0.013353800401091576,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0637",
+      "source_label": "cat",
+      "cat_mass": 0.5725125670433044,
+      "dog_mass": 0.015233796089887619,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0638",
+      "source_label": "cat",
+      "cat_mass": 0.7835301756858826,
+      "dog_mass": 0.02321341447532177,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0639",
+      "source_label": "cat",
+      "cat_mass": 0.7310388088226318,
+      "dog_mass": 0.04425803944468498,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0640",
+      "source_label": "cat",
+      "cat_mass": 0.9292674660682678,
+      "dog_mass": 0.006545549258589745,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0641",
+      "source_label": "cat",
+      "cat_mass": 0.360996812582016,
+      "dog_mass": 0.36263179779052734,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0642",
+      "source_label": "cat",
+      "cat_mass": 0.8467504978179932,
+      "dog_mass": 0.0216370839625597,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0643",
+      "source_label": "cat",
+      "cat_mass": 0.8033033609390259,
+      "dog_mass": 0.01189260184764862,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0644",
+      "source_label": "cat",
+      "cat_mass": 0.03632593899965286,
+      "dog_mass": 0.02605440840125084,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0645",
+      "source_label": "cat",
+      "cat_mass": 0.2567671537399292,
+      "dog_mass": 0.24976730346679688,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0646",
+      "source_label": "cat",
+      "cat_mass": 0.8744031190872192,
+      "dog_mass": 0.006101272534579039,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0647",
+      "source_label": "cat",
+      "cat_mass": 0.6524423360824585,
+      "dog_mass": 0.06033194437623024,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0648",
+      "source_label": "cat",
+      "cat_mass": 0.1496487408876419,
+      "dog_mass": 0.30582261085510254,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0649",
+      "source_label": "cat",
+      "cat_mass": 0.013898363336920738,
+      "dog_mass": 0.6110159754753113,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0650",
+      "source_label": "cat",
+      "cat_mass": 0.8372310400009155,
+      "dog_mass": 0.01504476834088564,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0651",
+      "source_label": "cat",
+      "cat_mass": 0.3528438210487366,
+      "dog_mass": 0.05822950229048729,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0652",
+      "source_label": "cat",
+      "cat_mass": 0.8944664001464844,
+      "dog_mass": 0.01586274988949299,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0653",
+      "source_label": "cat",
+      "cat_mass": 0.6837765574455261,
+      "dog_mass": 0.02708348259329796,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0654",
+      "source_label": "cat",
+      "cat_mass": 0.6554352045059204,
+      "dog_mass": 0.034338679164648056,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0655",
+      "source_label": "cat",
+      "cat_mass": 0.6478081941604614,
+      "dog_mass": 0.03744136914610863,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0656",
+      "source_label": "cat",
+      "cat_mass": 0.427950382232666,
+      "dog_mass": 0.022591983899474144,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0657",
+      "source_label": "cat",
+      "cat_mass": 0.903904914855957,
+      "dog_mass": 0.013693585991859436,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0658",
+      "source_label": "cat",
+      "cat_mass": 0.7009633779525757,
+      "dog_mass": 0.06721656769514084,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0659",
+      "source_label": "cat",
+      "cat_mass": 0.8115859031677246,
+      "dog_mass": 0.05253058671951294,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0660",
+      "source_label": "cat",
+      "cat_mass": 0.8733556270599365,
+      "dog_mass": 0.012110056355595589,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0661",
+      "source_label": "cat",
+      "cat_mass": 0.5963440537452698,
+      "dog_mass": 0.10633396357297897,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0662",
+      "source_label": "cat",
+      "cat_mass": 0.16249340772628784,
+      "dog_mass": 0.0181256253272295,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0663",
+      "source_label": "cat",
+      "cat_mass": 0.718967080116272,
+      "dog_mass": 0.01740233227610588,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0664",
+      "source_label": "cat",
+      "cat_mass": 0.7008355259895325,
+      "dog_mass": 0.02809183858335018,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0665",
+      "source_label": "cat",
+      "cat_mass": 0.9390162825584412,
+      "dog_mass": 0.008986551314592361,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0666",
+      "source_label": "cat",
+      "cat_mass": 0.6329323053359985,
+      "dog_mass": 0.03239328786730766,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0667",
+      "source_label": "cat",
+      "cat_mass": 0.38754037022590637,
+      "dog_mass": 0.05263085290789604,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0668",
+      "source_label": "cat",
+      "cat_mass": 0.8136239647865295,
+      "dog_mass": 0.014219304546713829,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0669",
+      "source_label": "cat",
+      "cat_mass": 0.8167022466659546,
+      "dog_mass": 0.018724149093031883,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0670",
+      "source_label": "cat",
+      "cat_mass": 0.32221341133117676,
+      "dog_mass": 0.049713753163814545,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0671",
+      "source_label": "cat",
+      "cat_mass": 0.8019394874572754,
+      "dog_mass": 0.015050980262458324,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0672",
+      "source_label": "cat",
+      "cat_mass": 0.832623302936554,
+      "dog_mass": 0.013849585317075253,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0673",
+      "source_label": "cat",
+      "cat_mass": 0.022145552560687065,
+      "dog_mass": 0.05077720806002617,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0674",
+      "source_label": "cat",
+      "cat_mass": 0.8442204594612122,
+      "dog_mass": 0.013967604376375675,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0675",
+      "source_label": "cat",
+      "cat_mass": 0.384660542011261,
+      "dog_mass": 0.041053205728530884,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0676",
+      "source_label": "cat",
+      "cat_mass": 0.058121901005506516,
+      "dog_mass": 0.7437203526496887,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0677",
+      "source_label": "cat",
+      "cat_mass": 0.3477962613105774,
+      "dog_mass": 0.04689283296465874,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0678",
+      "source_label": "cat",
+      "cat_mass": 0.2925127148628235,
+      "dog_mass": 0.3298627436161041,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0679",
+      "source_label": "cat",
+      "cat_mass": 0.9442295432090759,
+      "dog_mass": 0.0032861160580068827,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0680",
+      "source_label": "cat",
+      "cat_mass": 0.22645080089569092,
+      "dog_mass": 0.25869789719581604,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0681",
+      "source_label": "cat",
+      "cat_mass": 0.7415494918823242,
+      "dog_mass": 0.032710254192352295,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0682",
+      "source_label": "cat",
+      "cat_mass": 0.3405000567436218,
+      "dog_mass": 0.06632105261087418,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0683",
+      "source_label": "cat",
+      "cat_mass": 0.8324927687644958,
+      "dog_mass": 0.023523075506091118,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0684",
+      "source_label": "cat",
+      "cat_mass": 0.06775391846895218,
+      "dog_mass": 0.7748398184776306,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0685",
+      "source_label": "cat",
+      "cat_mass": 0.7162468433380127,
+      "dog_mass": 0.04481123760342598,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0686",
+      "source_label": "cat",
+      "cat_mass": 0.003316328162327409,
+      "dog_mass": 0.03269413858652115,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0687",
+      "source_label": "cat",
+      "cat_mass": 0.9596877098083496,
+      "dog_mass": 0.00401653815060854,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0688",
+      "source_label": "cat",
+      "cat_mass": 0.8420241475105286,
+      "dog_mass": 0.013156935572624207,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0689",
+      "source_label": "cat",
+      "cat_mass": 0.7038975954055786,
+      "dog_mass": 0.01823814958333969,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0690",
+      "source_label": "cat",
+      "cat_mass": 0.20664812624454498,
+      "dog_mass": 0.1897367537021637,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0691",
+      "source_label": "cat",
+      "cat_mass": 0.5165519714355469,
+      "dog_mass": 0.011757968924939632,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0692",
+      "source_label": "cat",
+      "cat_mass": 0.5059026479721069,
+      "dog_mass": 0.09440089017152786,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0693",
+      "source_label": "cat",
+      "cat_mass": 0.6486992835998535,
+      "dog_mass": 0.022776471450924873,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0694",
+      "source_label": "cat",
+      "cat_mass": 0.5654560327529907,
+      "dog_mass": 0.0637265220284462,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0695",
+      "source_label": "cat",
+      "cat_mass": 0.4663299024105072,
+      "dog_mass": 0.05023333802819252,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0696",
+      "source_label": "cat",
+      "cat_mass": 0.945751428604126,
+      "dog_mass": 0.006169314496219158,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0697",
+      "source_label": "cat",
+      "cat_mass": 0.39178407192230225,
+      "dog_mass": 0.014037876389920712,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0698",
+      "source_label": "cat",
+      "cat_mass": 0.7381545305252075,
+      "dog_mass": 0.01670411042869091,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0699",
+      "source_label": "cat",
+      "cat_mass": 0.25639259815216064,
+      "dog_mass": 0.08521132171154022,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0700",
+      "source_label": "cat",
+      "cat_mass": 0.8456538319587708,
+      "dog_mass": 0.01566227525472641,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0701",
+      "source_label": "cat",
+      "cat_mass": 0.1809430718421936,
+      "dog_mass": 0.06099651753902435,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0702",
+      "source_label": "cat",
+      "cat_mass": 0.6287823915481567,
+      "dog_mass": 0.034257300198078156,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0703",
+      "source_label": "cat",
+      "cat_mass": 0.07049348950386047,
+      "dog_mass": 0.6123324632644653,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0704",
+      "source_label": "cat",
+      "cat_mass": 0.04509422928094864,
+      "dog_mass": 0.008673868142068386,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0705",
+      "source_label": "cat",
+      "cat_mass": 0.0973597839474678,
+      "dog_mass": 0.5973067283630371,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0706",
+      "source_label": "cat",
+      "cat_mass": 0.9601467847824097,
+      "dog_mass": 0.0039010995533317327,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0707",
+      "source_label": "cat",
+      "cat_mass": 0.4327022433280945,
+      "dog_mass": 0.05284030735492706,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0708",
+      "source_label": "cat",
+      "cat_mass": 0.4413052201271057,
+      "dog_mass": 0.04615646228194237,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0709",
+      "source_label": "cat",
+      "cat_mass": 0.8064382672309875,
+      "dog_mass": 0.025980178266763687,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0710",
+      "source_label": "cat",
+      "cat_mass": 0.3137127459049225,
+      "dog_mass": 0.3457394242286682,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0711",
+      "source_label": "cat",
+      "cat_mass": 0.9034520983695984,
+      "dog_mass": 0.0062987846322357655,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0712",
+      "source_label": "cat",
+      "cat_mass": 0.5246949195861816,
+      "dog_mass": 0.10519332438707352,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0713",
+      "source_label": "cat",
+      "cat_mass": 0.5540866851806641,
+      "dog_mass": 0.03263607621192932,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0714",
+      "source_label": "cat",
+      "cat_mass": 0.5528374910354614,
+      "dog_mass": 0.07811059057712555,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0715",
+      "source_label": "cat",
+      "cat_mass": 0.8434613943099976,
+      "dog_mass": 0.01315850205719471,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0716",
+      "source_label": "cat",
+      "cat_mass": 0.2513267397880554,
+      "dog_mass": 0.03552839905023575,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0717",
+      "source_label": "cat",
+      "cat_mass": 0.7611764669418335,
+      "dog_mass": 0.031088586896657944,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0718",
+      "source_label": "cat",
+      "cat_mass": 0.0012091740500181913,
+      "dog_mass": 0.04995089769363403,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0719",
+      "source_label": "cat",
+      "cat_mass": 0.2894512414932251,
+      "dog_mass": 0.06794647872447968,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0720",
+      "source_label": "cat",
+      "cat_mass": 0.3127422332763672,
+      "dog_mass": 0.16814309358596802,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0721",
+      "source_label": "cat",
+      "cat_mass": 0.3301383852958679,
+      "dog_mass": 0.17276474833488464,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0722",
+      "source_label": "cat",
+      "cat_mass": 0.5653588771820068,
+      "dog_mass": 0.049847062677145004,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0723",
+      "source_label": "cat",
+      "cat_mass": 0.3877406418323517,
+      "dog_mass": 0.12939251959323883,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0724",
+      "source_label": "cat",
+      "cat_mass": 0.36241263151168823,
+      "dog_mass": 0.12352988868951797,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0725",
+      "source_label": "cat",
+      "cat_mass": 0.38558751344680786,
+      "dog_mass": 0.06580411642789841,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0726",
+      "source_label": "cat",
+      "cat_mass": 0.5297656059265137,
+      "dog_mass": 0.03735131770372391,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0727",
+      "source_label": "cat",
+      "cat_mass": 0.8202496767044067,
+      "dog_mass": 0.015643512830138206,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0728",
+      "source_label": "cat",
+      "cat_mass": 0.8681550621986389,
+      "dog_mass": 0.01084183156490326,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0729",
+      "source_label": "cat",
+      "cat_mass": 0.31278422474861145,
+      "dog_mass": 0.38412341475486755,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0730",
+      "source_label": "cat",
+      "cat_mass": 0.7394640445709229,
+      "dog_mass": 0.02102808840572834,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0731",
+      "source_label": "cat",
+      "cat_mass": 0.0009577490272931755,
+      "dog_mass": 0.02769750915467739,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0732",
+      "source_label": "cat",
+      "cat_mass": 0.8758954405784607,
+      "dog_mass": 0.012674850411713123,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0733",
+      "source_label": "cat",
+      "cat_mass": 0.37845873832702637,
+      "dog_mass": 0.08010570704936981,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0734",
+      "source_label": "cat",
+      "cat_mass": 0.2637907862663269,
+      "dog_mass": 0.07503212243318558,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0735",
+      "source_label": "cat",
+      "cat_mass": 0.5311392545700073,
+      "dog_mass": 0.01763511449098587,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0736",
+      "source_label": "cat",
+      "cat_mass": 0.9063794612884521,
+      "dog_mass": 0.007580945268273354,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0737",
+      "source_label": "cat",
+      "cat_mass": 0.43088892102241516,
+      "dog_mass": 0.06789194792509079,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0738",
+      "source_label": "cat",
+      "cat_mass": 0.7711211442947388,
+      "dog_mass": 0.025228433310985565,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0739",
+      "source_label": "cat",
+      "cat_mass": 0.9331281185150146,
+      "dog_mass": 0.0059060389176011086,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0740",
+      "source_label": "cat",
+      "cat_mass": 0.795400083065033,
+      "dog_mass": 0.014838720671832561,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0741",
+      "source_label": "cat",
+      "cat_mass": 0.6797147989273071,
+      "dog_mass": 0.040307264775037766,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0742",
+      "source_label": "cat",
+      "cat_mass": 0.6595087051391602,
+      "dog_mass": 0.022054744884371758,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0743",
+      "source_label": "cat",
+      "cat_mass": 0.8214264512062073,
+      "dog_mass": 0.016296321526169777,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0744",
+      "source_label": "cat",
+      "cat_mass": 0.5972264409065247,
+      "dog_mass": 0.11634574830532074,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0745",
+      "source_label": "cat",
+      "cat_mass": 0.8557649254798889,
+      "dog_mass": 0.00540916295722127,
+      "flag": "agreement"
+    },
+    {
+      "id": "cat_0746",
+      "source_label": "cat",
+      "cat_mass": 0.37030816078186035,
+      "dog_mass": 0.06518790870904922,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0747",
+      "source_label": "cat",
+      "cat_mass": 0.6540299654006958,
+      "dog_mass": 0.05873465910553932,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0748",
+      "source_label": "cat",
+      "cat_mass": 0.739343523979187,
+      "dog_mass": 0.027399610728025436,
+      "flag": "uncertain"
+    },
+    {
+      "id": "cat_0749",
+      "source_label": "cat",
+      "cat_mass": 0.5223660469055176,
+      "dog_mass": 0.043829165399074554,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0500",
+      "source_label": "dog",
+      "cat_mass": 0.0013995892368257046,
+      "dog_mass": 0.6518316864967346,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0501",
+      "source_label": "dog",
+      "cat_mass": 0.0007554746116511524,
+      "dog_mass": 0.8821422457695007,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0502",
+      "source_label": "dog",
+      "cat_mass": 0.0005789468414150178,
+      "dog_mass": 0.8532834053039551,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0503",
+      "source_label": "dog",
+      "cat_mass": 0.00020969033357687294,
+      "dog_mass": 0.9768801927566528,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0504",
+      "source_label": "dog",
+      "cat_mass": 3.4813565434888005e-05,
+      "dog_mass": 0.9814245700836182,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0505",
+      "source_label": "dog",
+      "cat_mass": 0.000372596230590716,
+      "dog_mass": 0.833149254322052,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0506",
+      "source_label": "dog",
+      "cat_mass": 0.00048506513121537864,
+      "dog_mass": 0.876617431640625,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0507",
+      "source_label": "dog",
+      "cat_mass": 0.0008646049536764622,
+      "dog_mass": 0.6151807904243469,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0508",
+      "source_label": "dog",
+      "cat_mass": 0.004212155472487211,
+      "dog_mass": 0.6636988520622253,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0509",
+      "source_label": "dog",
+      "cat_mass": 0.000232992329983972,
+      "dog_mass": 0.8688918948173523,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0510",
+      "source_label": "dog",
+      "cat_mass": 0.0005000156816095114,
+      "dog_mass": 0.9520349502563477,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0511",
+      "source_label": "dog",
+      "cat_mass": 0.0075819725170731544,
+      "dog_mass": 0.7842084765434265,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0512",
+      "source_label": "dog",
+      "cat_mass": 0.0013569711009040475,
+      "dog_mass": 0.6761035919189453,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0513",
+      "source_label": "dog",
+      "cat_mass": 0.002721677999943495,
+      "dog_mass": 0.6489770412445068,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0514",
+      "source_label": "dog",
+      "cat_mass": 0.0003202143998350948,
+      "dog_mass": 0.8139244318008423,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0515",
+      "source_label": "dog",
+      "cat_mass": 0.0001566847349749878,
+      "dog_mass": 0.8937684893608093,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0516",
+      "source_label": "dog",
+      "cat_mass": 0.0002904529101215303,
+      "dog_mass": 0.8716557621955872,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0517",
+      "source_label": "dog",
+      "cat_mass": 0.0037241815589368343,
+      "dog_mass": 0.5058231353759766,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0518",
+      "source_label": "dog",
+      "cat_mass": 9.839121776167303e-05,
+      "dog_mass": 0.9617546200752258,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0519",
+      "source_label": "dog",
+      "cat_mass": 0.052885472774505615,
+      "dog_mass": 0.8714765310287476,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0520",
+      "source_label": "dog",
+      "cat_mass": 0.00037850867374800146,
+      "dog_mass": 0.758285403251648,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0521",
+      "source_label": "dog",
+      "cat_mass": 0.0003446259943302721,
+      "dog_mass": 0.7744383215904236,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0522",
+      "source_label": "dog",
+      "cat_mass": 0.0015519176376983523,
+      "dog_mass": 0.7743673920631409,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0523",
+      "source_label": "dog",
+      "cat_mass": 0.001797311007976532,
+      "dog_mass": 0.6855871081352234,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0524",
+      "source_label": "dog",
+      "cat_mass": 0.0013015924487262964,
+      "dog_mass": 0.7264952063560486,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0525",
+      "source_label": "dog",
+      "cat_mass": 7.17507500667125e-05,
+      "dog_mass": 0.9648484587669373,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0526",
+      "source_label": "dog",
+      "cat_mass": 0.0026688328944146633,
+      "dog_mass": 0.7484997510910034,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0527",
+      "source_label": "dog",
+      "cat_mass": 0.0003724326961673796,
+      "dog_mass": 0.9598187804222107,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0528",
+      "source_label": "dog",
+      "cat_mass": 5.65368500247132e-05,
+      "dog_mass": 0.9505555629730225,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0529",
+      "source_label": "dog",
+      "cat_mass": 0.0001551004097564146,
+      "dog_mass": 0.9341790080070496,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0530",
+      "source_label": "dog",
+      "cat_mass": 0.004786882549524307,
+      "dog_mass": 0.8466788530349731,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0531",
+      "source_label": "dog",
+      "cat_mass": 0.000416778028011322,
+      "dog_mass": 0.8751267194747925,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0532",
+      "source_label": "dog",
+      "cat_mass": 4.660096237785183e-05,
+      "dog_mass": 0.9243481755256653,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0533",
+      "source_label": "dog",
+      "cat_mass": 0.0005489307804964483,
+      "dog_mass": 0.8696167469024658,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0534",
+      "source_label": "dog",
+      "cat_mass": 0.0009418110130354762,
+      "dog_mass": 0.7272003293037415,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0535",
+      "source_label": "dog",
+      "cat_mass": 0.00037356297252699733,
+      "dog_mass": 0.9099811911582947,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0536",
+      "source_label": "dog",
+      "cat_mass": 0.0013646507868543267,
+      "dog_mass": 0.43504321575164795,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0537",
+      "source_label": "dog",
+      "cat_mass": 0.0010115799959748983,
+      "dog_mass": 0.7306178212165833,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0538",
+      "source_label": "dog",
+      "cat_mass": 0.0004509991267696023,
+      "dog_mass": 0.8524371981620789,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0539",
+      "source_label": "dog",
+      "cat_mass": 0.0017248087096959352,
+      "dog_mass": 0.7587649822235107,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0540",
+      "source_label": "dog",
+      "cat_mass": 0.00030796005739830434,
+      "dog_mass": 0.7678989171981812,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0541",
+      "source_label": "dog",
+      "cat_mass": 0.0011088598985224962,
+      "dog_mass": 0.8781607747077942,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0542",
+      "source_label": "dog",
+      "cat_mass": 8.349839481525123e-05,
+      "dog_mass": 0.87137770652771,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0543",
+      "source_label": "dog",
+      "cat_mass": 0.0003358476678840816,
+      "dog_mass": 0.7217422723770142,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0544",
+      "source_label": "dog",
+      "cat_mass": 0.0003668130375444889,
+      "dog_mass": 0.7820715308189392,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0545",
+      "source_label": "dog",
+      "cat_mass": 0.0006421259022317827,
+      "dog_mass": 0.8795133829116821,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0546",
+      "source_label": "dog",
+      "cat_mass": 3.3608885132707655e-05,
+      "dog_mass": 0.9659917950630188,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0547",
+      "source_label": "dog",
+      "cat_mass": 8.456350769847631e-05,
+      "dog_mass": 0.8420868515968323,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0548",
+      "source_label": "dog",
+      "cat_mass": 7.970118895173073e-05,
+      "dog_mass": 0.9178622961044312,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0549",
+      "source_label": "dog",
+      "cat_mass": 0.0009703341638669372,
+      "dog_mass": 0.720079243183136,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0550",
+      "source_label": "dog",
+      "cat_mass": 0.00020175786630716175,
+      "dog_mass": 0.8221148252487183,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0551",
+      "source_label": "dog",
+      "cat_mass": 0.001864979276433587,
+      "dog_mass": 0.6063635945320129,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0552",
+      "source_label": "dog",
+      "cat_mass": 0.0008723080973140895,
+      "dog_mass": 0.8916626572608948,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0553",
+      "source_label": "dog",
+      "cat_mass": 0.00016346464690286666,
+      "dog_mass": 0.959309458732605,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0554",
+      "source_label": "dog",
+      "cat_mass": 0.0028641645330935717,
+      "dog_mass": 0.58051997423172,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0555",
+      "source_label": "dog",
+      "cat_mass": 0.00048041276750154793,
+      "dog_mass": 0.7381040453910828,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0556",
+      "source_label": "dog",
+      "cat_mass": 0.008153373375535011,
+      "dog_mass": 0.7557021975517273,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0557",
+      "source_label": "dog",
+      "cat_mass": 0.0014896090142428875,
+      "dog_mass": 0.7682070136070251,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0558",
+      "source_label": "dog",
+      "cat_mass": 0.0020354471635073423,
+      "dog_mass": 0.7022518515586853,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0559",
+      "source_label": "dog",
+      "cat_mass": 0.0008860441739670932,
+      "dog_mass": 0.7137420773506165,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0560",
+      "source_label": "dog",
+      "cat_mass": 9.713388135423884e-05,
+      "dog_mass": 0.9487922787666321,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0561",
+      "source_label": "dog",
+      "cat_mass": 0.0002176880370825529,
+      "dog_mass": 0.8813269734382629,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0562",
+      "source_label": "dog",
+      "cat_mass": 0.00025080039631575346,
+      "dog_mass": 0.9213426113128662,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0563",
+      "source_label": "dog",
+      "cat_mass": 0.0018739267252385616,
+      "dog_mass": 0.7493115663528442,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0564",
+      "source_label": "dog",
+      "cat_mass": 0.0004220280679874122,
+      "dog_mass": 0.9145911335945129,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0565",
+      "source_label": "dog",
+      "cat_mass": 0.00034818911808542907,
+      "dog_mass": 0.9481516480445862,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0566",
+      "source_label": "dog",
+      "cat_mass": 0.0005660677561536431,
+      "dog_mass": 0.7761010527610779,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0567",
+      "source_label": "dog",
+      "cat_mass": 0.00045797042548656464,
+      "dog_mass": 0.7990294098854065,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0568",
+      "source_label": "dog",
+      "cat_mass": 0.0001764850749168545,
+      "dog_mass": 0.946574866771698,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0569",
+      "source_label": "dog",
+      "cat_mass": 0.00014126545283943415,
+      "dog_mass": 0.9600340127944946,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0570",
+      "source_label": "dog",
+      "cat_mass": 0.0005115045350976288,
+      "dog_mass": 0.9623684883117676,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0571",
+      "source_label": "dog",
+      "cat_mass": 0.0002996490220539272,
+      "dog_mass": 0.8705052137374878,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0572",
+      "source_label": "dog",
+      "cat_mass": 0.001017673872411251,
+      "dog_mass": 0.7093509435653687,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0573",
+      "source_label": "dog",
+      "cat_mass": 0.00016116478946059942,
+      "dog_mass": 0.9884322881698608,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0574",
+      "source_label": "dog",
+      "cat_mass": 0.003202461637556553,
+      "dog_mass": 0.581160306930542,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0575",
+      "source_label": "dog",
+      "cat_mass": 0.00023569191398564726,
+      "dog_mass": 0.9200372695922852,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0576",
+      "source_label": "dog",
+      "cat_mass": 0.001414324389770627,
+      "dog_mass": 0.8682205080986023,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0577",
+      "source_label": "dog",
+      "cat_mass": 0.0015062845777720213,
+      "dog_mass": 0.7749906778335571,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0578",
+      "source_label": "dog",
+      "cat_mass": 0.0004549156583379954,
+      "dog_mass": 0.7921006083488464,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0579",
+      "source_label": "dog",
+      "cat_mass": 0.000731457956135273,
+      "dog_mass": 0.8644893169403076,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0580",
+      "source_label": "dog",
+      "cat_mass": 0.00010852154809981585,
+      "dog_mass": 0.8616726994514465,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0581",
+      "source_label": "dog",
+      "cat_mass": 0.0005001954268664122,
+      "dog_mass": 0.8874335289001465,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0582",
+      "source_label": "dog",
+      "cat_mass": 0.00026413629529997706,
+      "dog_mass": 0.8279129266738892,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0583",
+      "source_label": "dog",
+      "cat_mass": 0.001582906348630786,
+      "dog_mass": 0.7541523575782776,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0584",
+      "source_label": "dog",
+      "cat_mass": 0.0002866768045350909,
+      "dog_mass": 0.971855640411377,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0585",
+      "source_label": "dog",
+      "cat_mass": 0.0002790451399050653,
+      "dog_mass": 0.8931288719177246,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0586",
+      "source_label": "dog",
+      "cat_mass": 0.0009121605544351041,
+      "dog_mass": 0.752785325050354,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0587",
+      "source_label": "dog",
+      "cat_mass": 3.887257116730325e-05,
+      "dog_mass": 0.9746529459953308,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0588",
+      "source_label": "dog",
+      "cat_mass": 0.002640040824189782,
+      "dog_mass": 0.761854350566864,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0589",
+      "source_label": "dog",
+      "cat_mass": 0.0008286014199256897,
+      "dog_mass": 0.7912184596061707,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0590",
+      "source_label": "dog",
+      "cat_mass": 0.0012606331147253513,
+      "dog_mass": 0.7711578011512756,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0591",
+      "source_label": "dog",
+      "cat_mass": 9.096036228584126e-05,
+      "dog_mass": 0.9658423066139221,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0592",
+      "source_label": "dog",
+      "cat_mass": 0.0003673601895570755,
+      "dog_mass": 0.9200337529182434,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0593",
+      "source_label": "dog",
+      "cat_mass": 0.00032563458080403507,
+      "dog_mass": 0.8336081504821777,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0594",
+      "source_label": "dog",
+      "cat_mass": 2.56338607869111e-05,
+      "dog_mass": 0.9755967259407043,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0595",
+      "source_label": "dog",
+      "cat_mass": 0.0006538133602589369,
+      "dog_mass": 0.8010858297348022,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0596",
+      "source_label": "dog",
+      "cat_mass": 0.0001775936980266124,
+      "dog_mass": 0.9239169955253601,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0597",
+      "source_label": "dog",
+      "cat_mass": 0.000770720886066556,
+      "dog_mass": 0.7749598026275635,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0598",
+      "source_label": "dog",
+      "cat_mass": 0.00020677900465670973,
+      "dog_mass": 0.9174214601516724,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0599",
+      "source_label": "dog",
+      "cat_mass": 0.00016432948177680373,
+      "dog_mass": 0.9902600049972534,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0600",
+      "source_label": "dog",
+      "cat_mass": 0.005303242243826389,
+      "dog_mass": 0.8304357528686523,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0601",
+      "source_label": "dog",
+      "cat_mass": 0.0011402760865166783,
+      "dog_mass": 0.7735264897346497,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0602",
+      "source_label": "dog",
+      "cat_mass": 0.00024908463819883764,
+      "dog_mass": 0.9204222559928894,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0603",
+      "source_label": "dog",
+      "cat_mass": 0.0002991636283695698,
+      "dog_mass": 0.8009670972824097,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0604",
+      "source_label": "dog",
+      "cat_mass": 0.0012837890535593033,
+      "dog_mass": 0.6531783938407898,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0605",
+      "source_label": "dog",
+      "cat_mass": 0.0009183290530927479,
+      "dog_mass": 0.6672923564910889,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0606",
+      "source_label": "dog",
+      "cat_mass": 0.00125967210624367,
+      "dog_mass": 0.8710951209068298,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0607",
+      "source_label": "dog",
+      "cat_mass": 0.0007451471174135804,
+      "dog_mass": 0.8579952716827393,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0608",
+      "source_label": "dog",
+      "cat_mass": 0.0001883116492535919,
+      "dog_mass": 0.9531134366989136,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0609",
+      "source_label": "dog",
+      "cat_mass": 0.00017149857012555003,
+      "dog_mass": 0.9429237246513367,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0610",
+      "source_label": "dog",
+      "cat_mass": 0.00013965772814117372,
+      "dog_mass": 0.9420416355133057,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0611",
+      "source_label": "dog",
+      "cat_mass": 0.0018772368784993887,
+      "dog_mass": 0.3088368773460388,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0612",
+      "source_label": "dog",
+      "cat_mass": 0.001595508074387908,
+      "dog_mass": 0.9214462041854858,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0613",
+      "source_label": "dog",
+      "cat_mass": 0.00029726370121352375,
+      "dog_mass": 0.8746232986450195,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0614",
+      "source_label": "dog",
+      "cat_mass": 0.00024926773039624095,
+      "dog_mass": 0.8095715641975403,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0615",
+      "source_label": "dog",
+      "cat_mass": 0.0018742020474746823,
+      "dog_mass": 0.7050780057907104,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0616",
+      "source_label": "dog",
+      "cat_mass": 0.0010517712216824293,
+      "dog_mass": 0.8095335960388184,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0617",
+      "source_label": "dog",
+      "cat_mass": 9.563833737047389e-05,
+      "dog_mass": 0.8537530303001404,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0618",
+      "source_label": "dog",
+      "cat_mass": 0.001001019380055368,
+      "dog_mass": 0.8506328463554382,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0619",
+      "source_label": "dog",
+      "cat_mass": 0.0008249664679169655,
+      "dog_mass": 0.8118762373924255,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0620",
+      "source_label": "dog",
+      "cat_mass": 0.0014440196100622416,
+      "dog_mass": 0.4696386456489563,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0621",
+      "source_label": "dog",
+      "cat_mass": 6.794524233555421e-05,
+      "dog_mass": 0.9406542181968689,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0622",
+      "source_label": "dog",
+      "cat_mass": 0.00047256238758563995,
+      "dog_mass": 0.9439423680305481,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0623",
+      "source_label": "dog",
+      "cat_mass": 0.0016906660748645663,
+      "dog_mass": 0.7910622954368591,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0624",
+      "source_label": "dog",
+      "cat_mass": 0.0002967416658066213,
+      "dog_mass": 0.7632739543914795,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0625",
+      "source_label": "dog",
+      "cat_mass": 0.00019191157480236143,
+      "dog_mass": 0.9797712564468384,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0626",
+      "source_label": "dog",
+      "cat_mass": 0.00026081374380737543,
+      "dog_mass": 0.8291248083114624,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0627",
+      "source_label": "dog",
+      "cat_mass": 0.0018325934652239084,
+      "dog_mass": 0.818448543548584,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0628",
+      "source_label": "dog",
+      "cat_mass": 0.00021665103849954903,
+      "dog_mass": 0.7886072397232056,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0629",
+      "source_label": "dog",
+      "cat_mass": 0.001195983961224556,
+      "dog_mass": 0.8360349535942078,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0630",
+      "source_label": "dog",
+      "cat_mass": 0.0007312145316973329,
+      "dog_mass": 0.784896969795227,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0631",
+      "source_label": "dog",
+      "cat_mass": 0.001108759082853794,
+      "dog_mass": 0.8006255626678467,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0632",
+      "source_label": "dog",
+      "cat_mass": 0.0007898180629126728,
+      "dog_mass": 0.6942905783653259,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0633",
+      "source_label": "dog",
+      "cat_mass": 0.0008235801360569894,
+      "dog_mass": 0.8423812985420227,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0634",
+      "source_label": "dog",
+      "cat_mass": 0.0024791089817881584,
+      "dog_mass": 0.8201640844345093,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0635",
+      "source_label": "dog",
+      "cat_mass": 0.0003432049707043916,
+      "dog_mass": 0.9096033573150635,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0636",
+      "source_label": "dog",
+      "cat_mass": 0.0008364426321350038,
+      "dog_mass": 0.7938098907470703,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0637",
+      "source_label": "dog",
+      "cat_mass": 0.0008091588970273733,
+      "dog_mass": 0.7971836924552917,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0638",
+      "source_label": "dog",
+      "cat_mass": 0.0014223207253962755,
+      "dog_mass": 0.8831310272216797,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0639",
+      "source_label": "dog",
+      "cat_mass": 0.0038234139792621136,
+      "dog_mass": 0.6500508189201355,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0640",
+      "source_label": "dog",
+      "cat_mass": 0.00029917905339971185,
+      "dog_mass": 0.9166620969772339,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0641",
+      "source_label": "dog",
+      "cat_mass": 0.00010775213013403118,
+      "dog_mass": 0.9765697121620178,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0642",
+      "source_label": "dog",
+      "cat_mass": 0.0008004189585335553,
+      "dog_mass": 0.5170174241065979,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0643",
+      "source_label": "dog",
+      "cat_mass": 0.00021554208069574088,
+      "dog_mass": 0.9275465607643127,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0644",
+      "source_label": "dog",
+      "cat_mass": 0.0005836492637172341,
+      "dog_mass": 0.7481755614280701,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0645",
+      "source_label": "dog",
+      "cat_mass": 0.00019923524814657867,
+      "dog_mass": 0.9197335243225098,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0646",
+      "source_label": "dog",
+      "cat_mass": 0.0009115498396568,
+      "dog_mass": 0.9089661836624146,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0647",
+      "source_label": "dog",
+      "cat_mass": 0.0003250155714340508,
+      "dog_mass": 0.8669714331626892,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0648",
+      "source_label": "dog",
+      "cat_mass": 0.00017690077947918326,
+      "dog_mass": 0.8627976179122925,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0649",
+      "source_label": "dog",
+      "cat_mass": 0.0004620587278623134,
+      "dog_mass": 0.8528622984886169,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0650",
+      "source_label": "dog",
+      "cat_mass": 4.2980736907338724e-05,
+      "dog_mass": 0.9632667899131775,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0651",
+      "source_label": "dog",
+      "cat_mass": 0.0002742939395830035,
+      "dog_mass": 0.8688872456550598,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0652",
+      "source_label": "dog",
+      "cat_mass": 6.21081780991517e-05,
+      "dog_mass": 0.9572985768318176,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0653",
+      "source_label": "dog",
+      "cat_mass": 0.00042529235361143947,
+      "dog_mass": 0.7046337723731995,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0654",
+      "source_label": "dog",
+      "cat_mass": 0.00013893110735807568,
+      "dog_mass": 0.9510054588317871,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0655",
+      "source_label": "dog",
+      "cat_mass": 0.001056227134540677,
+      "dog_mass": 0.892844021320343,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0656",
+      "source_label": "dog",
+      "cat_mass": 0.0012631755089387298,
+      "dog_mass": 0.828672468662262,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0657",
+      "source_label": "dog",
+      "cat_mass": 8.34799138829112e-05,
+      "dog_mass": 0.9402280449867249,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0658",
+      "source_label": "dog",
+      "cat_mass": 0.0019913578871637583,
+      "dog_mass": 0.679933488368988,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0659",
+      "source_label": "dog",
+      "cat_mass": 0.00016705699090380222,
+      "dog_mass": 0.9484591484069824,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0660",
+      "source_label": "dog",
+      "cat_mass": 0.0001675089297350496,
+      "dog_mass": 0.9467443227767944,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0661",
+      "source_label": "dog",
+      "cat_mass": 0.0007725073955953121,
+      "dog_mass": 0.8200682997703552,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0662",
+      "source_label": "dog",
+      "cat_mass": 0.0010013512801378965,
+      "dog_mass": 0.9131996035575867,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0663",
+      "source_label": "dog",
+      "cat_mass": 0.00010827615187736228,
+      "dog_mass": 0.9806920886039734,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0664",
+      "source_label": "dog",
+      "cat_mass": 0.0020844386890530586,
+      "dog_mass": 0.7209292054176331,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0665",
+      "source_label": "dog",
+      "cat_mass": 0.0011143607553094625,
+      "dog_mass": 0.9358486533164978,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0666",
+      "source_label": "dog",
+      "cat_mass": 0.0004085429245606065,
+      "dog_mass": 0.2691071331501007,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0667",
+      "source_label": "dog",
+      "cat_mass": 0.0011070078471675515,
+      "dog_mass": 0.7976908683776855,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0668",
+      "source_label": "dog",
+      "cat_mass": 6.792508793296292e-05,
+      "dog_mass": 0.9584453701972961,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0669",
+      "source_label": "dog",
+      "cat_mass": 9.183699876302853e-05,
+      "dog_mass": 0.9559528231620789,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0670",
+      "source_label": "dog",
+      "cat_mass": 0.0007071099244058132,
+      "dog_mass": 0.7378305792808533,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0671",
+      "source_label": "dog",
+      "cat_mass": 0.00025935168378055096,
+      "dog_mass": 0.9271818399429321,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0672",
+      "source_label": "dog",
+      "cat_mass": 0.0005150450742803514,
+      "dog_mass": 0.9714272618293762,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0673",
+      "source_label": "dog",
+      "cat_mass": 0.001453249016776681,
+      "dog_mass": 0.789427638053894,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0674",
+      "source_label": "dog",
+      "cat_mass": 8.28391348477453e-05,
+      "dog_mass": 0.9193299412727356,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0675",
+      "source_label": "dog",
+      "cat_mass": 0.0017807204276323318,
+      "dog_mass": 0.8409398198127747,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0676",
+      "source_label": "dog",
+      "cat_mass": 0.00032724346965551376,
+      "dog_mass": 0.8143808245658875,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0677",
+      "source_label": "dog",
+      "cat_mass": 0.0012679077917709947,
+      "dog_mass": 0.6628407835960388,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0678",
+      "source_label": "dog",
+      "cat_mass": 0.00041639874689280987,
+      "dog_mass": 0.8555107116699219,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0679",
+      "source_label": "dog",
+      "cat_mass": 0.0002332403091713786,
+      "dog_mass": 0.8803507089614868,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0680",
+      "source_label": "dog",
+      "cat_mass": 0.0005921437405049801,
+      "dog_mass": 0.9062284827232361,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0681",
+      "source_label": "dog",
+      "cat_mass": 0.0001439328189007938,
+      "dog_mass": 0.8977440595626831,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0682",
+      "source_label": "dog",
+      "cat_mass": 0.002342078136280179,
+      "dog_mass": 0.5767273902893066,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0683",
+      "source_label": "dog",
+      "cat_mass": 0.0007026816601864994,
+      "dog_mass": 0.8170621395111084,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0684",
+      "source_label": "dog",
+      "cat_mass": 0.0014115188969299197,
+      "dog_mass": 0.7912282347679138,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0685",
+      "source_label": "dog",
+      "cat_mass": 0.00019084179075434804,
+      "dog_mass": 0.8524680733680725,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0686",
+      "source_label": "dog",
+      "cat_mass": 0.02263561636209488,
+      "dog_mass": 0.9099027514457703,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0687",
+      "source_label": "dog",
+      "cat_mass": 0.0008908353629522026,
+      "dog_mass": 0.7146270275115967,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0688",
+      "source_label": "dog",
+      "cat_mass": 0.001513195689767599,
+      "dog_mass": 0.9282302856445312,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0689",
+      "source_label": "dog",
+      "cat_mass": 0.0003190877032466233,
+      "dog_mass": 0.7772483825683594,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0690",
+      "source_label": "dog",
+      "cat_mass": 0.00013024122745264322,
+      "dog_mass": 0.944617748260498,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0691",
+      "source_label": "dog",
+      "cat_mass": 0.000695606111548841,
+      "dog_mass": 0.7536101937294006,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0692",
+      "source_label": "dog",
+      "cat_mass": 0.00033451447961851954,
+      "dog_mass": 0.7316747307777405,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0693",
+      "source_label": "dog",
+      "cat_mass": 0.00025356808328069746,
+      "dog_mass": 0.857624351978302,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0694",
+      "source_label": "dog",
+      "cat_mass": 0.00012478984717745334,
+      "dog_mass": 0.9187467694282532,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0695",
+      "source_label": "dog",
+      "cat_mass": 0.0025277023669332266,
+      "dog_mass": 0.8234207034111023,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0696",
+      "source_label": "dog",
+      "cat_mass": 0.0037767633330076933,
+      "dog_mass": 0.6666007041931152,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0697",
+      "source_label": "dog",
+      "cat_mass": 0.00042142803431488574,
+      "dog_mass": 0.7548606395721436,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0698",
+      "source_label": "dog",
+      "cat_mass": 0.0010158843360841274,
+      "dog_mass": 0.7245836853981018,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0699",
+      "source_label": "dog",
+      "cat_mass": 0.0001659494882915169,
+      "dog_mass": 0.9306727051734924,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0700",
+      "source_label": "dog",
+      "cat_mass": 0.0007169354357756674,
+      "dog_mass": 0.7021939754486084,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0701",
+      "source_label": "dog",
+      "cat_mass": 0.0005039605312049389,
+      "dog_mass": 0.8995092511177063,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0702",
+      "source_label": "dog",
+      "cat_mass": 0.00036065230960957706,
+      "dog_mass": 0.9114648103713989,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0703",
+      "source_label": "dog",
+      "cat_mass": 0.0013545058900490403,
+      "dog_mass": 0.7370766997337341,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0704",
+      "source_label": "dog",
+      "cat_mass": 7.238041143864393e-05,
+      "dog_mass": 0.9455759525299072,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0705",
+      "source_label": "dog",
+      "cat_mass": 0.00023614487145096064,
+      "dog_mass": 0.8843981027603149,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0706",
+      "source_label": "dog",
+      "cat_mass": 0.0007107220590114594,
+      "dog_mass": 0.8681074380874634,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0707",
+      "source_label": "dog",
+      "cat_mass": 0.0002045234286924824,
+      "dog_mass": 0.9259136915206909,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0708",
+      "source_label": "dog",
+      "cat_mass": 0.00011205906048417091,
+      "dog_mass": 0.9663519263267517,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0709",
+      "source_label": "dog",
+      "cat_mass": 8.02972208475694e-05,
+      "dog_mass": 0.9293172955513,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0710",
+      "source_label": "dog",
+      "cat_mass": 0.00010856844164663926,
+      "dog_mass": 0.9791353344917297,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0711",
+      "source_label": "dog",
+      "cat_mass": 5.64824185858015e-05,
+      "dog_mass": 0.9757917523384094,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0712",
+      "source_label": "dog",
+      "cat_mass": 0.0025367746129631996,
+      "dog_mass": 0.879694402217865,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0713",
+      "source_label": "dog",
+      "cat_mass": 0.00013487770047504455,
+      "dog_mass": 0.9773805737495422,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0714",
+      "source_label": "dog",
+      "cat_mass": 0.00017078037490136921,
+      "dog_mass": 0.922817051410675,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0715",
+      "source_label": "dog",
+      "cat_mass": 0.0009272110182791948,
+      "dog_mass": 0.7541677951812744,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0716",
+      "source_label": "dog",
+      "cat_mass": 0.012984730303287506,
+      "dog_mass": 0.5470142364501953,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0717",
+      "source_label": "dog",
+      "cat_mass": 0.00046125269727781415,
+      "dog_mass": 0.8032605648040771,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0718",
+      "source_label": "dog",
+      "cat_mass": 0.00042386737186461687,
+      "dog_mass": 0.7205936908721924,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0719",
+      "source_label": "dog",
+      "cat_mass": 0.0016003308119252324,
+      "dog_mass": 0.8195264339447021,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0720",
+      "source_label": "dog",
+      "cat_mass": 0.0021826657466590405,
+      "dog_mass": 0.9215553998947144,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0721",
+      "source_label": "dog",
+      "cat_mass": 0.0008809625287540257,
+      "dog_mass": 0.9034704566001892,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0722",
+      "source_label": "dog",
+      "cat_mass": 0.0006654951721429825,
+      "dog_mass": 0.7461782097816467,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0723",
+      "source_label": "dog",
+      "cat_mass": 0.00022607148275710642,
+      "dog_mass": 0.8677342534065247,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0724",
+      "source_label": "dog",
+      "cat_mass": 0.0024266622494906187,
+      "dog_mass": 0.7206570506095886,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0725",
+      "source_label": "dog",
+      "cat_mass": 0.00026464543770998716,
+      "dog_mass": 0.9270917177200317,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0726",
+      "source_label": "dog",
+      "cat_mass": 0.0003989981778431684,
+      "dog_mass": 0.8081464767456055,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0727",
+      "source_label": "dog",
+      "cat_mass": 0.0003789437178056687,
+      "dog_mass": 0.8777154088020325,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0728",
+      "source_label": "dog",
+      "cat_mass": 0.00015696987975388765,
+      "dog_mass": 0.8788542151451111,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0729",
+      "source_label": "dog",
+      "cat_mass": 0.002682262333109975,
+      "dog_mass": 0.6304501891136169,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0730",
+      "source_label": "dog",
+      "cat_mass": 0.0012345900759100914,
+      "dog_mass": 0.6777738928794861,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0731",
+      "source_label": "dog",
+      "cat_mass": 0.00011106619058409706,
+      "dog_mass": 0.8597760796546936,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0732",
+      "source_label": "dog",
+      "cat_mass": 0.00017842593661043793,
+      "dog_mass": 0.9495084285736084,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0733",
+      "source_label": "dog",
+      "cat_mass": 0.0010158611694350839,
+      "dog_mass": 0.5675387978553772,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0734",
+      "source_label": "dog",
+      "cat_mass": 0.0012834456283599138,
+      "dog_mass": 0.727818489074707,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0735",
+      "source_label": "dog",
+      "cat_mass": 0.00025536128669045866,
+      "dog_mass": 0.8670097589492798,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0736",
+      "source_label": "dog",
+      "cat_mass": 0.0001560335367685184,
+      "dog_mass": 0.9242013096809387,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0737",
+      "source_label": "dog",
+      "cat_mass": 0.000323406740790233,
+      "dog_mass": 0.8111924529075623,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0738",
+      "source_label": "dog",
+      "cat_mass": 0.0007810979150235653,
+      "dog_mass": 0.6825026273727417,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0739",
+      "source_label": "dog",
+      "cat_mass": 0.0004679171834141016,
+      "dog_mass": 0.8243367075920105,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0740",
+      "source_label": "dog",
+      "cat_mass": 0.00046696761273778975,
+      "dog_mass": 0.7725902795791626,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0741",
+      "source_label": "dog",
+      "cat_mass": 0.00022007909137755632,
+      "dog_mass": 0.9307004809379578,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0742",
+      "source_label": "dog",
+      "cat_mass": 0.0003475298872217536,
+      "dog_mass": 0.7976087331771851,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0743",
+      "source_label": "dog",
+      "cat_mass": 0.001883166958577931,
+      "dog_mass": 0.7579576969146729,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0744",
+      "source_label": "dog",
+      "cat_mass": 0.0012435934040695429,
+      "dog_mass": 0.8280509114265442,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0745",
+      "source_label": "dog",
+      "cat_mass": 0.00034845361369661987,
+      "dog_mass": 0.8749270439147949,
+      "flag": "agreement"
+    },
+    {
+      "id": "dog_0746",
+      "source_label": "dog",
+      "cat_mass": 0.0005782630760222673,
+      "dog_mass": 0.7340028285980225,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0747",
+      "source_label": "dog",
+      "cat_mass": 0.0013604953419417143,
+      "dog_mass": 0.7758437395095825,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0748",
+      "source_label": "dog",
+      "cat_mass": 0.0038173848297446966,
+      "dog_mass": 0.6096905469894409,
+      "flag": "uncertain"
+    },
+    {
+      "id": "dog_0749",
+      "source_label": "dog",
+      "cat_mass": 0.0012866295874118805,
+      "dog_mass": 0.801562488079071,
+      "flag": "agreement"
+    }
+  ],
+  "note": "Independent model predictions are not verified labels; no filtering or relabeling."
+}

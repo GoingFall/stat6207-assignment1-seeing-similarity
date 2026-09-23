@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main() -> None:
-    config = json.loads((ROOT / "configs/v2/experiment.json").read_text(encoding="utf-8"))
+    config = json.loads((ROOT / "configs/v2.0/experiment.json").read_text(encoding="utf-8"))
     assert config["long_tail"]["ratios"] == [10, 50]
     assert len(config["long_tail"]["seeds"]) >= 5 and len(set(config["long_tail"]["seeds"])) == len(config["long_tail"]["seeds"])
     assert config["exact"]["query_batch"] == 256 and config["exact"]["database_shard"] == 100000

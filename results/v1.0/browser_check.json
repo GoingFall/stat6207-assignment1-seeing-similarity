@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "browser": "Edge",
+  "page_errors": [],
+  "checks": [
+    "63 control combinations match recorded ranks/votes",
+    "actual k voting set",
+    "21 condition/metric heatmaps",
+    "14 unseen/error heatmaps",
+    "pair selector and overlay toggle",
+    "model scope guard",
+    "12 comparison rows",
+    "map click and selected marker",
+    "all image resources",
+    "390px responsive layout"
+  ]
+}

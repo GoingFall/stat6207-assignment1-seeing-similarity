@@ -14,11 +14,12 @@ from transformers import AutoImageProcessor, AutoModel
 
 from pipelines.prepare_data import ROOT
 from src.benchmarking.resources import ResourceMonitor
+from src.paths import resolve
 
 
-IMAGE_LOCK = ROOT / "data_v2/manifests/inat_birds_images_lock.json"
-OUTPUT = ROOT / "data_v2/embeddings/inat_birds"
-RESULT = ROOT / "results_v2/inat/encoding.json"
+IMAGE_LOCK = ROOT / "data/v2.0/manifests/inat_birds_images_lock.json"
+OUTPUT = ROOT / "data/v2.0/embeddings/inat_birds"
+RESULT = ROOT / "results/v2.0/inat/encoding.json"
 
 
 def hash_file(path: Path) -> str:
@@ -30,12 +31,12 @@ def hash_file(path: Path) -> str:
 
 
 def main() -> None:
-    config_path = ROOT / "configs/v2/experiment.json"
+    config_path = ROOT / "configs/v2.0/experiment.json"
     full_config = json.loads(config_path.read_text(encoding="utf-8"))
     model_name = full_config["sop"]["encoder"]
     batch_size = full_config["sop"]["batch_size"]
     lock = json.loads(IMAGE_LOCK.read_text(encoding="utf-8"))
-    manifest_path = ROOT / lock["manifest"]
+    manifest_path = resolve(lock["manifest"])
     if hash_file(manifest_path) != lock["manifest_sha256"]:
         raise AssertionError("iNaturalist image manifest hash mismatch")
     if not torch.cuda.is_available():
@@ -67,7 +68,7 @@ def main() -> None:
     for split in expected:
         if split in result["splits"]:
             record = result["splits"][split]
-            if all(hash_file(ROOT / artifact["path"]) == artifact["sha256"] for artifact in record["artifacts"].values()):
+            if all(hash_file(resolve(artifact["path"])) == artifact["sha256"] for artifact in record["artifacts"].values()):
                 continue
             raise RuntimeError(f"Existing {split} encoding artifacts fail hash validation")
         expected_paths = [OUTPUT / f"{split}_{suffix}.npy" for suffix in ("embeddings", "labels", "image_ids")]
@@ -82,7 +83,7 @@ def main() -> None:
                 for begin in range(0, len(rows), batch_size):
                     images = []
                     for row in rows[begin : begin + batch_size]:
-                        path = ROOT / row["local_path"]
+                        path = resolve(row["local_path"])
                         if hash_file(path) != row["sha256"]:
                             raise AssertionError(f"Image changed after lock: {row['image_id']}")
                         with Image.open(path) as image:

@@ -14,6 +14,7 @@ from transformers import AutoImageProcessor, AutoModel
 
 from pipelines.prepare_data import ROOT
 from src.benchmarking.resources import ResourceMonitor
+from src.paths import resolve
 
 
 def file_hash(path: Path) -> str:
@@ -34,11 +35,11 @@ def load_manifest(path: Path) -> list[dict]:
 
 
 def main() -> None:
-    config_path = ROOT / "configs/v2/experiment.json"
+    config_path = ROOT / "configs/v2.0/experiment.json"
     config = json.loads(config_path.read_text(encoding="utf-8"))["sop"]
-    lock_path = ROOT / "data_v2/manifests/sop_lock.json"
+    lock_path = ROOT / "data/v2.0/manifests/sop_lock.json"
     lock = json.loads(lock_path.read_text(encoding="utf-8"))
-    output = ROOT / "data_v2/embeddings/sop"
+    output = ROOT / "data/v2.0/embeddings/sop"
     output.mkdir(parents=True, exist_ok=True)
     if any((output / f"dinov2_{split}.npy").exists() for split in ("train", "test")):
         raise RuntimeError(f"SOP embeddings already exist in {output}; refusing to overwrite")
@@ -48,7 +49,7 @@ def main() -> None:
     processor = AutoImageProcessor.from_pretrained(config["encoder"])
     model = AutoModel.from_pretrained(config["encoder"]).to("cuda").eval()
     records = {
-        split: load_manifest(ROOT / lock["manifests"][split]["path"])
+        split: load_manifest(resolve(lock["manifests"][split]["path"]))
         for split in ("train", "test")
     }
     result = {
@@ -74,7 +75,7 @@ def main() -> None:
                 for begin in range(0, len(manifest), config["batch_size"]):
                     images = []
                     for row in manifest[begin : begin + config["batch_size"]]:
-                        with Image.open(ROOT / "data_v2/processed/sop" / row["path"]) as image:
+                        with Image.open(ROOT / "data/v2.0/processed/sop" / row["path"]) as image:
                             images.append(image.convert("RGB"))
                     inputs = processor(images=images, return_tensors="pt")
                     inputs = {key: value.to("cuda", non_blocking=True) for key, value in inputs.items()}
@@ -108,7 +109,7 @@ def main() -> None:
         }
         del embeddings, chunks
     result["status"] = "passed"
-    folder = ROOT / "results_v2/sop"
+    folder = ROOT / "results/v2.0/sop"
     folder.mkdir(parents=True, exist_ok=True)
     (folder / "encoding.json").write_text(json.dumps(result, indent=2), encoding="utf-8")
     print(json.dumps(result, indent=2))
