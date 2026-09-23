@@ -57,6 +57,64 @@ rewritten or renamed.
   `docs/report/V21-RESULTS.md`, `docs/report/REPORT-REVISION.md` and `docs/releases/RELEASE-1.0.md` are
   historical records and intentionally keep the paths that were current when they were written.
 
+## [Unreleased] - Repository Quality Guard 0.20.4 remediation
+
+Independent audit of the current tree. The five confirmed defects are repaired without touching the
+pre-training `code` snapshot, the `layout_migration` annex or any frozen release archive.
+
+### Fixed
+
+- `pipelines/v21_prepare.py` did not compile: the provenance-annex block sat outside `main()` with an
+  unexpected indent, so `python -m compileall` and the `release-contracts.yml` compile step failed with
+  `IndentationError`. The block is re-indented under its `if` guard and the then-unused `Counter` and
+  `Path` imports are dropped.
+- 23 undefined `R1` references (ruff F821) across eight Version 1.0 consumers: `checks/browser_check.py`,
+  `checks/delivery_check.py`, `checks/review_report.py`, `checks/verify.py`, `pipelines/label_audit.py`,
+  `pipelines/supplement.py`, `reporting/explain.py`, `reporting/export_heatmaps.py`. Running
+  `python -m checks.review_report` raised `NameError: name 'R1' is not defined` before rendering. Each
+  module now imports `R1` from `pipelines.prepare_data`.
+- `src.paths.resolve()` was not idempotent: an already migrated path gained a second prefix
+  (`site/v1.0/heatmaps/index.json` -> `site/v1.0/v1.0/heatmaps/index.json`). It also matched
+  `report.pdf.bak` as though it were the exact `report.pdf` filename, left `data/protocol.json` and
+  `data/results/metrics.json` unmapped, and sent `backup/pilot` to `archive/pilot` instead of the dated
+  archive path. It now recognises current-layout roots before legacy rewriting, orders mappings
+  most-specific first, adds the missing `data/`, `data/results/` and dated `backup/<snapshot>/` entries,
+  and matches exact legacy filenames through a `LEGACY_FILES` table.
+- `checks/v21_summarize_historical.py` ran `git diff` with a pathspec restricted to directories that do
+  not exist at the pre-migration commit, then discarded every `A` and `R` status, so it could not
+  establish historical byte identity. It now compares explicit baseline Git blobs against the mapped
+  current files and records representation-only differences.
+- `tools/package_v21.py` collected current-layout member names while `checks/v21_release.py` read the old
+  `data_v21` and `configs/v21` names, so a freshly built current-layout archive would fail its own
+  verifier. `checks/v21_release.py` now derives member names through `src.paths.resolve()`, which covers
+  both the published archive and a current-layout rebuild.
+
+### Added
+
+- `results/v2.1/checks/post_migration_corrections.json`: reviewed corrections applied after the layout
+  migration. Each entry starts from the exact post-migration bytes recorded in
+  `results/v2.1/provenance.json#layout_migration` and records the corrected bytes, the defect and the
+  fix. `checks.v21_verify` validates the chain and reports it as `post_migration_corrections`.
+- `docs/report/repository-quality-audit-2026-09-23.md`: the audit summary for this round. The unmodified
+  machine-generated ledger stays at the repository root as `修改说明.md`.
+- `docs/api-reference/`: the generated interface catalog (`INDEX.md`, `catalog.json`, `checks.md`,
+  `pipelines.md`, `reporting.md`, `src.md`, `tools.md`, `search-ledger.jsonl`).
+
+### Notes
+
+- The certified pre-training `code` hashes and the `layout_migration` annex are unchanged. Corrections
+  are anchored through the separate correction record rather than by rewriting the annex to obtain a
+  passing result.
+- `results/v2.1/verification.json` and `results/v2.1/checks/historical_integrity.json` were regenerated
+  on the GPU host by `python -m checks.v21_verify` and `python -m checks.v21_summarize_historical`.
+- No experiment, metric, figure, lock or frozen release archive was modified.
+- The machine ledger still reports `tool_status: REJECT` / `final_status: PENDING_VERIFY`. That is the
+  report-completeness gate over unadjudicated semantic candidates, not a code verdict; the reproduced
+  code failures are repaired above.
+- RQG 0.20.4 ran from a global installation. No pre-push hook is installed, because the upstream hook
+  hardcodes a project-local `.agents/skills/repository-quality-guard` runtime that this installation does
+  not provide.
+
 ## [2.1] - 2026-09-23
 
 Audit-driven revision of Version 2.0. Removes conflicting/duplicate image content, fixes group macro-F1 and
