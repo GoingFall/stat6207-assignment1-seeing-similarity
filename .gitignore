@@ -106,3 +106,9 @@ Desktop.ini
 !/releases/2.1/Assignment1-2.1.zip
 # 1.0 is 740 MB, above the GitHub file limit; its checksum and manifest are tracked instead.
 /releases/1.0/Assignment1-submission.zip
+
+# --- Repository Quality Guard machine ledger ---
+# The audit ledger is rewritten every round and carries its own SEM/ADD verdicts. Keeping it out of
+# the tree stops the ledger from joining the change set it describes and from rehashing the semantic
+# ids of its own report each round. Regenerate it locally with `audit`.
+/修改说明.md
